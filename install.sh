@@ -214,6 +214,7 @@ update_gitignore() {
 header "Installing scaffold..."
 
 copy_scaffold "CLAUDE.md"
+copy_scaffold "BRIEF.md"
 copy_scaffold "SESSION_HANDOFF.md"
 copy_scaffold "BACKLOG.md"
 copy_scaffold "CREATIVE_DIRECTION.md"

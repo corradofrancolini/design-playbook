@@ -44,9 +44,10 @@ The installer will:
 | File | Purpose |
 |------|---------|
 | `CLAUDE.md` | Project protocol — Adjacent Possible methodology, AD/AI workflow, execution triggers |
+| `BRIEF.md` | Project brief — scope, target, stack, content, references, constraints |
 | `SESSION_HANDOFF.md` | Current project state, updated at the end of each session |
 | `BACKLOG.md` | Active backlog, open decisions, closed decisions |
-| `CREATIVE_DIRECTION.md` | Creative brief — palette, typography, visual mood, constraints |
+| `CREATIVE_DIRECTION.md` | Creative direction — palette, typography, visual mood, design decisions |
 | `lab/PROCESS.md` | Anti-sycophancy methodology and operational protocol |
 | `lab/notes.md` | Working notes, benchmarks, design decisions |
 | `docs/sessions/TEMPLATE.md` | Session log template |
@@ -71,10 +72,11 @@ The installer will:
 
 After installing, open Claude Code in the project directory. In the first session:
 
-1. **`CREATIVE_DIRECTION.md`** — fill in constraints, palette, typography, visual mood
-2. **`CLAUDE.md`** — adjust the project structure section to match your stack
-3. **`review` skill** — uncomment the stack-specific sections relevant to your project (React/Next.js, Vue/Nuxt, Tailwind, TypeScript, Python)
-4. **`content` skill** — fill in the glossary table with project-specific terminology
+1. **`BRIEF.md`** — fill in project scope, target, stack, content, references, constraints
+2. **`CREATIVE_DIRECTION.md`** — fill in palette, typography, visual mood
+3. **`CLAUDE.md`** — adjust the project structure section to match your stack
+4. **`review` skill** — uncomment the stack-specific sections relevant to your project (React/Next.js, Vue/Nuxt, Tailwind, TypeScript, Python)
+5. **`content` skill** — fill in the glossary table with project-specific terminology
 
 See [extras/examples/](extras/examples/) for filled-in examples of these files.
 
@@ -163,6 +165,7 @@ lab/notes.md        ←  working notes preserved
 ```
 my-project/
 ├── CLAUDE.md
+├── BRIEF.md
 ├── SESSION_HANDOFF.md
 ├── BACKLOG.md
 ├── CREATIVE_DIRECTION.md

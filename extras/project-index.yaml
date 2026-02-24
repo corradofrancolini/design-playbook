@@ -8,7 +8,7 @@ project: My Project
 updated: 2026-01-01
 
 stats:
-  - "7 scaffold files"
+  - "8 scaffold files"
   - "9 skills installed"
 
 legend:
@@ -20,6 +20,10 @@ tree:
   - name: "CLAUDE.md"
     desc: "Project protocol — Adjacent Possible + AD/AI workflow"
     tag: active
+
+  - name: "BRIEF.md"
+    desc: "Project brief — scope, target, stack, constraints"
+    tag: template
 
   - name: "SESSION_HANDOFF.md"
     desc: "Current state for session continuity"

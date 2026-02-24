@@ -28,6 +28,10 @@ header(){ printf "\n${BOLD}%s${RESET}\n" "$1"; }
 
 ask_yes_no() {
   local prompt="$1" default="${2:-n}"
+  # --force: always yes
+  if [ "$OPT_FORCE" = true ]; then
+    return 0
+  fi
   if [ "$default" = "y" ]; then
     printf "  %s [Y/n] " "$prompt"
   else
@@ -47,21 +51,47 @@ ask_yes_no() {
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # ---------------------------------------------------------------------------
+# Parse arguments
+# ---------------------------------------------------------------------------
+OPT_NAME=""
+OPT_FORCE=false
+TARGET=""
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --name)   OPT_NAME="$2"; shift 2 ;;
+    --name=*) OPT_NAME="${1#*=}"; shift ;;
+    --force)  OPT_FORCE=true; shift ;;
+    -h|--help)
+      printf "\n${BOLD}design-playbook${RESET} — AD + AI project methodology\n\n"
+      printf "Usage: %s [options] <target-directory>\n\n" "$0"
+      printf "Options:\n"
+      printf "  --name <name>   Project name (default: directory name)\n"
+      printf "  --force         Overwrite existing files without asking\n"
+      printf "  -h, --help      Show this help\n\n"
+      printf "Example:\n"
+      printf "  %s ~/Projects/my-project\n" "$0"
+      printf "  %s --name \"My Project\" --force ~/Projects/my-project\n\n" "$0"
+      exit 0
+      ;;
+    -*) error "Unknown option: $1"; exit 1 ;;
+    *)  TARGET="$1"; shift ;;
+  esac
+done
+
+# ---------------------------------------------------------------------------
 # Validate target directory
 # ---------------------------------------------------------------------------
-TARGET="${1:-}"
-
 if [ -z "$TARGET" ]; then
   printf "\n${BOLD}design-playbook${RESET} — AD + AI project methodology\n\n"
-  printf "Usage: %s <target-directory>\n\n" "$0"
-  printf "Example:\n"
-  printf "  %s ~/Projects/my-project\n\n" "$0"
+  printf "Usage: %s [options] <target-directory>\n\n" "$0"
+  printf "Run %s --help for options.\n\n" "$0"
   exit 1
 fi
 
 # Resolve to absolute path
 TARGET="$(cd "$TARGET" 2>/dev/null && pwd)" || {
-  error "Directory not found: $1"
+  error "Directory not found: $TARGET"
   exit 1
 }
 
@@ -72,9 +102,15 @@ DEFAULT_NAME="$(basename "$TARGET")"
 
 printf "\n${BOLD}design-playbook${RESET} — AD + AI project methodology\n"
 printf "${DIM}Target: %s${RESET}\n" "$TARGET"
-printf "\n  Project name [%s]: " "$DEFAULT_NAME"
-read -r PROJECT_NAME
-PROJECT_NAME="${PROJECT_NAME:-$DEFAULT_NAME}"
+
+if [ -n "$OPT_NAME" ]; then
+  PROJECT_NAME="$OPT_NAME"
+  printf "  Project name: %s\n" "$PROJECT_NAME"
+else
+  printf "\n  Project name [%s]: " "$DEFAULT_NAME"
+  read -r PROJECT_NAME
+  PROJECT_NAME="${PROJECT_NAME:-$DEFAULT_NAME}"
+fi
 
 # ---------------------------------------------------------------------------
 # Counters

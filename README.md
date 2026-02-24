@@ -11,8 +11,14 @@ git clone https://github.com/corradofrancolini/design-playbook.git
 ./design-playbook/install.sh ~/Projects/my-project
 ```
 
+Or non-interactively (useful from Claude Desktop):
+
+```bash
+./design-playbook/install.sh --name "my-project" --force ~/Projects/my-project
+```
+
 The installer will:
-1. Ask for the project name
+1. Ask for the project name (or use `--name`)
 2. Copy scaffold files into the project root
 3. Install 8 skills into `.claude/skills/`
 4. Update `.gitignore`
@@ -127,18 +133,29 @@ Drop a `SKILL.md` file into `.claude/skills/<skill-name>/`. Claude Code picks it
 
 Delete the skill directory from `.claude/skills/`.
 
-## Using with Claude Desktop
+## Using from Claude Desktop
 
-If you use Claude Code from within Claude Desktop (via the Claude Code tool integration), the playbook works the same way — run the installer from Terminal, then open the project folder in Claude Desktop.
+If you use Claude Code from Claude Desktop, you can install the playbook entirely from the chat — no need to open a separate terminal.
+
+**Setup (one time):** clone the repo anywhere on your machine. Ask Claude:
+
+> Clone https://github.com/corradofrancolini/design-playbook.git into ~/Projects
+
+**Install into a project:** ask Claude to run the installer with `--name` and `--force` to skip interactive prompts (Claude Code doesn't have an interactive terminal):
+
+> Run ~/Projects/design-playbook/install.sh --name "my-project" --force ~/Projects/my-project
+
+| Flag | What it does |
+|------|-------------|
+| `--name <name>` | Sets project name without prompting |
+| `--force` | Overwrites existing files without asking |
+
+Claude Code will execute the script, and from that point on `CLAUDE.md` and all 8 skills are active in the project directory.
 
 **What works automatically:**
-- `CLAUDE.md` is loaded as project instructions when Claude Code opens the directory
-- Skills in `.claude/skills/` are available as usual
-
-**What to keep in mind:**
-- Run the installer from a regular terminal, not from within Claude Desktop
-- The `/session-end` skill writes to local files (`SESSION_HANDOFF.md`, `docs/sessions/`, `lab/notes.md`) — make sure Claude Code has write access to the project directory
-- If you use Claude Desktop *without* Claude Code (plain chat), you can still use the methodology manually: paste `CLAUDE.md` as project instructions, and reference skill files as needed in conversation. Skills won't auto-load, but the content is self-explanatory.
+- `CLAUDE.md` is loaded as project instructions
+- Skills in `.claude/skills/` are available and invocable
+- `/session-end` writes to local files (`SESSION_HANDOFF.md`, `docs/sessions/`, `lab/notes.md`) — no extra configuration needed
 
 ## Re-running the installer
 

@@ -2,8 +2,6 @@
 
 A complete methodology for Art Director + AI collaborative projects. Installs process files, session continuity tools, and 8 Claude Code skills into any project.
 
-Born from the [Adjacent Possible](https://en.wikipedia.org/wiki/Adjacent_possible) — the idea that innovation happens at the edge of what already exists, one step at a time.
-
 ## Quick start
 
 ```bash

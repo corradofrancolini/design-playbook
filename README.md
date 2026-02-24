@@ -2,6 +2,22 @@
 
 A complete methodology for Art Director + AI collaborative projects. Installs process files, session continuity tools, and 8 Claude Code skills into any project.
 
+## Table of contents
+
+- [Quick start](#quick-start)
+- [What it installs](#what-it-installs)
+- [How to use](#how-to-use)
+  - [First session](#first-session)
+  - [Working with the Adjacent Possible](#working-with-the-adjacent-possible)
+  - [When to use each skill](#when-to-use-each-skill)
+  - [Closing a session](#closing-a-session)
+  - [Picking up the next session](#picking-up-the-next-session)
+- [The method](#the-method)
+- [Project structure after installation](#project-structure-after-installation)
+- [Customization](#customization)
+- [Using from Claude Desktop](#using-from-claude-desktop)
+- [Re-running the installer](#re-running-the-installer)
+
 ## Quick start
 
 ```bash
@@ -58,6 +74,8 @@ After installing, open Claude Code in the project directory. In the first sessio
 2. **`CLAUDE.md`** — adjust the project structure section to match your stack
 3. **`review` skill** — uncomment the stack-specific sections relevant to your project (React/Next.js, Vue/Nuxt, Tailwind, TypeScript, Python)
 4. **`content` skill** — fill in the glossary table with project-specific terminology
+
+See [extras/examples/](extras/examples/) for filled-in examples of these files.
 
 From this point on, `CLAUDE.md` is loaded automatically as project protocol every time Claude Code opens the directory.
 

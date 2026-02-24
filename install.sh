@@ -237,7 +237,6 @@ copy_skill "content"
 copy_skill "design-system"
 copy_skill "seo"
 copy_skill "project-index"
-copy_skill "figma"
 
 # ---------------------------------------------------------------------------
 # Summary

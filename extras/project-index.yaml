@@ -9,7 +9,7 @@ updated: 2026-01-01
 
 stats:
   - "8 scaffold files"
-  - "9 skills installed"
+  - "8 skills installed"
 
 legend:
   active: "In use"
@@ -60,7 +60,7 @@ tree:
     desc: "Claude Code configuration"
     children:
       - name: "skills/"
-        desc: "9 installed skills"
+        desc: "8 installed skills"
         children:
           - name: "session-end/"
             desc: "Session closing protocol"
@@ -78,5 +78,3 @@ tree:
             desc: "SEO and performance"
           - name: "project-index/"
             desc: "Visual project map"
-          - name: "figma/"
-            desc: "Bidirectional Figma integration"

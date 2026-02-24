@@ -127,6 +127,19 @@ Drop a `SKILL.md` file into `.claude/skills/<skill-name>/`. Claude Code picks it
 
 Delete the skill directory from `.claude/skills/`.
 
+## Using with Claude Desktop
+
+If you use Claude Code from within Claude Desktop (via the Claude Code tool integration), the playbook works the same way — run the installer from Terminal, then open the project folder in Claude Desktop.
+
+**What works automatically:**
+- `CLAUDE.md` is loaded as project instructions when Claude Code opens the directory
+- Skills in `.claude/skills/` are available as usual
+
+**What to keep in mind:**
+- Run the installer from a regular terminal, not from within Claude Desktop
+- The `/session-end` skill writes to local files (`SESSION_HANDOFF.md`, `docs/sessions/`, `lab/notes.md`) — make sure Claude Code has write access to the project directory
+- If you use Claude Desktop *without* Claude Code (plain chat), you can still use the methodology manually: paste `CLAUDE.md` as project instructions, and reference skill files as needed in conversation. Skills won't auto-load, but the content is self-explanatory.
+
 ## Re-running the installer
 
 The installer is safe to re-run. It will:

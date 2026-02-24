@@ -83,7 +83,7 @@ From this point on, `CLAUDE.md` is loaded automatically as project protocol ever
 
 By default, Claude does not execute. It maps options, names trade-offs, and flags doors that close. To trigger execution, use explicit commands:
 
-- "esegui", "procedi", "vai con X", "fallo", or any unambiguous imperative
+- "execute", "proceed", "go with X", "do it", or any unambiguous imperative
 
 Everything else is exploration. When in doubt, Claude asks.
 
@@ -131,7 +131,7 @@ The AI does not converge by default. For every decision, it:
 - **Flags closed doors** — every choice precludes others; says which, and the cost to reopen
 - **Signals jumps** — warns before irreversible or high-cost decisions
 
-Execution happens only on explicit trigger from the Art Director ("esegui", "procedi", "vai con X", or any unambiguous imperative).
+Execution happens only on explicit trigger from the Art Director ("execute", "proceed", "go with X", or any unambiguous imperative).
 
 ### Anti-sycophancy
 

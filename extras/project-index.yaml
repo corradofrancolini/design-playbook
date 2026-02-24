@@ -1,0 +1,76 @@
+# .project-index.yaml — Example for design-playbook scaffold
+#
+# Copy this file to your project root as .project-index.yaml
+# and customize it. Then invoke the project-index skill
+# to generate a visual map.
+
+project: My Project
+updated: 2026-01-01
+
+stats:
+  - "7 scaffold files"
+  - "8 skills installed"
+
+legend:
+  active: "In use"
+  process: "Process / methodology"
+  template: "Template to fill"
+
+tree:
+  - name: "CLAUDE.md"
+    desc: "Project protocol — Adjacent Possible + AD/AI workflow"
+    tag: active
+
+  - name: "SESSION_HANDOFF.md"
+    desc: "Current state for session continuity"
+    tag: active
+
+  - name: "BACKLOG.md"
+    desc: "Backlog, open decisions, closed decisions"
+    tag: active
+
+  - name: "CREATIVE_DIRECTION.md"
+    desc: "Creative brief — palette, typography, constraints"
+    tag: template
+
+  - name: "lab/"
+    desc: "Experiments, mockups, process notes"
+    children:
+      - name: "PROCESS.md"
+        desc: "Anti-sycophancy methodology"
+        tag: process
+      - name: "notes.md"
+        desc: "Working notes, benchmarks, decisions"
+
+  - name: "docs/"
+    desc: "Session logs"
+    children:
+      - name: "sessions/"
+        desc: "One file per session"
+        children:
+          - name: "TEMPLATE.md"
+            desc: "Session log template"
+            tag: template
+
+  - name: ".claude/"
+    desc: "Claude Code configuration"
+    children:
+      - name: "skills/"
+        desc: "8 installed skills"
+        children:
+          - name: "session-end/"
+            desc: "Session closing protocol"
+          - name: "creative/"
+            desc: "Structured divergence"
+          - name: "review/"
+            desc: "Code review"
+          - name: "accessibility/"
+            desc: "WCAG 2.1/2.2 AA audit"
+          - name: "content/"
+            desc: "Microcopy and tone of voice"
+          - name: "design-system/"
+            desc: "Token and component consistency"
+          - name: "seo/"
+            desc: "SEO and performance"
+          - name: "project-index/"
+            desc: "Visual project map"

@@ -15,6 +15,9 @@ A complete methodology for Art Director + AI collaborative projects. Installs pr
 - [The method](#the-method)
 - [Project structure after installation](#project-structure-after-installation)
 - [Customization](#customization)
+  - [Adding skills](#adding-skills)
+  - [Removing skills](#removing-skills)
+  - [Figma integration](#optional-figma-integration)
 - [Using from Claude Desktop](#using-from-claude-desktop)
 - [Re-running the installer](#re-running-the-installer)
 

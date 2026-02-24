@@ -48,6 +48,60 @@ The installer will:
 | `seo` | SEO and performance audit with Core Web Vitals |
 | `project-index` | Visual project map generator |
 
+## How to use
+
+### First session
+
+After installing, open Claude Code in the project directory. In the first session:
+
+1. **`CREATIVE_DIRECTION.md`** — fill in constraints, palette, typography, visual mood
+2. **`CLAUDE.md`** — adjust the project structure section to match your stack
+3. **`review` skill** — uncomment the stack-specific sections relevant to your project (React/Next.js, Vue/Nuxt, Tailwind, TypeScript, Python)
+4. **`content` skill** — fill in the glossary table with project-specific terminology
+
+From this point on, `CLAUDE.md` is loaded automatically as project protocol every time Claude Code opens the directory.
+
+### Working with the Adjacent Possible
+
+By default, Claude does not execute. It maps options, names trade-offs, and flags doors that close. To trigger execution, use explicit commands:
+
+- "esegui", "procedi", "vai con X", "fallo", or any unambiguous imperative
+
+Everything else is exploration. When in doubt, Claude asks.
+
+Details in `CLAUDE.md` (protocol) and `lab/PROCESS.md` (methodology).
+
+### When to use each skill
+
+| When | Skill |
+|------|-------|
+| Fork in the road — choosing between directions | `/creative` |
+| Component or feature completed | `/review` |
+| Before releasing a page | `/accessibility`, `/seo` |
+| Writing text, labels, error messages | `/content` |
+| Checking token and component consistency | `/design-system` |
+| Mapping the project visually | `/project-index` |
+| End of session (always) | `/session-end` |
+
+### Closing a session
+
+Invoke `/session-end` at the end of every session, even short ones. It will:
+
+1. Update `SESSION_HANDOFF.md` with current state, completed work, next step, open problems
+2. Create a session log in `docs/sessions/`
+3. Consolidate `lab/notes.md`
+4. Promote mature design decisions to `CREATIVE_DIRECTION.md`
+
+### Picking up the next session
+
+When Claude Code opens the project in a new session:
+
+- `CLAUDE.md` is loaded automatically (protocol is active)
+- `SESSION_HANDOFF.md` provides immediate context — what was done, what's next, what's blocked
+- The session log in `docs/sessions/` has the full detail
+
+Nothing to do manually. Session continuity is handled by `/session-end`.
+
 ## The method
 
 ### Adjacent Possible
@@ -113,15 +167,6 @@ my-project/
 `docs/` and `lab/` are gitignored by default — they are local process files, not project deliverables.
 
 ## Customization
-
-### First session checklist
-
-After installing, open Claude Code in the project and:
-
-1. **`CREATIVE_DIRECTION.md`** — fill in constraints, typography, visual mood
-2. **`CLAUDE.md`** — adjust the project structure section to match your stack
-3. **`review` skill** — uncomment the stack-specific sections relevant to your project (React/Next.js, Vue/Nuxt, Tailwind, TypeScript, Python)
-4. **`content` skill** — fill in the glossary table with project-specific terminology
 
 ### Adding skills
 

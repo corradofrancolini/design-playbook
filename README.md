@@ -1,6 +1,6 @@
 # design-playbook
 
-A complete methodology for Art Director + AI collaborative projects. Installs process files, session continuity tools, and 8 Claude Code skills into any project.
+A complete methodology for Art Director + AI collaborative projects. Installs process files, session continuity tools, and 9 Claude Code skills into any project.
 
 ## Table of contents
 
@@ -34,7 +34,7 @@ Or non-interactively (useful from Claude Desktop):
 The installer will:
 1. Ask for the project name (or use `--name`)
 2. Copy scaffold files into the project root
-3. Install 8 skills into `.claude/skills/`
+3. Install 9 skills into `.claude/skills/`
 4. Update `.gitignore`
 
 ## What it installs
@@ -63,6 +63,7 @@ The installer will:
 | `design-system` | Token, component, and pattern consistency checks |
 | `seo` | SEO and performance audit with Core Web Vitals |
 | `project-index` | Visual project map generator |
+| `figma` | Bidirectional Figma integration — benchmarks, token extraction, code-to-Figma prototyping |
 
 ## How to use
 
@@ -99,6 +100,8 @@ Details in `CLAUDE.md` (protocol) and `lab/PROCESS.md` (methodology).
 | Writing text, labels, error messages | `/content` |
 | Checking token and component consistency | `/design-system` |
 | Mapping the project visually | `/project-index` |
+| Exploring visual references or extracting tokens from Figma | `/figma` |
+| Pushing code prototypes to Figma for refinement | `/figma` |
 | End of session (always) | `/session-end` |
 
 ### Closing a session
@@ -178,7 +181,8 @@ my-project/
 │       ├── content/SKILL.md
 │       ├── design-system/SKILL.md
 │       ├── seo/SKILL.md
-│       └── project-index/SKILL.md
+│       ├── project-index/SKILL.md
+│       └── figma/SKILL.md
 └── .gitignore  (updated)
 ```
 
@@ -193,6 +197,16 @@ Drop a `SKILL.md` file into `.claude/skills/<skill-name>/`. Claude Code picks it
 ### Removing skills
 
 Delete the skill directory from `.claude/skills/`.
+
+### Optional: Figma MCP server
+
+The `figma` skill requires the [Figma MCP server](https://github.com/figma/mcp-server-guide). Set it up once per machine:
+
+```bash
+claude mcp add --transport http figma https://mcp.figma.com/mcp
+```
+
+Without the Figma MCP, the skill is still useful as a methodology reference but the MCP tools will not be available.
 
 ## Using from Claude Desktop
 
@@ -211,7 +225,7 @@ If you use Claude Code from Claude Desktop, you can install the playbook entirel
 | `--name <name>` | Sets project name without prompting |
 | `--force` | Overwrites existing files without asking |
 
-Claude Code will execute the script, and from that point on `CLAUDE.md` and all 8 skills are active in the project directory.
+Claude Code will execute the script, and from that point on `CLAUDE.md` and all 9 skills are active in the project directory.
 
 **What works automatically:**
 - `CLAUDE.md` is loaded as project instructions

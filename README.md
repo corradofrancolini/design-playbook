@@ -267,9 +267,9 @@ When new skills or features are added to the playbook:
 
 2. **Check what changed** in `CHANGELOG.md`
 
-3. **Install a single new skill** without touching your existing scaffold:
+3. **Install new skills** without touching your existing scaffold:
    ```bash
-   ./design-playbook/install.sh --skill storybook ~/Projects/my-project
+   ./design-playbook/install.sh --skill <name> ~/Projects/my-project
    ```
 
 4. Or **re-run the full installer** — it will ask before overwriting anything:
@@ -278,6 +278,18 @@ When new skills or features are added to the playbook:
    ```
 
 To see all available skills: `./design-playbook/install.sh --list-skills`
+
+### Updating to v1.2.0
+
+v1.2.0 adds two new skills (`/playbook` and `/setup`) and a first-session introduction in `CLAUDE.md`. If you already have a project set up:
+
+```bash
+cd ~/Projects/design-playbook && git pull
+./design-playbook/install.sh --skill playbook ~/Projects/my-project
+./design-playbook/install.sh --skill setup ~/Projects/my-project
+```
+
+The first-session introduction in `CLAUDE.md` only applies to new projects. For existing projects it is not needed — you already know the playbook. Run `/playbook` anytime for a quick reference.
 
 ## License
 

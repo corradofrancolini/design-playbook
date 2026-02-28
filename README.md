@@ -1,6 +1,6 @@
 # design-playbook
 
-A complete methodology for Art Director + AI collaborative projects. Installs process files, session continuity tools, and 8 Claude Code skills into any project.
+A complete methodology for Art Director + AI collaborative projects. Installs process files, session continuity tools, and 9 Claude Code skills into any project.
 
 ## Table of contents
 
@@ -37,7 +37,7 @@ Or non-interactively (useful from Claude Desktop):
 The installer will:
 1. Ask for the project name (or use `--name`)
 2. Copy scaffold files into the project root
-3. Install 8 skills into `.claude/skills/`
+3. Install 9 skills into `.claude/skills/`
 4. Update `.gitignore`
 
 ## What it installs
@@ -67,6 +67,7 @@ The installer will:
 | `design-system` | Token, component, and pattern consistency checks |
 | `seo` | SEO and performance audit with Core Web Vitals |
 | `project-index` | Visual project map generator |
+| `storybook` | Storybook scaffold — component library, tests, Tailwind/RSC workarounds |
 
 ## How to use
 
@@ -104,6 +105,7 @@ Details in `CLAUDE.md` (protocol) and `lab/PROCESS.md` (methodology).
 | Writing text, labels, error messages | `/content` |
 | Checking token and component consistency | `/design-system` |
 | Mapping the project visually | `/project-index` |
+| Setting up component library and visual tests | `/storybook` |
 | End of session (always) | `/session-end` |
 
 ### Closing a session
@@ -184,7 +186,8 @@ my-project/
 │       ├── content/SKILL.md
 │       ├── design-system/SKILL.md
 │       ├── seo/SKILL.md
-│       └── project-index/SKILL.md
+│       ├── project-index/SKILL.md
+│       └── storybook/SKILL.md
 └── .gitignore  (updated)
 ```
 
@@ -227,7 +230,7 @@ If you use Claude Code from Claude Desktop, you can install the playbook entirel
 | `--name <name>` | Sets project name without prompting |
 | `--force` | Overwrites existing files without asking |
 
-Claude Code will execute the script, and from that point on `CLAUDE.md` and all 8 skills are active in the project directory.
+Claude Code will execute the script, and from that point on `CLAUDE.md` and all 9 skills are active in the project directory.
 
 **What works automatically:**
 - `CLAUDE.md` is loaded as project instructions

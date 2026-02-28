@@ -229,6 +229,8 @@ If you use Claude Code from Claude Desktop, you can install the playbook entirel
 |------|-------------|
 | `--name <name>` | Sets project name without prompting |
 | `--force` | Overwrites existing files without asking |
+| `--skill <name>` | Install a single skill (skip scaffold) |
+| `--list-skills` | List available skills |
 
 Claude Code will execute the script, and from that point on `CLAUDE.md` and all 9 skills are active in the project directory.
 
@@ -243,6 +245,29 @@ The installer is safe to re-run. It will:
 - Ask before overwriting existing files (default: skip)
 - Not duplicate `.gitignore` entries
 - Report what was installed and what was skipped
+
+## Updating
+
+When new skills or features are added to the playbook:
+
+1. **Pull the latest version** of the playbook repo:
+   ```bash
+   cd ~/Projects/design-playbook && git pull
+   ```
+
+2. **Check what changed** in `CHANGELOG.md`
+
+3. **Install a single new skill** without touching your existing scaffold:
+   ```bash
+   ./design-playbook/install.sh --skill storybook ~/Projects/my-project
+   ```
+
+4. Or **re-run the full installer** — it will ask before overwriting anything:
+   ```bash
+   ./design-playbook/install.sh ~/Projects/my-project
+   ```
+
+To see all available skills: `./design-playbook/install.sh --list-skills`
 
 ## License
 

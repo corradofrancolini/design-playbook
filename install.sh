@@ -55,6 +55,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # ---------------------------------------------------------------------------
 OPT_NAME=""
 OPT_FORCE=false
+OPT_SKILL=""
 TARGET=""
 
 while [[ $# -gt 0 ]]; do
@@ -62,13 +63,25 @@ while [[ $# -gt 0 ]]; do
     --name)   OPT_NAME="$2"; shift 2 ;;
     --name=*) OPT_NAME="${1#*=}"; shift ;;
     --force)  OPT_FORCE=true; shift ;;
+    --skill)  OPT_SKILL="$2"; shift 2 ;;
+    --skill=*) OPT_SKILL="${1#*=}"; shift ;;
+    --list-skills)
+      printf "\n${BOLD}Available skills:${RESET}\n"
+      for skill_dir in "$SCRIPT_DIR"/skills/*/; do
+        printf "  %s\n" "$(basename "$skill_dir")"
+      done
+      printf "\n"
+      exit 0
+      ;;
     -h|--help)
       printf "\n${BOLD}design-playbook${RESET} — AD + AI project methodology\n\n"
       printf "Usage: %s [options] <target-directory>\n\n" "$0"
       printf "Options:\n"
-      printf "  --name <name>   Project name (default: directory name)\n"
-      printf "  --force         Overwrite existing files without asking\n"
-      printf "  -h, --help      Show this help\n\n"
+      printf "  --name <name>    Project name (default: directory name)\n"
+      printf "  --force          Overwrite existing files without asking\n"
+      printf "  --skill <name>   Install a single skill (skip scaffold)\n"
+      printf "  --list-skills    List available skills\n"
+      printf "  -h, --help       Show this help\n\n"
       printf "Example:\n"
       printf "  %s ~/Projects/my-project\n" "$0"
       printf "  %s --name \"My Project\" --force ~/Projects/my-project\n\n" "$0"
@@ -103,7 +116,10 @@ DEFAULT_NAME="$(basename "$TARGET")"
 printf "\n${BOLD}design-playbook${RESET} — AD + AI project methodology\n"
 printf "${DIM}Target: %s${RESET}\n" "$TARGET"
 
-if [ -n "$OPT_NAME" ]; then
+if [ -n "$OPT_SKILL" ]; then
+  # Single skill mode — no project name needed
+  PROJECT_NAME="$DEFAULT_NAME"
+elif [ -n "$OPT_NAME" ]; then
   PROJECT_NAME="$OPT_NAME"
   printf "  Project name: %s\n" "$PROJECT_NAME"
 else
@@ -209,6 +225,24 @@ update_gitignore() {
 }
 
 # ---------------------------------------------------------------------------
+# Single skill mode
+# ---------------------------------------------------------------------------
+if [ -n "$OPT_SKILL" ]; then
+  if [ ! -f "$SCRIPT_DIR/skills/$OPT_SKILL/SKILL.md" ]; then
+    error "Unknown skill: $OPT_SKILL"
+    printf "\n  Available skills:\n"
+    for skill_dir in "$SCRIPT_DIR"/skills/*/; do
+      printf "    %s\n" "$(basename "$skill_dir")"
+    done
+    printf "\n"
+    exit 1
+  fi
+
+  header "Installing skill..."
+  copy_skill "$OPT_SKILL"
+else
+
+# ---------------------------------------------------------------------------
 # Install scaffold
 # ---------------------------------------------------------------------------
 header "Installing scaffold..."
@@ -238,6 +272,8 @@ copy_skill "design-system"
 copy_skill "seo"
 copy_skill "project-index"
 copy_skill "storybook"
+
+fi # end single skill mode
 
 # ---------------------------------------------------------------------------
 # Summary

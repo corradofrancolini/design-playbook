@@ -272,6 +272,8 @@ copy_skill "design-system"
 copy_skill "seo"
 copy_skill "project-index"
 copy_skill "storybook"
+copy_skill "playbook"
+copy_skill "setup"
 
 fi # end single skill mode
 
@@ -284,4 +286,40 @@ if [ "$SKIPPED" -gt 0 ]; then
   printf ", %s skipped" "$SKIPPED"
 fi
 printf ".\n"
-printf "  Open Claude Code in ${BOLD}%s${RESET} to start.\n\n" "$TARGET"
+
+# Rich summary only for full install (not --skill mode)
+if [ -z "$OPT_SKILL" ]; then
+  printf "\n  ${BOLD}WHAT'S INSTALLED${RESET}\n\n"
+
+  printf "  ${DIM}Scaffold files:${RESET}\n"
+  printf "    CLAUDE.md              Project protocol (auto-loaded by Claude Code)\n"
+  printf "    BRIEF.md               Project brief — fill this first\n"
+  printf "    SESSION_HANDOFF.md     Session continuity state\n"
+  printf "    BACKLOG.md             Backlog and decisions\n"
+  printf "    CREATIVE_DIRECTION.md  Creative direction\n"
+  printf "    lab/PROCESS.md         Anti-sycophancy methodology\n"
+  printf "    lab/notes.md           Working notes\n"
+  printf "    docs/sessions/         Session log template\n"
+
+  printf "\n  ${DIM}Skills (invoke with /command in Claude Code):${RESET}\n"
+  for skill_dir in "$SCRIPT_DIR"/skills/*/; do
+    local_name="$(basename "$skill_dir")"
+    local_desc=""
+    if [ -f "$skill_dir/SKILL.md" ]; then
+      local_desc="$(sed -n 's/^description: *//p' "$skill_dir/SKILL.md" | head -1)"
+    fi
+    if [ -n "$local_desc" ]; then
+      printf "    /${BOLD}%-16s${RESET} %s\n" "$local_name" "$local_desc"
+    else
+      printf "    /${BOLD}%s${RESET}\n" "$local_name"
+    fi
+  done
+
+  printf "\n  ${BOLD}GETTING STARTED${RESET}\n\n"
+  printf "  1. Open Claude Code in ${BOLD}%s${RESET}\n" "$TARGET"
+  printf "  2. Run ${BOLD}/setup${RESET} for a guided project configuration\n"
+  printf "  3. Or fill BRIEF.md and CREATIVE_DIRECTION.md manually\n"
+  printf "  4. Start designing — Claude operates in Adjacent Possible mode\n"
+  printf "\n  Type ${BOLD}/playbook${RESET} anytime for a quick reference.\n"
+fi
+printf "\n"

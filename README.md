@@ -1,6 +1,6 @@
 # design-playbook
 
-A complete methodology for Art Director + AI collaborative projects. Installs process files, session continuity tools, and 9 Claude Code skills into any project.
+A complete methodology for Art Director + AI collaborative projects. Installs process files, session continuity tools, and 11 Claude Code skills into any project.
 
 ## Table of contents
 
@@ -37,7 +37,7 @@ Or non-interactively (useful from Claude Desktop):
 The installer will:
 1. Ask for the project name (or use `--name`)
 2. Copy scaffold files into the project root
-3. Install 9 skills into `.claude/skills/`
+3. Install 11 skills into `.claude/skills/`
 4. Update `.gitignore`
 
 ## What it installs
@@ -68,12 +68,18 @@ The installer will:
 | `seo` | SEO and performance audit with Core Web Vitals |
 | `project-index` | Visual project map generator |
 | `storybook` | Storybook scaffold — component library, tests, Tailwind/RSC workarounds |
+| `playbook` | Quick reference — project state, available skills, getting started |
+| `setup` | Guided project setup — fills BRIEF.md, CREATIVE_DIRECTION.md, configures CLAUDE.md |
 
 ## How to use
 
 ### First session
 
-After installing, open Claude Code in the project directory. In the first session:
+After installing, open Claude Code in the project directory. Claude will automatically introduce the playbook and its capabilities on the first session.
+
+**Quickest path:** run `/setup` — it walks you through filling BRIEF.md and CREATIVE_DIRECTION.md with guided questions.
+
+**Manual path:**
 
 1. **`BRIEF.md`** — fill in project scope, target, stack, content, references, constraints
 2. **`CREATIVE_DIRECTION.md`** — fill in palette, typography, visual mood
@@ -83,7 +89,7 @@ After installing, open Claude Code in the project directory. In the first sessio
 
 See [extras/examples/](extras/examples/) for filled-in examples of these files.
 
-From this point on, `CLAUDE.md` is loaded automatically as project protocol every time Claude Code opens the directory.
+From this point on, `CLAUDE.md` is loaded automatically as project protocol every time Claude Code opens the directory. Type `/playbook` anytime for a quick reference.
 
 ### Working with the Adjacent Possible
 
@@ -99,6 +105,7 @@ Details in `CLAUDE.md` (protocol) and `lab/PROCESS.md` (methodology).
 
 | When | Skill |
 |------|-------|
+| First time setup — filling brief and creative direction | `/setup` |
 | Fork in the road — choosing between directions | `/creative` |
 | Component or feature completed | `/review` |
 | Before releasing a page | `/accessibility`, `/seo` |
@@ -106,6 +113,7 @@ Details in `CLAUDE.md` (protocol) and `lab/PROCESS.md` (methodology).
 | Checking token and component consistency | `/design-system` |
 | Mapping the project visually | `/project-index` |
 | Setting up component library and visual tests | `/storybook` |
+| Need a quick reference or forgot what's available | `/playbook` |
 | End of session (always) | `/session-end` |
 
 ### Closing a session
@@ -187,7 +195,9 @@ my-project/
 │       ├── design-system/SKILL.md
 │       ├── seo/SKILL.md
 │       ├── project-index/SKILL.md
-│       └── storybook/SKILL.md
+│       ├── storybook/SKILL.md
+│       ├── playbook/SKILL.md
+│       └── setup/SKILL.md
 └── .gitignore  (updated)
 ```
 
@@ -232,7 +242,7 @@ If you use Claude Code from Claude Desktop, you can install the playbook entirel
 | `--skill <name>` | Install a single skill (skip scaffold) |
 | `--list-skills` | List available skills |
 
-Claude Code will execute the script, and from that point on `CLAUDE.md` and all 9 skills are active in the project directory.
+Claude Code will execute the script, and from that point on `CLAUDE.md` and all 11 skills are active in the project directory.
 
 **What works automatically:**
 - `CLAUDE.md` is loaded as project instructions

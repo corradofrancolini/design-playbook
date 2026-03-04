@@ -1,6 +1,6 @@
 # design-playbook
 
-A complete methodology for Art Director + AI collaborative projects. Installs process files, session continuity tools, and 11 Claude Code skills into any project.
+A complete methodology for Art Director + AI collaborative projects. Installs process files, session continuity tools, and 12 Claude Code skills into any project.
 
 ## Table of contents
 
@@ -70,6 +70,7 @@ The installer will:
 | `storybook` | Storybook scaffold — component library, tests, Tailwind/RSC workarounds |
 | `playbook` | Quick reference — project state, available skills, getting started |
 | `setup` | Guided project setup — fills BRIEF.md, CREATIVE_DIRECTION.md, configures CLAUDE.md |
+| `benchmark` | Comparative benchmark analysis — collect references, annotate, visual report |
 
 ## How to use
 
@@ -106,6 +107,7 @@ Details in `CLAUDE.md` (protocol) and `lab/PROCESS.md` (methodology).
 | When | Skill |
 |------|-------|
 | First time setup — filling brief and creative direction | `/setup` |
+| Analyzing competitors and design references | `/benchmark` |
 | Fork in the road — choosing between directions | `/creative` |
 | Component or feature completed | `/review` |
 | Before releasing a page | `/accessibility`, `/seo` |
@@ -197,7 +199,8 @@ my-project/
 │       ├── project-index/SKILL.md
 │       ├── storybook/SKILL.md
 │       ├── playbook/SKILL.md
-│       └── setup/SKILL.md
+│       ├── setup/SKILL.md
+│       └── benchmark/SKILL.md
 └── .gitignore  (updated)
 ```
 
@@ -242,7 +245,7 @@ If you use Claude Code from Claude Desktop, you can install the playbook entirel
 | `--skill <name>` | Install a single skill (skip scaffold) |
 | `--list-skills` | List available skills |
 
-Claude Code will execute the script, and from that point on `CLAUDE.md` and all 11 skills are active in the project directory.
+Claude Code will execute the script, and from that point on `CLAUDE.md` and all 12 skills are active in the project directory.
 
 **What works automatically:**
 - `CLAUDE.md` is loaded as project instructions

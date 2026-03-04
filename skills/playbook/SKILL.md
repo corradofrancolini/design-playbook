@@ -51,6 +51,7 @@ Dettagli: CLAUDE.md (protocollo), lab/PROCESS.md (metodologia)
 | /seo | Prima di rilasciare — audit SEO e performance |
 | /project-index | Mappare visivamente la struttura del progetto |
 | /storybook | Configurare component library e test |
+| /benchmark | Analisi comparativa riferimenti di design |
 | /session-end | Fine sessione — aggiornare handoff (sempre) |
 | /playbook | Questa guida |
 

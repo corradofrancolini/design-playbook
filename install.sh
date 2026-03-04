@@ -274,6 +274,7 @@ copy_skill "project-index"
 copy_skill "storybook"
 copy_skill "playbook"
 copy_skill "setup"
+copy_skill "benchmark"
 
 fi # end single skill mode
 

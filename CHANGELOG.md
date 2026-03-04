@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.3.0] — 2026-03-04
+
+### Added
+- **benchmark** skill: comparative benchmark analysis — collect references from Figma, URLs, or screenshots; hybrid annotations; dimensional analysis; pattern map (convergences, divergences, absences); proposals for CREATIVE_DIRECTION.md
+
 ## [1.2.0] — 2026-02-28
 
 ### Added

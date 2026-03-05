@@ -29,8 +29,8 @@ Item lavorabili indipendentemente dalle decisioni in sospeso.
 
 ## Decisioni chiuse
 
-| # | Decisione | Scelta | Quando |
-|---|-----------|--------|--------|
+| # | Decisione | Scelta | Chi | Quando |
+|---|-----------|--------|-----|--------|
 
 ---
 

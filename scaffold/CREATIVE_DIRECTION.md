@@ -27,5 +27,5 @@
 
 ## Decisioni di design
 
-| # | Data | Decisione | Contesto |
-|---|------|-----------|----------|
+| # | Data | Decisione | Chi | Contesto |
+|---|------|-----------|-----|----------|

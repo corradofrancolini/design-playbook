@@ -49,6 +49,7 @@ ask_yes_no() {
 # Resolve script directory (where design-playbook lives)
 # ---------------------------------------------------------------------------
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PLAYBOOK_VERSION="2.0.0"
 
 # ---------------------------------------------------------------------------
 # Parse arguments
@@ -186,6 +187,59 @@ copy_skill() {
 }
 
 # ---------------------------------------------------------------------------
+# Portable sed -i (macOS vs GNU)
+# ---------------------------------------------------------------------------
+sed_inplace() {
+  if (sed --version 2>/dev/null || true) | grep -q GNU 2>/dev/null; then
+    sed -i "$@"
+  else
+    sed -i '' "$@"
+  fi
+}
+
+# ---------------------------------------------------------------------------
+# Detect and migrate existing installations
+# ---------------------------------------------------------------------------
+migrate_existing() {
+  local version_file="$TARGET/.playbook-version"
+  local old_handoff="$TARGET/SESSION_HANDOFF.md"
+
+  # Not an existing installation — skip
+  if [ ! -f "$version_file" ] && [ ! -f "$old_handoff" ]; then
+    return
+  fi
+
+  # Already on v2+ — skip
+  if [ -f "$version_file" ]; then
+    local current
+    current="$(cat "$version_file")"
+    case "$current" in
+      2.*) return ;;
+    esac
+  fi
+
+  header "Migrating from previous version..."
+
+  # Migrate SESSION_HANDOFF.md content to docs/handoffs/
+  if [ -f "$old_handoff" ]; then
+    # Check if it has real content (not just the template)
+    if grep -q "## Stato Attuale" "$old_handoff" 2>/dev/null && \
+       ! grep -q "docs/handoffs/" "$old_handoff" 2>/dev/null; then
+      mkdir -p "$TARGET/docs/handoffs"
+      local migration_date
+      migration_date="$(date +%Y-%m-%d_%H-%M)"
+      local migrated_file="$TARGET/docs/handoffs/${migration_date}_migrated.md"
+      cp "$old_handoff" "$migrated_file"
+      info "SESSION_HANDOFF.md migrated to docs/handoffs/"
+    fi
+  fi
+
+  # Create new directories if missing
+  mkdir -p "$TARGET/docs/handoffs"
+  mkdir -p "$TARGET/assets"
+}
+
+# ---------------------------------------------------------------------------
 # Append gitignore additions (without duplicates)
 # ---------------------------------------------------------------------------
 update_gitignore() {
@@ -198,6 +252,24 @@ update_gitignore() {
 
   # Create .gitignore if it doesn't exist
   touch "$gitignore"
+
+  # Remove obsolete entries from previous versions
+  local cleaned=0
+  for obsolete in "docs/" "lab/"; do
+    if grep -qxF "$obsolete" "$gitignore" 2>/dev/null; then
+      # Remove the exact line (portable sed)
+      sed_inplace "s|^${obsolete}$||" "$gitignore"
+      # Remove resulting blank lines (clean up)
+      cleaned=$((cleaned + 1))
+    fi
+  done
+  if [ "$cleaned" -gt 0 ]; then
+    # Remove empty lines left by sed (collapse multiple blank lines)
+    local tmp
+    tmp="$(awk 'NF || !prev_empty {print; prev_empty=!NF} NF {prev_empty=0}' "$gitignore")"
+    printf "%s\n" "$tmp" > "$gitignore"
+    info ".gitignore cleaned ($cleaned obsolete entries removed)"
+  fi
 
   local added=0
   while IFS= read -r line || [ -n "$line" ]; do
@@ -220,7 +292,9 @@ update_gitignore() {
     info ".gitignore updated ($added entries added)"
     INSTALLED=$((INSTALLED + 1))
   else
-    warn ".gitignore (already up to date)"
+    if [ "$cleaned" -eq 0 ]; then
+      warn ".gitignore (already up to date)"
+    fi
   fi
 }
 
@@ -243,6 +317,11 @@ if [ -n "$OPT_SKILL" ]; then
 else
 
 # ---------------------------------------------------------------------------
+# Migration (existing installations)
+# ---------------------------------------------------------------------------
+migrate_existing
+
+# ---------------------------------------------------------------------------
 # Install scaffold
 # ---------------------------------------------------------------------------
 header "Installing scaffold..."
@@ -255,6 +334,8 @@ copy_scaffold "CREATIVE_DIRECTION.md"
 copy_scaffold "lab/PROCESS.md"
 copy_scaffold "lab/notes.md"
 copy_scaffold "docs/sessions/TEMPLATE.md"
+copy_scaffold "docs/handoffs/.gitkeep"
+copy_scaffold "assets/.gitkeep"
 
 update_gitignore
 
@@ -279,6 +360,11 @@ copy_skill "benchmark"
 fi # end single skill mode
 
 # ---------------------------------------------------------------------------
+# Write version file
+# ---------------------------------------------------------------------------
+echo "$PLAYBOOK_VERSION" > "$TARGET/.playbook-version"
+
+# ---------------------------------------------------------------------------
 # Summary
 # ---------------------------------------------------------------------------
 header "Done."
@@ -295,12 +381,14 @@ if [ -z "$OPT_SKILL" ]; then
   printf "  ${DIM}Scaffold files:${RESET}\n"
   printf "    CLAUDE.md              Project protocol (auto-loaded by Claude Code)\n"
   printf "    BRIEF.md               Project brief — fill this first\n"
-  printf "    SESSION_HANDOFF.md     Session continuity state\n"
+  printf "    SESSION_HANDOFF.md     Pointer to docs/handoffs/\n"
   printf "    BACKLOG.md             Backlog and decisions\n"
   printf "    CREATIVE_DIRECTION.md  Creative direction\n"
   printf "    lab/PROCESS.md         Anti-sycophancy methodology\n"
   printf "    lab/notes.md           Working notes\n"
-  printf "    docs/sessions/         Session log template\n"
+  printf "    docs/handoffs/         Session handoffs (shared, committed)\n"
+  printf "    docs/sessions/         Session log template (personal, gitignored)\n"
+  printf "    assets/                Source materials (brand, moodboard, etc.)\n"
 
   printf "\n  ${DIM}Skills (invoke with /command in Claude Code):${RESET}\n"
   for skill_dir in "$SCRIPT_DIR"/skills/*/; do

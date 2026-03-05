@@ -1,8 +1,10 @@
 # Session Log - [DATA]
 
+**Autore:** [nome]
+
 ## Contesto Iniziale
 - **Richiesta utente:** [cosa ha chiesto di fare]
-- **Stato progetto:** [da SESSION_HANDOFF.md]
+- **Stato progetto:** [da ultimo handoff in docs/handoffs/]
 
 ---
 
@@ -40,7 +42,7 @@
 
 ## Handoff per Prossima Sessione
 
-**Copiare questa sezione in SESSION_HANDOFF.md**
+**Salvato anche in docs/handoffs/**
 
 ### Stato Attuale
 - [cosa funziona]

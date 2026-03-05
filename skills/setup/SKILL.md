@@ -14,6 +14,20 @@ Guida interattiva per configurare un nuovo progetto. Compila BRIEF.md, CREATIVE_
 
 ## Azioni
 
+### 0. Repository
+
+Controlla se il progetto e un repository git (cerca `.git/`).
+
+**Se NO:**
+- "Vuoi che questo progetto sia tracciato e condivisibile? (consigliato)"
+- Se SI: `git init`, primo commit con i file scaffold
+- Se NO: skip — tutto funziona comunque, ma senza sincronizzazione
+
+**Se SI:**
+- "Il progetto e gia un repository git. Perfetto."
+- Controlla se c'e un remote configurato
+- Se NO: "Se vuoi condividere con il team, ti servira un repository su GitHub/GitLab. Vuoi che ne crei uno?" (usa `gh` se disponibile)
+
 ### 1. Controlla stato attuale
 
 Leggi BRIEF.md e CREATIVE_DIRECTION.md. Se sono gia compilati (non contengono placeholder come `[descrizione in una riga]` o `[Da definire dopo benchmark]`), comunica all'utente che il setup e gia stato fatto e chiedi se vuole aggiornare qualcosa di specifico.
@@ -92,7 +106,14 @@ Leggi CLAUDE.md e verifica se la sezione "Struttura progetto" riflette lo stack 
 - Mostra la proposta e chiedi conferma prima di modificare
 - Se l'utente dice "skip", lascia la struttura attuale
 
-### 5. Riepilogo
+### 5. Team
+
+Chiedi: "Quante persone lavorano su questo progetto?"
+
+- Se piu di 1: chiedi i nomi (account GitHub) e aggiungili alla lista Team in CLAUDE.md
+- Se 1: la lista Team ha gia una riga, skip
+
+### 6. Riepilogo
 
 Alla fine, mostra un riepilogo:
 

@@ -15,7 +15,8 @@ Leggi questi file e identifica il loro stato:
 
 - **BRIEF.md** — contiene ancora placeholder come `[descrizione in una riga]` oppure e stato compilato?
 - **CREATIVE_DIRECTION.md** — contiene ancora `[Da definire dopo benchmark]` oppure ha contenuti reali?
-- **SESSION_HANDOFF.md** — qual e l'ultima sessione registrata?
+- **docs/handoffs/** — qual e l'ultimo handoff? Di chi?
+- **CLAUDE.md** — sezione Team: quante persone?
 
 ### 2. Mostra guida
 
@@ -28,7 +29,8 @@ Genera questo output, adattando la sezione "Stato" in base a quello che hai trov
 
 - BRIEF.md: [compilato / da compilare]
 - CREATIVE_DIRECTION.md: [compilato / da compilare]
-- Ultima sessione: [numero e nome da SESSION_HANDOFF.md]
+- Ultimo handoff: [data, autore da docs/handoffs/]
+- Team: [nomi da CLAUDE.md, o "singolo utente"]
 
 ### Metodo
 
@@ -62,11 +64,13 @@ Dettagli: CLAUDE.md (protocollo), lab/PROCESS.md (metodologia)
 | CLAUDE.md | Protocollo di progetto (caricato automaticamente) |
 | BRIEF.md | Brief di progetto — scope, target, stack, vincoli |
 | CREATIVE_DIRECTION.md | Direzione creativa — palette, tipografia, mood |
-| SESSION_HANDOFF.md | Stato sessione — continuita tra sessioni |
+| SESSION_HANDOFF.md | Puntatore a docs/handoffs/ |
+| docs/handoffs/ | Handoff sessioni (condivisi tra il team) |
 | BACKLOG.md | Backlog e decisioni |
+| assets/ | Materiali sorgente (brand guidelines, moodboard, brief cliente) |
 | lab/PROCESS.md | Metodologia anti-sycophancy (riferimento) |
 | lab/notes.md | Note di lavoro |
-| docs/sessions/ | Log delle sessioni |
+| docs/sessions/ | Log delle sessioni (personali) |
 ```
 
 ### 3. Suggerimenti contestuali

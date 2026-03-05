@@ -2,14 +2,16 @@
 
 ## Prima sessione
 
-Quando apri il progetto e `SESSION_HANDOFF.md` contiene ancora "Sessione 0 — Bootstrap progetto", questa e la prima sessione operativa. In questo caso:
+Quando apri il progetto e non esiste nessun file in `docs/handoffs/` o `docs/sessions/` che contenga il nome dell'utente corrente, questa e la prima sessione per questa persona. In questo caso:
 
 1. **Presentati brevemente**: "Questo progetto usa il design-playbook — una metodologia per lavoro collaborativo Art Director + AI. Opero in modalita Adiacente Possibile: mappo le opzioni e i trade-off, non convergo. Eseguo solo su istruzione esplicita."
 2. **Suggerisci `/setup`**: "Invoca `/setup` per una configurazione guidata del progetto — ti aiuto a compilare BRIEF.md e CREATIVE_DIRECTION.md."
 3. **Elenca le skill disponibili**: nomina ogni skill installata con una riga ciascuna (nome e quando usarla)
 4. **Menziona `/playbook`**: "Puoi invocare `/playbook` in qualsiasi momento per una guida rapida."
 
-Non ripetere questa introduzione nelle sessioni successive. Dopo la prima sessione, `SESSION_HANDOFF.md` sara stato aggiornato da `/session-end` e il contenuto sara diverso.
+Non ripetere questa introduzione nelle sessioni successive per la stessa persona.
+
+Per identificare l'utente: chiedi il nome a inizio sessione. Se il nome corrisponde a uno dei membri del team elencati sotto, usa quello. In alternativa, usa `git config user.name` come fallback.
 
 ---
 
@@ -50,17 +52,24 @@ Su richiesta di audit o revisione, analizzare le decisioni prese:
 
 ## Workflow di progetto
 
-- **Art Director**: [nome] — direzione, validazione, decisioni finali
+### Team
+
+- [nome]
+
+> Aggiungi una riga per ogni persona del team. Usa il nome dell'account GitHub.
+
 - **Designer/Developer**: Claude Code — propone, esplora, esegue, analizza
-- **Modello**: AD dirige, Claude propone e sfida. Non e un esecutore passivo.
+- **Modello**: il team dirige, Claude propone e sfida. Non e un esecutore passivo.
 - **Versioning**: MAI sovrascrivere file senza backup. Ogni versione ha un nome e resta accessibile.
 - **Lingua**: Italiano per comunicazione, inglese per codice e commit
 
 ## Struttura progetto
 
 - `src/` — Codice sorgente (framework e stack da definire)
-- `lab/` — Mockup HTML, esperimenti di design, test accessibilita (gitignored)
-- `docs/` — Log sessioni Claude (gitignored)
+- `assets/` — Materiali sorgente (brand guidelines, moodboard, brief cliente)
+- `lab/` — Mockup HTML, esperimenti di design, test accessibilita
+- `docs/handoffs/` — Handoff sessioni (condivisi tra il team)
+- `docs/sessions/` — Log sessioni Claude (personali, gitignored)
 - `CREATIVE_DIRECTION.md` — Brief creativo: palette, vincoli, direzione visiva
 
 ## File di riferimento
@@ -68,3 +77,22 @@ Su richiesta di audit o revisione, analizzare le decisioni prese:
 - `BACKLOG.md` — Backlog, decisioni aperte, problemi aperti
 - `lab/PROCESS.md` — Note di processo sul metodo di lavoro AD + AI
 - `lab/notes.md` — Note di lavoro, benchmark, decisioni
+
+---
+
+## Note per lavoro in team
+
+> Questa sezione e rilevante solo se il team ha piu di una persona.
+
+- **Handoff**: ogni persona crea il proprio handoff con `/session-end`.
+  Prima di iniziare, leggi l'handoff piu recente in `docs/handoffs/`
+  (anche se non e il tuo).
+- **Salvare il lavoro**: `/session-end` propone di salvare e
+  sincronizzare. Accetta e Claude gestisce tutto.
+- **Linguaggio**: Claude usa "salvare" e "sincronizzare",
+  non terminologia git. Se chiedi "come faccio a salvare?",
+  la risposta e sempre `/session-end`.
+- **Conflitti**: se due persone modificano lo stesso file,
+  Claude spiega la sovrapposizione e propone come risolverla.
+- **Contesto**: Claude non ha memoria tra sessioni di persone diverse.
+  L'unico contesto condiviso sono i file salvati.

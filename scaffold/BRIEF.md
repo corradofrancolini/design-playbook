@@ -55,11 +55,13 @@
 
 ## Riferimenti
 
+> I file sorgente (brand guidelines, moodboard, brief del cliente) vanno in `assets/`.
+
 | Tipo | Link / Nota |
 |------|-------------|
 | Competitor / benchmark | [link o descrizione] |
 | Moodboard Figma | [link se presente] |
-| Brand guidelines | [link o file] |
+| Brand guidelines | [link o file in assets/] |
 | Altro | [documentazione, brief del cliente, etc.] |
 
 ---

@@ -1,256 +1,256 @@
 ---
 name: benchmark
-description: Analisi comparativa benchmark — raccolta riferimenti, annotazioni, report visivo
+description: Comparative benchmark analysis — collect references, annotate, visual report
 ---
 
-# Benchmark — Analisi comparativa riferimenti
+# Benchmark — Comparative Reference Analysis
 
-Agente specializzato nella raccolta, annotazione e analisi comparativa di riferimenti di design. Accetta riferimenti da fonti multiple (Figma, URL, screenshot) e produce un report strutturato che alimenta le scelte creative del progetto.
+Agent specialized in collecting, annotating, and comparatively analyzing design references. Accepts references from multiple sources (Figma, URL, screenshot) and produces a structured report that informs the project's creative choices.
 
-## Quando invocare
+## When to invoke
 
-- All'inizio di un progetto, dopo il setup, per analizzare il panorama competitivo
-- Quando si aggiungono nuovi riferimenti da analizzare
-- Per riprendere un benchmark in corso (legge `lab/benchmarks/` se esiste)
-- Prima di prendere decisioni su direzione creativa — il benchmark informa `/creative`
+- At the start of a project, after setup, to analyze the competitive landscape
+- When adding new references to analyze
+- To resume an ongoing benchmark (reads `lab/benchmarks/` if it exists)
+- Before making creative direction decisions — the benchmark informs `/creative`
 
-## Azioni
+## Actions
 
-### Fase 0 — Contesto
+### Phase 0 — Context
 
-Leggi lo stato attuale del progetto:
+Read the current project state:
 
-1. **BRIEF.md** — sezione "Riferimenti": ci sono gia competitor, moodboard, brand guidelines?
-2. **CREATIVE_DIRECTION.md** — e gia compilato o contiene placeholder?
-3. **`lab/benchmarks/`** — esiste? C'e un benchmark precedente da riprendere o aggiornare?
-4. **`lab/notes.md`** — ci sono note sui benchmark?
+1. **BRIEF.md** — "References" section: are there already competitors, moodboard, brand guidelines?
+2. **CREATIVE_DIRECTION.md** — is it already filled in or does it contain placeholders?
+3. **`lab/benchmarks/`** — does it exist? Is there a previous benchmark to resume or update?
+4. **`lab/notes.md`** — are there notes about benchmarks?
 
-Se BRIEF.md ha gia riferimenti elencati, proponi di partire da quelli:
-> "In BRIEF.md ci sono gia questi riferimenti: [elenco]. Vuoi partire da qui o aggiungerne di nuovi?"
+If BRIEF.md already has references listed, propose starting from those:
+> "BRIEF.md already has these references: [list]. Do you want to start from here or add new ones?"
 
-Se esiste un benchmark precedente in `lab/benchmarks/`, proponi:
-> "C'e gia un benchmark con N riferimenti. Vuoi aggiornarlo, aggiungere riferimenti, o ricominciare?"
+If a previous benchmark exists in `lab/benchmarks/`, propose:
+> "There's already a benchmark with N references. Do you want to update it, add references, or start over?"
 
-### Fase 1 — Raccolta riferimenti
+### Phase 1 — Collect references
 
-Chiedi come l'AD vuole condividere i riferimenti. Presenta le tre fonti:
+Ask how the Art Director wants to share references. Present the three sources:
 
-| Fonte | Come condividere | Cosa fa Claude |
-|-------|------------------|----------------|
-| **Figma** | Incolla URL di file/frame Figma | Figma MCP legge frame, annotazioni, token visivi |
-| **URL** | Incolla URL del sito | Puppeteer cattura screenshot + WebFetch per copy |
-| **Screenshot** | Incolla immagine o indica path locale | Analisi multimodale diretta |
+| Source | How to share | What Claude does |
+|--------|-------------|-----------------|
+| **Figma** | Paste Figma file/frame URL | Figma MCP reads frames, annotations, visual tokens |
+| **URL** | Paste site URL | Puppeteer captures screenshot + WebFetch for copy |
+| **Screenshot** | Paste image or indicate local path | Direct multimodal analysis |
 
-**Regole:**
-- Accetta riferimenti uno alla volta o in batch (lista di URL, piu screenshot, etc.)
-- Per ogni riferimento, assegna un ID progressivo: **R1**, **R2**, **R3**...
-- Chiedi una label breve per ciascuno, o proponine una: "R1 — studiomilano.com"
-- Non c'e un limite massimo di riferimenti. Procedi finche l'AD dice "basta" o "ho finito"
-- Le fonti possono essere miste nella stessa sessione
+**Rules:**
+- Accept references one at a time or in batch (list of URLs, multiple screenshots, etc.)
+- For each reference, assign a progressive ID: **R1**, **R2**, **R3**...
+- Ask for a short label for each, or propose one: "R1 — studiomilano.com"
+- There's no maximum limit on references. Continue until the Art Director says "done" or "that's all"
+- Sources can be mixed in the same session
 
-#### Per URL — Strategia anti-blocking (fallback a 3 livelli)
+#### For URLs — Anti-blocking strategy (3-level fallback)
 
-**Livello 1 — Puppeteer:**
-- Naviga alla URL
-- Tenta click su selettori comuni di cookie banner (`[class*="cookie"] button`, `[id*="consent"] button`, `.accept-cookies`) prima dello screenshot
-- Attendi 2-3 secondi per rendering completo (SPA, lazy loading)
-- Cattura screenshot full-page
-- Salva in `lab/benchmarks/screenshots/R[N]-[label]-homepage.png`
+**Level 1 — Puppeteer:**
+- Navigate to URL
+- Attempt click on common cookie banner selectors (`[class*="cookie"] button`, `[id*="consent"] button`, `.accept-cookies`) before screenshot
+- Wait 2-3 seconds for full rendering (SPA, lazy loading)
+- Capture full-page screenshot
+- Save in `lab/benchmarks/screenshots/R[N]-[label]-homepage.png`
 
-**Livello 2 — WebFetch (se Puppeteer fallisce/timeout):**
-- Estrai almeno il contenuto testuale: heading, copy, struttura pagina, meta tag
-- Comunica all'AD: "Ho estratto il contenuto testuale ma non riesco a fare uno screenshot di [url]. Per l'analisi visiva, hai uno screenshot o un frame Figma?"
+**Level 2 — WebFetch (if Puppeteer fails/timeout):**
+- Extract at least the text content: headings, copy, page structure, meta tags
+- Tell the Art Director: "I extracted the text content but can't take a screenshot of [url]. For visual analysis, do you have a screenshot or Figma frame?"
 
-**Livello 3 — Manuale (se anche WebFetch fallisce):**
-- Comunica: "Non riesco ad accedere a [url]. Hai gia uno screenshot o il frame Figma di questo sito?"
-- Continua con gli altri riferimenti, torna a questo quando l'AD fornisce l'immagine
+**Level 3 — Manual (if WebFetch also fails):**
+- Tell the Art Director: "I can't access [url]. Do you have a screenshot or the Figma frame of this site?"
+- Continue with other references, return to this one when the Art Director provides the image
 
-#### Per Figma
+#### For Figma
 
-- Usa Figma MCP per leggere la struttura del file/frame
-- Identifica frame che contengono screenshot o riferimenti
-- Leggi annotazioni/commenti sui frame
-- Estrai token visivi quando possibile (colori, tipografia)
-- **Se Figma MCP non e disponibile**: "Figma MCP non e configurato. Puoi esportare gli screenshot dai frame, oppure condividere URL dei siti di riferimento."
+- Use Figma MCP to read the file/frame structure
+- Identify frames containing screenshots or references
+- Read annotations/comments on frames
+- Extract visual tokens when possible (colors, typography)
+- **If Figma MCP is not available**: "Figma MCP is not configured. You can export screenshots from the frames, or share the reference sites' URLs."
 
-### Fase 2 — Annotazioni (ibrido)
+### Phase 2 — Annotations (hybrid)
 
-Chiedi all'AD come preferisce annotare. Presenta le tre modalita:
+Ask the Art Director how they prefer to annotate. Present the three modes:
 
-> "Come preferisci annotare i riferimenti? Puoi anche cambiare approccio per ogni singolo riferimento."
+> "How do you prefer to annotate the references? You can also change approach for each individual reference."
 >
-> 1. **Tu guidi** — dimmi cosa guardare in ogni riferimento, io analizzo quegli aspetti
-> 2. **Io analizzo** — faccio un'analisi sistematica, tu confermi/correggi/espandi
-> 3. **Gia annotato** — le annotazioni sono gia nei frame Figma
+> 1. **You lead** — tell me what to look at in each reference, I'll analyze those aspects
+> 2. **I analyze** — I do a systematic analysis, you confirm/correct/expand
+> 3. **Already annotated** — the annotations are already in the Figma frames
 
-Per ogni riferimento, procedi secondo la modalita scelta:
+For each reference, proceed according to the chosen mode:
 
-**AD-led:** L'AD dice "guarda il menu di navigazione", "nota la tipografia nei titoli", "interessante l'uso dello whitespace". Claude analizza quegli aspetti specifici.
+**AD-led:** The Art Director says "look at the navigation menu", "note the heading typography", "interesting use of whitespace". Claude analyzes those specific aspects.
 
-**Claude-led:** Claude analizza sistematicamente secondo le dimensioni della Fase 3 e presenta i risultati. L'AD conferma, corregge o aggiunge osservazioni.
+**Claude-led:** Claude systematically analyzes according to the Phase 3 dimensions and presents results. The Art Director confirms, corrects, or adds observations.
 
-**Pre-annotato:** Claude legge le annotazioni Figma e le usa come guida per l'analisi, approfondendo gli aspetti gia segnalati dall'AD.
+**Pre-annotated:** Claude reads the Figma annotations and uses them as a guide for analysis, deepening the aspects already flagged by the Art Director.
 
-### Fase 3 — Analisi per dimensioni
+### Phase 3 — Dimensional analysis
 
-Per ogni riferimento, analizza le dimensioni rilevanti:
+For each reference, analyze the relevant dimensions:
 
-| Dimensione | Cosa osservare |
-|------------|----------------|
-| **Layout & Composizione** | Grid, gerarchia visiva, whitespace, above-the-fold, responsive |
-| **Linguaggio Visivo** | Palette colori, contrasto, uso fotografia/illustrazione, texture |
-| **Tipografia** | Scelte font, scala tipografica, peso, pairing, leggibilita |
-| **Navigazione & IA** | Struttura menu, wayfinding, breadcrumb, search, footer |
-| **Pattern di Interazione** | Hover, transizioni, micro-interazioni, scroll behavior, CTA |
-| **Strategia Contenuti** | Tono copy, headline, densita contenuto, uso video/media |
+| Dimension | What to observe |
+|-----------|----------------|
+| **Layout & Composition** | Grid, visual hierarchy, whitespace, above-the-fold, responsive |
+| **Visual Language** | Color palette, contrast, photography/illustration use, texture |
+| **Typography** | Font choices, typographic scale, weight, pairing, readability |
+| **Navigation & IA** | Menu structure, wayfinding, breadcrumb, search, footer |
+| **Interaction Patterns** | Hover, transitions, micro-interactions, scroll behavior, CTA |
+| **Content Strategy** | Copy tone, headlines, content density, video/media use |
 
-**Non tutte le dimensioni si applicano a ogni riferimento.** Adatta l'analisi in base a:
-- Cosa mostra il riferimento (screenshot di una homepage vs. dettaglio di un componente)
-- Cosa ha annotato l'AD (se ha commentato solo la tipografia, approfondisci quella)
-- Il tipo di progetto (un e-commerce richiede dimensioni diverse da un portfolio)
+**Not all dimensions apply to every reference.** Adapt the analysis based on:
+- What the reference shows (screenshot of a homepage vs. detail of a component)
+- What the Art Director annotated (if they only commented on typography, go deeper on that)
+- The type of project (an e-commerce requires different dimensions than a portfolio)
 
-Per ogni riferimento analizzato, salva l'analisi dettagliata in `lab/benchmarks/references/R[N]-[label].md`:
+For each analyzed reference, save the detailed analysis in `lab/benchmarks/references/R[N]-[label].md`:
 
 ```markdown
 # R[N] — [Label]
 
-**Fonte**: [URL / Figma frame / screenshot path]
-**Data analisi**: [data]
+**Source**: [URL / Figma frame / screenshot path]
+**Analysis date**: [date]
 
-## Note AD
-[Annotazioni dell'art director]
+## Art Director Notes
+[Art Director's annotations]
 
-## Analisi
+## Analysis
 
-### Layout & Composizione
-[osservazioni]
+### Layout & Composition
+[observations]
 
-### Linguaggio Visivo
-[osservazioni]
+### Visual Language
+[observations]
 
-### [altre dimensioni rilevanti]
+### [other relevant dimensions]
 
-## Pattern notevoli
+## Notable Patterns
 - [pattern 1]
 - [pattern 2]
 ```
 
-### Fase 4 — Report comparativo
+### Phase 4 — Comparative report
 
-Dopo aver analizzato tutti i riferimenti, genera `lab/benchmarks/benchmark-report.md`:
+After analyzing all references, generate `lab/benchmarks/benchmark-report.md`:
 
 ```markdown
 # Benchmark Report
 
-**Data**: [data]
-**Riferimenti analizzati**: [numero]
-**Fonti**: [Figma / URL / Screenshot — elenco]
+**Date**: [date]
+**References analyzed**: [number]
+**Sources**: [Figma / URL / Screenshot — list]
 
 ---
 
-## Riferimenti
+## References
 
-| ID | Nome | Fonte | Note AD |
-|----|------|-------|---------|
-| R1 | [label] | [url/figma/file] | [annotazione breve] |
+| ID | Name | Source | Art Director Notes |
+|----|------|--------|--------------------|
+| R1 | [label] | [url/figma/file] | [brief annotation] |
 | R2 | ... | ... | ... |
 
 ---
 
-## Analisi Comparativa
+## Comparative Analysis
 
-### Layout & Composizione
+### Layout & Composition
 
-| Pattern | Riferimenti | Frequenza | Note |
-|---------|-------------|-----------|------|
-| [pattern] | R1, R3, R5 | 3/N | [osservazione] |
-| [pattern] | R2 | 1/N | [osservazione] |
+| Pattern | References | Frequency | Notes |
+|---------|-----------|-----------|-------|
+| [pattern] | R1, R3, R5 | 3/N | [observation] |
+| [pattern] | R2 | 1/N | [observation] |
 
-**Pattern dominante**: ...
-**Deviazioni interessanti**: ...
+**Dominant pattern**: ...
+**Interesting deviations**: ...
 
-### Linguaggio Visivo
-[stessa struttura]
+### Visual Language
+[same structure]
 
-### Tipografia
-[stessa struttura]
+### Typography
+[same structure]
 
-### Navigazione & IA
-[stessa struttura]
+### Navigation & IA
+[same structure]
 
-### Pattern di Interazione
-[stessa struttura]
+### Interaction Patterns
+[same structure]
 
-### Strategia Contenuti
-[stessa struttura]
-
----
-
-## Mappa dei Pattern
-
-### Convergenze (pattern in 3+ riferimenti)
-- [pattern]: R1, R2, R5 — [perche funziona]
-
-### Divergenze (pattern unici o rari)
-- [pattern]: solo R3 — [perche e interessante]
-
-### Assenze (cosa NESSUNO fa)
-- [pattern]: nessun riferimento lo usa — [e un'opportunita o c'e una ragione?]
+### Content Strategy
+[same structure]
 
 ---
 
-## Porte Aperte per CREATIVE_DIRECTION.md
+## Pattern Map
 
-### [Sezione 1 — es. Tipografia]
-- **Opzione A**: [pattern osservato] — usato da R1, R3
-- **Opzione B**: [pattern osservato] — usato da R2
-- **Opzione C**: [deviazione dal benchmark] — nessuno lo fa, ma...
+### Convergences (patterns in 3+ references)
+- [pattern]: R1, R2, R5 — [why it works]
 
-### [Sezione 2 — es. Mood Visivo]
-- **Opzione A**: ...
-- **Opzione B**: ...
+### Divergences (unique or rare patterns)
+- [pattern]: only R3 — [why it's interesting]
+
+### Absences (what NOBODY does)
+- [pattern]: no reference uses it — [is it an opportunity or is there a reason?]
 
 ---
 
-## Riferimenti dettagliati
-| ID | Analisi |
-|----|---------|
+## Open Doors for CREATIVE_DIRECTION.md
+
+### [Section 1 — e.g. Typography]
+- **Option A**: [observed pattern] — used by R1, R3
+- **Option B**: [observed pattern] — used by R2
+- **Option C**: [deviation from benchmark] — nobody does this, but...
+
+### [Section 2 — e.g. Visual Mood]
+- **Option A**: ...
+- **Option B**: ...
+
+---
+
+## Detailed References
+| ID | Analysis |
+|----|----------|
 | R1 | lab/benchmarks/references/R1-[label].md |
 | R2 | lab/benchmarks/references/R2-[label].md |
 ```
 
-### Fase 5 — Proposta per CREATIVE_DIRECTION.md
+### Phase 5 — Proposal for CREATIVE_DIRECTION.md
 
-Presenta la sezione "Porte Aperte" del report come proposte per CREATIVE_DIRECTION.md.
+Present the "Open Doors" section of the report as proposals for CREATIVE_DIRECTION.md.
 
-**Regole:**
-- **Non scrivere direttamente** in CREATIVE_DIRECTION.md — presenta e aspetta trigger
-- Presenta le opzioni come **spazio**, non come raccomandazioni
-- Per ogni sezione, includi almeno un'opzione che **devia** dai pattern osservati (divergenza intenzionale)
-- Usa linguaggio esplorativo: "Lo spazio si organizza cosi:" non "Consiglio di..."
-- Separa esplicitamente **vincoli reali** (accessibilita, brand non negoziabili) da **vincoli assunti** ("si fa cosi", "l'utente si aspetta")
+**Rules:**
+- **Do not write directly** to CREATIVE_DIRECTION.md — present and wait for trigger
+- Present the options as **space**, not as recommendations
+- For each section, include at least one option that **deviates** from observed patterns (intentional divergence)
+- Use exploratory language: "The space organizes like this:" not "I recommend..."
+- Explicitly separate **real constraints** (accessibility, non-negotiable brand) from **assumed constraints** ("that's how it's done", "the user expects it")
 
-Trigger di esecuzione (solo l'AD):
-- "esegui"
-- "procedi"
-- "vai con X"
-- "aggiorna creative direction"
+Execution triggers (Art Director only):
+- "execute"
+- "proceed"
+- "go with X"
+- "update creative direction"
 
-## Integrazione con altre skill
+## Integration with other skills
 
-| Skill | Come interagisce |
-|-------|------------------|
-| `/creative` | Usa la sezione "Assenze" del report come input per divergenza intenzionale |
-| `/session-end` | Segnala se un benchmark e in corso ma non completo in SESSION_HANDOFF.md |
-| `/setup` | Raccoglie i primi riferimenti; `/benchmark` li approfondisce |
+| Skill | How it interacts |
+|-------|-----------------|
+| `/creative` | Uses the "Absences" section of the report as input for intentional divergence |
+| `/session-end` | Flags if a benchmark is in progress but not complete in SESSION_HANDOFF.md |
+| `/setup` | Collects the first references; `/benchmark` deepens them |
 
-## Anti-pattern da evitare
+## Anti-patterns to avoid
 
-| Anti-pattern | Invece |
-|--------------|--------|
-| "Il pattern migliore e X" | "Lo spazio si organizza cosi: convergenze, divergenze, assenze" |
-| Convergere su una palette | Presentare le palette osservate + un'opzione divergente |
-| Trattare i benchmark come vincoli | Separare vincoli reali da vincoli assunti |
-| Analizzare solo le convergenze | Le assenze sono lo spazio piu interessante |
-| Proporre varianti minime | Almeno una direzione che sfida un pattern dominante |
-| Scrivere in CREATIVE_DIRECTION.md senza trigger | Sempre presentare e aspettare |
+| Anti-pattern | Instead |
+|--------------|---------|
+| "The best pattern is X" | "The space organizes like this: convergences, divergences, absences" |
+| Converging on a palette | Present the observed palettes + a divergent option |
+| Treating benchmarks as constraints | Separate real constraints from assumed constraints |
+| Analyzing only convergences | Absences are the most interesting space |
+| Proposing minimal variants | At least one direction that challenges a dominant pattern |
+| Writing to CREATIVE_DIRECTION.md without trigger | Always present and wait |

@@ -1,117 +1,117 @@
 ---
 name: content
-description: Revisione e generazione microcopy, testi e contenuti
+description: Microcopy, text content review, and generation
 ---
 
 # Content
 
-Agente specializzato in contenuti testuali e tone of voice.
+Agent specialized in text content and tone of voice.
 
-## Contesto
+## Context
 
-Il tone of voice e il glossario vanno definiti in CREATIVE_DIRECTION.md durante le prime sessioni. Questa skill si adatta al tono scelto.
+The tone of voice and glossary should be defined in CREATIVE_DIRECTION.md during the first sessions. This skill adapts to the chosen tone.
 
-## Quando invocare
+## When to invoke
 
-- Per scrivere/revisionare microcopy (bottoni, label, messaggi)
-- Per messaggi di errore/successo
-- Per alt text immagini
-- Per meta title/description
-- Per verificare coerenza tone of voice
+- To write/review microcopy (buttons, labels, messages)
+- For error/success messages
+- For image alt text
+- For meta title/description
+- To check tone of voice consistency
 
-## Azioni
+## Actions
 
-### 1. Identifica richiesta
+### 1. Identify request
 
-Chiedi all'utente:
-- **Tipo contenuto**: microcopy, messaggio errore, alt text, meta, altro
-- **Contesto**: dove appare, cosa deve comunicare
-- **Vincoli**: lunghezza, keywords, etc.
+Ask the user:
+- **Content type**: microcopy, error message, alt text, meta, other
+- **Context**: where it appears, what it should communicate
+- **Constraints**: length, keywords, etc.
 
-### 2. Genera/Revisiona
+### 2. Generate/Review
 
-#### Microcopy (bottoni, label)
+#### Microcopy (buttons, labels)
 
-Principi:
-- Verbi d'azione diretti
-- Chiarezza su cosa succede al click
-- Consistenza: stessa azione = stessa label
+Principles:
+- Direct action verbs
+- Clear about what happens on click
+- Consistency: same action = same label
 
-Esempio:
+Example:
 ```
-MALE:  "Clicca qui"
-MALE:  "Invia"
-BENE:  "Iscriviti gratis"
-BENE:  "Esplora l'Academy"
-```
-
-#### Messaggi di errore
-
-Principi:
-- Spiegare COSA e andato storto
-- Spiegare COME risolvere
-- Tono non colpevolizzante
-- No codici tecnici
-
-Esempio:
-```
-MALE:  "Errore 422: Validazione fallita"
-MALE:  "Email non valida"
-BENE:  "Inserisci un indirizzo email valido, ad esempio nome@esempio.com"
+BAD:  "Click here"
+BAD:  "Submit"
+GOOD: "Sign up free"
+GOOD: "Explore the Academy"
 ```
 
-#### Messaggi di successo
+#### Error messages
 
-Principi:
-- Confermare cosa e successo
-- Indicare prossimo passo (se c'e)
-- Brevi e positivi
+Principles:
+- Explain WHAT went wrong
+- Explain HOW to fix it
+- Non-blaming tone
+- No technical codes
 
-Esempio:
+Example:
 ```
-MALE:  "Operazione completata con successo"
-BENE:  "Registrazione completata! Controlla la tua email per attivare l'account."
-```
-
-#### Stati vuoti
-
-Principi:
-- Spiegare perche e vuoto
-- Suggerire azione per riempirlo
-- Non far sentire l'utente perso
-
-Esempio:
-```
-MALE:  "Nessun risultato"
-BENE:  "Non hai ancora salvato nessun evento. Esplora il calendario per trovare le prossime sessioni."
+BAD:  "Error 422: Validation failed"
+BAD:  "Invalid email"
+GOOD: "Enter a valid email address, for example name@example.com"
 ```
 
-#### Alt text immagini
+#### Success messages
 
-Principi:
-- Descrivere contenuto informativo
-- Contesto, non solo "cosa si vede"
-- Se decorativa: alt=""
-- Max ~125 caratteri
+Principles:
+- Confirm what happened
+- Indicate next step (if any)
+- Brief and positive
 
-Esempio:
+Example:
 ```
-MALE:  "immagine"
-MALE:  "foto di persone"
-BENE:  "Team di design durante un workshop di product review"
+BAD:  "Operation completed successfully"
+GOOD: "Registration complete! Check your email to activate your account."
 ```
 
-#### Meta title e description
+#### Empty states
 
-Principi:
-- Title: 50-60 caratteri, keyword primaria all'inizio
-- Description: 150-160 caratteri, call to action
-- Unici per ogni pagina
+Principles:
+- Explain why it's empty
+- Suggest an action to fill it
+- Don't make the user feel lost
 
-Esempio:
+Example:
 ```
-Title: "Academy Progetto — Corsi online per designer"
-Description: "Guide pratiche, template e workshop per professionisti del design. Iscriviti gratis e inizia oggi."
+BAD:  "No results"
+GOOD: "You haven't saved any events yet. Explore the calendar to find upcoming sessions."
+```
+
+#### Image alt text
+
+Principles:
+- Describe informational content
+- Context, not just "what you see"
+- If decorative: alt=""
+- Max ~125 characters
+
+Example:
+```
+BAD:  "image"
+BAD:  "photo of people"
+GOOD: "Design team during a product review workshop"
+```
+
+#### Meta title and description
+
+Principles:
+- Title: 50-60 characters, primary keyword at the beginning
+- Description: 150-160 characters, call to action
+- Unique for each page
+
+Example:
+```
+Title: "Project Academy — Online Courses for Designers"
+Description: "Practical guides, templates, and workshops for design professionals. Sign up free and start today."
 ```
 
 ### 3. Output
@@ -119,26 +119,26 @@ Description: "Guide pratiche, template e workshop per professionisti del design.
 ```
 ## Content Review
 
-### Richiesta
-[cosa ha chiesto l'utente]
+### Request
+[what the user asked]
 
-### Proposta
-[contenuto proposto]
+### Proposal
+[proposed content]
 
-### Alternativa (se rilevante)
-[variante]
+### Alternative (if relevant)
+[variant]
 
-### Note
-[considerazioni su tone, lunghezza, accessibilita]
+### Notes
+[considerations on tone, length, accessibility]
 ```
 
-### 4. Applica
+### 4. Apply
 
-Se l'utente approva, proponi le modifiche ai file e **attendi conferma** prima di applicarle.
+If the user approves, propose the file changes and **wait for confirmation** before applying them.
 
-## Glossario
+## Glossary
 
-<!-- Compilare con la terminologia specifica del progetto -->
+<!-- Fill in with project-specific terminology -->
 
-| Termine | Uso | Note |
-|---------|-----|------|
+| Term | Usage | Notes |
+|------|-------|-------|

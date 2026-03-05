@@ -1,31 +1,31 @@
 # {{PROJECT_NAME}} — Creative Direction
 
-**Ultimo aggiornamento:** [DATA]
+**Last updated:** [DATE]
 
 ---
 
-## Vincoli di partenza
+## Starting constraints
 
-- **Logo**: [stato del logo — esistente/da creare]
-- **Palette**: [colori brand se definiti]
-- **Target**: [audience di riferimento]
-- **Posizionamento**: [come si vuole essere percepiti]
-
----
-
-## Tipografia
-
-[Da definire dopo benchmark]
+- **Logo**: [logo status — existing / to be created]
+- **Palette**: [brand colors if defined]
+- **Target**: [target audience]
+- **Positioning**: [how you want to be perceived]
 
 ---
 
-## Mood visivo
+## Typography
 
-[Da definire dopo benchmark]
+[To be defined after benchmark]
 
 ---
 
-## Decisioni di design
+## Visual mood
 
-| # | Data | Decisione | Chi | Contesto |
-|---|------|-----------|-----|----------|
+[To be defined after benchmark]
+
+---
+
+## Design decisions
+
+| # | Date | Decision | Who | Context |
+|---|------|----------|-----|---------|

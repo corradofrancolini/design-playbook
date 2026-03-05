@@ -1,80 +1,80 @@
 ---
 name: design-system
-description: Verifica coerenza componenti, tokens e design system
+description: Component, token, and design system consistency checks
 ---
 
 # Design System
 
-Agente specializzato nella coerenza del design system.
+Agent specialized in design system consistency.
 
-## Contesto
+## Context
 
-Lo stack CSS e la libreria componenti vanno definiti nelle prime sessioni. Questa skill si adatta allo stack scelto.
+The CSS stack and component library should be defined in the first sessions. This skill adapts to the chosen stack.
 
-## Quando invocare
+## When to invoke
 
-- Prima di creare un nuovo componente
-- Dopo modifiche a componenti esistenti
-- Per verificare coerenza di una pagina/sezione
-- Per proporre estensioni al sistema
+- Before creating a new component
+- After changes to existing components
+- To check consistency of a page/section
+- To propose system extensions
 
-## Azioni
+## Actions
 
-### 1. Analisi richiesta
+### 1. Analyze request
 
-Chiedi all'utente cosa vuole verificare:
-- **Componente specifico**: nome file o descrizione
-- **Pagina/sezione**: quale area
-- **Nuovo componente**: cosa deve fare
+Ask the user what to check:
+- **Specific component**: file name or description
+- **Page/section**: which area
+- **New component**: what it should do
 
-### 2. Verifica coerenza
+### 2. Check consistency
 
-Leggi i file rilevanti e verifica:
+Read the relevant files and check:
 
 #### Tokens
-- [ ] Colori usano variabili CSS definite nel sistema
-- [ ] Spacing usa scale coerente
-- [ ] Font family usa token definiti
-- [ ] Font size segue la scala tipografica definita
+- [ ] Colors use CSS variables defined in the system
+- [ ] Spacing uses a consistent scale
+- [ ] Font family uses defined tokens
+- [ ] Font size follows the defined typographic scale
 
-#### Componenti
-- [ ] Stati documentati (default, hover, focus, active, disabled)
-- [ ] Varianti coerenti con componenti esistenti
-- [ ] Naming consistente (PascalCase per componenti, camelCase per props)
-- [ ] Props tipizzate (TypeScript o sistema di tipi usato)
+#### Components
+- [ ] States documented (default, hover, focus, active, disabled)
+- [ ] Variants consistent with existing components
+- [ ] Consistent naming (PascalCase for components, camelCase for props)
+- [ ] Props typed (TypeScript or type system in use)
 
-#### Pattern
-- [ ] Layout usa Flexbox/Grid con classi utility del framework
-- [ ] Responsive breakpoints coerenti
-- [ ] Accessibilita: componenti interattivi accessibili
+#### Patterns
+- [ ] Layout uses Flexbox/Grid with framework utility classes
+- [ ] Responsive breakpoints consistent
+- [ ] Accessibility: interactive components are accessible
 
 ### 3. Report
 
 ```
 ## Design System Check
 
-### Coerenza Tokens
-- [x] Colori: OK
-- [ ] Spacing: [problema trovato]
+### Token Consistency
+- [x] Colors: OK
+- [ ] Spacing: [issue found]
 
-### Coerenza Componenti
-- [x] Stati: tutti documentati
-- [ ] Naming: [problema trovato]
+### Component Consistency
+- [x] States: all documented
+- [ ] Naming: [issue found]
 
-### Raccomandazioni
+### Recommendations
 1. ...
 2. ...
 ```
 
-### 4. Proponi fix
+### 4. Propose fixes
 
-Se trovi inconsistenze, proponi le modifiche specifiche e **attendi conferma** prima di applicarle.
+If you find inconsistencies, propose the specific changes and **wait for confirmation** before applying them.
 
-## File di riferimento
+## Reference files
 
-| File | Contenuto |
-|------|-----------|
-| File CSS principale | Design tokens |
-| Directory componenti UI | Componenti riutilizzabili |
-| Directory componenti layout | Header, footer, nav |
-| `CREATIVE_DIRECTION.md` | Direzione creativa |
+| File | Content |
+|------|---------|
+| Main CSS file | Design tokens |
+| UI components directory | Reusable components |
+| Layout components directory | Header, footer, nav |
+| `CREATIVE_DIRECTION.md` | Creative direction |

@@ -1,86 +1,86 @@
 ---
 name: playbook
-description: Guida rapida al design-playbook — file, skill, metodo, stato progetto
+description: Quick reference guide — files, skills, method, project state
 ---
 
-# Playbook — Guida rapida
+# Playbook — Quick Reference
 
-Riferimento rapido per il design-playbook. Mostra cosa e installato, cosa fare, e quando usare ogni skill.
+Quick reference for the design-playbook. Shows what's installed, what to do, and when to use each skill.
 
-## Azioni
+## Actions
 
-### 1. Controlla stato progetto
+### 1. Check project state
 
-Leggi questi file e identifica il loro stato:
+Read these files and identify their state:
 
-- **BRIEF.md** — contiene ancora placeholder come `[descrizione in una riga]` oppure e stato compilato?
-- **CREATIVE_DIRECTION.md** — contiene ancora `[Da definire dopo benchmark]` oppure ha contenuti reali?
-- **docs/handoffs/** — qual e l'ultimo handoff? Di chi?
-- **CLAUDE.md** — sezione Team: quante persone?
+- **BRIEF.md** — does it still contain placeholders like `[one-line description]` or has it been filled in?
+- **CREATIVE_DIRECTION.md** — does it still contain `[To be defined after benchmark]` or does it have real content?
+- **docs/handoffs/** — what's the latest handoff? By whom?
+- **CLAUDE.md** — Team section: how many people?
 
-### 2. Mostra guida
+### 2. Show guide
 
-Genera questo output, adattando la sezione "Stato" in base a quello che hai trovato:
+Generate this output, adapting the "State" section based on what you found:
 
 ```
-## design-playbook — Guida rapida
+## design-playbook — Quick Reference
 
-### Stato progetto
+### Project state
 
-- BRIEF.md: [compilato / da compilare]
-- CREATIVE_DIRECTION.md: [compilato / da compilare]
-- Ultimo handoff: [data, autore da docs/handoffs/]
-- Team: [nomi da CLAUDE.md, o "singolo utente"]
+- BRIEF.md: [filled in / to be filled in]
+- CREATIVE_DIRECTION.md: [filled in / to be filled in]
+- Latest handoff: [date, author from docs/handoffs/]
+- Team: [names from CLAUDE.md, or "single user"]
 
-### Metodo
+### Method
 
-Questo progetto usa l'Adiacente Possibile: Claude mappa le opzioni
-e i trade-off, non converge. Esegui solo con trigger esplicito
-("esegui", "procedi", "vai con X").
+This project uses the Adjacent Possible: Claude maps options
+and trade-offs, does not converge. Execute only with an explicit trigger
+("execute", "proceed", "go with X").
 
-Dettagli: CLAUDE.md (protocollo), lab/PROCESS.md (metodologia)
+Details: CLAUDE.md (protocol), lab/PROCESS.md (methodology)
 
-### Skill disponibili
+### Available skills
 
-| Skill | Quando |
-|-------|--------|
-| /setup | Configurazione iniziale — compilare brief e creative direction |
-| /creative | Bivio creativo — esplorare direzioni alternative |
-| /review | Componente o feature completata — code review |
-| /accessibility | Prima di rilasciare una pagina — audit WCAG |
-| /content | Scrivere testi, label, messaggi errore |
-| /design-system | Verificare coerenza token e componenti |
-| /seo | Prima di rilasciare — audit SEO e performance |
-| /project-index | Mappare visivamente la struttura del progetto |
-| /storybook | Configurare component library e test |
-| /benchmark | Analisi comparativa riferimenti di design |
-| /session-end | Fine sessione — aggiornare handoff (sempre) |
-| /playbook | Questa guida |
+| Skill | When |
+|-------|------|
+| /setup | Initial setup — fill in brief and creative direction |
+| /creative | Creative fork — explore alternative directions |
+| /review | Component or feature completed — code review |
+| /accessibility | Before releasing a page — WCAG audit |
+| /content | Writing text, labels, error messages |
+| /design-system | Checking token and component consistency |
+| /seo | Before releasing — SEO and performance audit |
+| /project-index | Mapping the project structure visually |
+| /storybook | Setting up component library and tests |
+| /benchmark | Comparative analysis of design references |
+| /session-end | End of session — update handoff (always) |
+| /playbook | This guide |
 
-### File di processo
+### Process files
 
-| File | Scopo |
-|------|-------|
-| CLAUDE.md | Protocollo di progetto (caricato automaticamente) |
-| BRIEF.md | Brief di progetto — scope, target, stack, vincoli |
-| CREATIVE_DIRECTION.md | Direzione creativa — palette, tipografia, mood |
-| SESSION_HANDOFF.md | Puntatore a docs/handoffs/ |
-| docs/handoffs/ | Handoff sessioni (condivisi tra il team) |
-| BACKLOG.md | Backlog e decisioni |
-| assets/ | Materiali sorgente (brand guidelines, moodboard, brief cliente) |
-| lab/PROCESS.md | Metodologia anti-sycophancy (riferimento) |
-| lab/notes.md | Note di lavoro |
-| docs/sessions/ | Log delle sessioni (personali) |
+| File | Purpose |
+|------|---------|
+| CLAUDE.md | Project protocol (auto-loaded by Claude Code) |
+| BRIEF.md | Project brief — scope, target, stack, constraints |
+| CREATIVE_DIRECTION.md | Creative direction — palette, typography, mood |
+| SESSION_HANDOFF.md | Pointer to docs/handoffs/ |
+| docs/handoffs/ | Session handoffs (shared across the team) |
+| BACKLOG.md | Backlog and decisions |
+| assets/ | Source materials (brand guidelines, moodboard, client brief) |
+| lab/PROCESS.md | Anti-sycophancy methodology (reference) |
+| lab/notes.md | Working notes |
+| docs/sessions/ | Session logs (personal) |
 ```
 
-### 3. Suggerimenti contestuali
+### 3. Contextual suggestions
 
-In base allo stato del progetto:
+Based on the project state:
 
-- Se BRIEF.md non e compilato: "Suggerisco `/setup` per una configurazione guidata, oppure compila BRIEF.md manualmente."
-- Se CREATIVE_DIRECTION.md non e compilato: "Compila CREATIVE_DIRECTION.md prima di iniziare a progettare."
-- Se entrambi sono compilati: "Il progetto e configurato. Puoi iniziare a lavorare o usare `/creative` per esplorare direzioni."
+- If BRIEF.md is not filled in: "I suggest `/setup` for a guided configuration, or fill in BRIEF.md manually."
+- If CREATIVE_DIRECTION.md is not filled in: "Fill in CREATIVE_DIRECTION.md before you start designing."
+- If both are filled in: "The project is configured. You can start working or use `/creative` to explore directions."
 
-### 4. Rispondi a domande
+### 4. Answer questions
 
-Se l'utente chiede dettagli su una skill specifica, leggi il SKILL.md corrispondente in `.claude/skills/<nome>/SKILL.md` e riassumi cosa fa e quando usarla.
+If the user asks for details about a specific skill, read the corresponding SKILL.md in `.claude/skills/<name>/SKILL.md` and summarize what it does and when to use it.

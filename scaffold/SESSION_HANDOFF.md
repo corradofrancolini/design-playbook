@@ -1,15 +1,15 @@
 # {{PROJECT_NAME}} — Session Handoff
 
-> Ultimo handoff: vedi `docs/handoffs/` (file piu recente)
+> Latest handoff: see `docs/handoffs/` (most recent file)
 
-Ogni `/session-end` crea un file in `docs/handoffs/` con data, ora e autore.
-Per la prossima sessione, leggi il file piu recente.
+Each `/session-end` creates a file in `docs/handoffs/` with date, time, and author.
+For the next session, read the most recent file.
 
 ---
 
-## Come funziona
+## How it works
 
-- `/session-end` salva lo stato della sessione in `docs/handoffs/YYYY-MM-DD_HH-MM_nome.md`
-- Ogni handoff contiene: stato attuale, lavoro completato, prossimo step, problemi aperti
-- Nessuna collisione: ogni persona e ogni sessione hanno il proprio file
-- Per riprendere: leggi il file piu recente in `docs/handoffs/`
+- `/session-end` saves the session state in `docs/handoffs/YYYY-MM-DD_HH-MM_name.md`
+- Each handoff contains: current state, completed work, next step, open issues
+- No collisions: each person and each session has its own file
+- To resume: read the most recent file in `docs/handoffs/`

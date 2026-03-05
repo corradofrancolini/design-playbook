@@ -1,53 +1,53 @@
 ---
 name: storybook
-description: Scaffold Storybook component library con test e integrazione design system
+description: Scaffold Storybook component library with tests and design system integration
 ---
 
 # Storybook
 
-Agente specializzato nello scaffold e configurazione di Storybook per progetti del playbook.
+Agent specialized in scaffolding and configuring Storybook for playbook projects.
 
-## Contesto
+## Context
 
-Storybook è la component library visiva del progetto. Questa skill configura Storybook adattandosi allo stack rilevato, applica i workaround noti (Tailwind 4, App Router, ESM) e crea le prime stories seguendo un approccio a tier.
+Storybook is the project's visual component library. This skill configures Storybook by adapting to the detected stack, applies known workarounds (Tailwind 4, App Router, ESM), and creates the first stories following a tiered approach.
 
-## Quando invocare
+## When to invoke
 
-- All'inizio di un progetto, dopo aver definito stack e design system
-- Quando si aggiunge Storybook a un progetto esistente
-- Per aggiungere stories a componenti non coperti
-- Per configurare test visivi con Vitest
+- At the start of a project, after defining the stack and design system
+- When adding Storybook to an existing project
+- To add stories for uncovered components
+- To configure visual tests with Vitest
 
-## Azioni
+## Actions
 
-### 1. Rileva stack
+### 1. Detect stack
 
-Leggi `package.json` e identifica:
+Read `package.json` and identify:
 
-- **Framework**: Next.js (App Router / Pages), Vite, Remix, altro
+- **Framework**: Next.js (App Router / Pages), Vite, Remix, other
 - **CSS**: Tailwind 3, Tailwind 4, CSS Modules, vanilla CSS
-- **TypeScript**: sì / no
-- **Monorepo**: sì / no — dove vivono i componenti
+- **TypeScript**: yes / no
+- **Monorepo**: yes / no — where do the components live
 
-Riporta lo stack rilevato prima di procedere. **Attendi conferma**.
+Report the detected stack before proceeding. **Wait for confirmation**.
 
-### 2. Installa dipendenze
+### 2. Install dependencies
 
 ```bash
 npx storybook@latest init
 ```
 
-Aggiungi addon:
-- `@storybook/addon-vitest` — test integrati
-- `@storybook/addon-a11y` — audit accessibilità inline
-- `@storybook/addon-docs` — documentazione automatica
+Add addons:
+- `@storybook/addon-vitest` — integrated tests
+- `@storybook/addon-a11y` — inline accessibility audit
+- `@storybook/addon-docs` — automatic documentation
 
-#### Workaround noti
+#### Known workarounds
 
-**Tailwind 4 + Vite/Next.js Vite**: Tailwind 4 usa `@import "tailwindcss"` che richiede il plugin PostCSS ufficiale. Storybook con Vite può confliggere. Soluzione:
+**Tailwind 4 + Vite/Next.js Vite**: Tailwind 4 uses `@import "tailwindcss"` which requires the official PostCSS plugin. Storybook with Vite can conflict. Solution:
 
-- Creare `postcss.config.storybook.mjs` separato con solo `@tailwindcss/postcss`
-- In `.storybook/main.ts`, nella funzione `viteFinal`, puntare a questo file:
+- Create a separate `postcss.config.storybook.mjs` with only `@tailwindcss/postcss`
+- In `.storybook/main.ts`, in the `viteFinal` function, point to this file:
   ```ts
   viteFinal: async (config) => {
     config.css = { ...config.css, postcss: './postcss.config.storybook.mjs' }
@@ -55,13 +55,13 @@ Aggiungi addon:
   }
   ```
 
-**Next.js App Router**: Usare `@storybook/nextjs-vite` come framework e abilitare `experimentalRSC: true` nelle features.
+**Next.js App Router**: Use `@storybook/nextjs-vite` as framework and enable `experimentalRSC: true` in features.
 
-**ESM e `__dirname`**: Se il progetto usa ESM (`"type": "module"` in `package.json`), usare `import.meta.url` + `fileURLToPath` invece di `__dirname`.
+**ESM and `__dirname`**: If the project uses ESM (`"type": "module"` in `package.json`), use `import.meta.url` + `fileURLToPath` instead of `__dirname`.
 
-**Font loading (Next.js `next/font`)**: Next.js font non funzionano in Storybook. Caricare i font via CSS `@font-face` in un file separato o usare il fallback del sistema.
+**Font loading (Next.js `next/font`)**: Next.js fonts don't work in Storybook. Load fonts via CSS `@font-face` in a separate file or use the system fallback.
 
-**CMS/API dependencies**: Componenti che dipendono da Payload, Sanity, o altre API vanno mockati. Creare alias in `viteFinal` per i moduli problematici:
+**CMS/API dependencies**: Components that depend on Payload, Sanity, or other APIs need mocking. Create aliases in `viteFinal` for problematic modules:
   ```ts
   config.resolve = {
     ...config.resolve,
@@ -72,12 +72,12 @@ Aggiungi addon:
   }
   ```
 
-### 3. Configura
+### 3. Configure
 
 #### `.storybook/main.ts`
 
 ```ts
-import type { StorybookConfig } from '@storybook/nextjs-vite' // adatta al framework
+import type { StorybookConfig } from '@storybook/nextjs-vite' // adapt to framework
 
 const config: StorybookConfig = {
   stories: ['../src/components/**/*.stories.@(ts|tsx)'],
@@ -87,15 +87,15 @@ const config: StorybookConfig = {
     '@storybook/addon-docs',
   ],
   framework: {
-    name: '@storybook/nextjs-vite', // adatta al framework
+    name: '@storybook/nextjs-vite', // adapt to framework
     options: {},
   },
   features: {
-    experimentalRSC: true, // solo Next.js App Router
+    experimentalRSC: true, // Next.js App Router only
   },
   viteFinal: async (config) => {
-    // PostCSS workaround per Tailwind 4
-    // Alias per mock CMS/API
+    // PostCSS workaround for Tailwind 4
+    // Aliases for CMS/API mocks
     return config
   },
 }
@@ -103,7 +103,7 @@ const config: StorybookConfig = {
 
 #### `.storybook/preview.ts`
 
-Leggi `CREATIVE_DIRECTION.md` per estrarre la palette e configura i backgrounds:
+Read `CREATIVE_DIRECTION.md` to extract the palette and configure backgrounds:
 
 ```ts
 const preview: Preview = {
@@ -111,7 +111,7 @@ const preview: Preview = {
     backgrounds: {
       default: 'primary-bg',
       values: [
-        // Usa colori da CREATIVE_DIRECTION.md
+        // Use colors from CREATIVE_DIRECTION.md
       ],
     },
     layout: 'fullscreen',
@@ -122,7 +122,7 @@ const preview: Preview = {
 
 #### `.storybook/vitest.setup.ts`
 
-File di setup dedicato per il progetto Storybook di Vitest (separato dal setup root per evitare crash con dotenv in browser context):
+Dedicated setup file for the Storybook Vitest project (separate from root setup to avoid crashes with dotenv in browser context):
 
 ```ts
 import { beforeAll } from 'vitest'
@@ -134,23 +134,23 @@ beforeAll(() => {
 })
 ```
 
-### 4. Crea prime stories
+### 4. Create first stories
 
-Segui un approccio a **3 tier**, in ordine di complessità:
+Follow a **3-tier** approach, in order of complexity:
 
-#### Tier 1 — Componenti puri (nessuna dipendenza esterna)
-- Bottoni, input, card, badge, dialog
-- Priorità massima: sono testabili subito
+#### Tier 1 — Pure components (no external dependencies)
+- Buttons, inputs, cards, badges, dialogs
+- Highest priority: immediately testable
 
-#### Tier 2 — Componenti con routing/layout
+#### Tier 2 — Components with routing/layout
 - Nav, footer, sidebar
-- Richiedono mock di `usePathname`, `useRouter` via parametri `nextjs.navigation`
+- Require mocking `usePathname`, `useRouter` via `nextjs.navigation` parameters
 
-#### Tier 3 — Componenti CMS-dependent
-- Rich text, blocchi contenuto, form con API
-- Richiedono mock espliciti (alias in `viteFinal` o `__mocks__/`)
+#### Tier 3 — CMS-dependent components
+- Rich text, content blocks, forms with API
+- Require explicit mocks (aliases in `viteFinal` or `__mocks__/`)
 
-**Template story**:
+**Story template**:
 
 ```tsx
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
@@ -167,16 +167,16 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
-    // props di default
+    // default props
   },
 }
 ```
 
-Per ogni componente, crea almeno: `Default`, varianti principali, e stati edge (empty, loading, error dove applicabile).
+For each component, create at least: `Default`, main variants, and edge states (empty, loading, error where applicable).
 
-### 5. Configura test
+### 5. Configure tests
 
-Aggiungi il progetto Storybook a `vitest.config.mts`:
+Add the Storybook project to `vitest.config.mts`:
 
 ```ts
 import { storybookTest } from '@storybook/addon-vitest/vitest-plugin'
@@ -204,7 +204,7 @@ export default defineConfig({
 })
 ```
 
-Verifica che i test passino:
+Verify that tests pass:
 
 ```bash
 npx vitest --project storybook --run
@@ -215,43 +215,43 @@ npx vitest --project storybook --run
 ```
 ## Storybook Setup
 
-### Stack rilevato
+### Detected Stack
 - Framework: [Next.js App Router / Vite / ...]
 - CSS: [Tailwind 4 / Tailwind 3 / CSS Modules / ...]
-- TypeScript: [sì / no]
+- TypeScript: [yes / no]
 
-### Workaround applicati
-- [ ] PostCSS separato per Tailwind 4
-- [ ] experimentalRSC per App Router
-- [ ] Alias mock per CMS/API
+### Applied Workarounds
+- [ ] Separate PostCSS for Tailwind 4
+- [ ] experimentalRSC for App Router
+- [ ] Mock aliases for CMS/API
 - [ ] Font loading fallback
 
-### Stories create
-| Tier | Componente | Stories | Test |
+### Stories Created
+| Tier | Component | Stories | Test |
 |------|-----------|---------|------|
 | 1    | Button    | 3       | pass |
 | 1    | Card      | 2       | pass |
 | 2    | Nav       | 4       | pass |
 | ...  | ...       | ...     | ...  |
 
-### Comandi
-- `pnpm storybook` — avvia dev server (porta 6006)
-- `npx vitest --project storybook --run` — esegui test
+### Commands
+- `pnpm storybook` — start dev server (port 6006)
+- `npx vitest --project storybook --run` — run tests
 ```
 
-### 7. Proponi fix
+### 7. Propose fixes
 
-Se trovi problemi durante il setup (dipendenze mancanti, conflitti PostCSS, test che falliscono), proponi le modifiche specifiche e **attendi conferma** prima di applicarle.
+If you find issues during setup (missing dependencies, PostCSS conflicts, failing tests), propose the specific changes and **wait for confirmation** before applying them.
 
-## File di riferimento
+## Reference files
 
-| File | Contenuto |
-|------|-----------|
-| `package.json` | Dipendenze e script |
-| `.storybook/main.ts` | Configurazione Storybook |
-| `.storybook/preview.ts` | Preview con backgrounds e parametri |
-| `.storybook/vitest.setup.ts` | Setup test Storybook |
-| `vitest.config.mts` | Configurazione Vitest con progetto Storybook |
-| `postcss.config.storybook.mjs` | PostCSS dedicato (se Tailwind 4) |
-| `CREATIVE_DIRECTION.md` | Palette per backgrounds |
-| Directory componenti | Sorgente delle stories |
+| File | Content |
+|------|---------|
+| `package.json` | Dependencies and scripts |
+| `.storybook/main.ts` | Storybook configuration |
+| `.storybook/preview.ts` | Preview with backgrounds and parameters |
+| `.storybook/vitest.setup.ts` | Storybook test setup |
+| `vitest.config.mts` | Vitest configuration with Storybook project |
+| `postcss.config.storybook.mjs` | Dedicated PostCSS (if Tailwind 4) |
+| `CREATIVE_DIRECTION.md` | Palette for backgrounds |
+| Components directory | Story sources |

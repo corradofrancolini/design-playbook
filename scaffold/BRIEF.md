@@ -1,80 +1,80 @@
 # {{PROJECT_NAME}} — Project Brief
 
-**Ultimo aggiornamento:** [DATA]
+**Last updated:** [DATE]
 
 ---
 
-## Progetto
+## Project
 
-- **Cosa**: [descrizione in una riga — cos'e il progetto]
-- **Per chi**: [cliente, stakeholder, organizzazione]
-- **Obiettivo**: [cosa deve ottenere il progetto]
+- **What**: [one-line description — what is the project]
+- **For whom**: [client, stakeholder, organization]
+- **Goal**: [what the project should achieve]
 
 ---
 
 ## Target
 
-- **Utenti primari**: [chi usa il prodotto/sito — profilo, bisogni, contesto d'uso]
-- **Utenti secondari**: [altri utenti rilevanti]
-- **Contesto d'uso**: [desktop, mobile, in ufficio, in movimento, etc.]
+- **Primary users**: [who uses the product/site — profile, needs, usage context]
+- **Secondary users**: [other relevant users]
+- **Usage context**: [desktop, mobile, in-office, on-the-go, etc.]
 
 ---
 
 ## Scope
 
-### Incluso
+### Included
 
-- [funzionalita o pagine previste]
+- [planned features or pages]
 - [...]
 
-### Escluso
+### Excluded
 
-- [cose esplicitamente fuori scope]
+- [things explicitly out of scope]
 - [...]
 
 ---
 
-## Stack tecnico
+## Tech stack
 
 - **Framework**: [Next.js, Nuxt, Astro, etc.]
-- **CMS**: [Payload, Sanity, Strapi, nessuno, etc.]
+- **CMS**: [Payload, Sanity, Strapi, none, etc.]
 - **Hosting**: [Vercel, Netlify, self-hosted, etc.]
-- **Database**: [PostgreSQL, MongoDB, nessuno, etc.]
-- **Altro**: [integrazioni, API esterne, servizi]
+- **Database**: [PostgreSQL, MongoDB, none, etc.]
+- **Other**: [integrations, external APIs, services]
 
 ---
 
-## Contenuti
+## Content
 
-- **Lingue**: [monolingua / multilingua — quali]
-- **Struttura pagine**: [homepage, chi siamo, progetti, contatti, blog, etc.]
-- **Contenuti esistenti**: [testi, foto, video — cosa c'e gia, cosa va creato]
-- **Tono di voce**: [formale, tecnico, caldo, diretto, etc.]
+- **Languages**: [single language / multilingual — which ones]
+- **Page structure**: [homepage, about, projects, contact, blog, etc.]
+- **Existing content**: [text, photos, video — what exists, what needs to be created]
+- **Tone of voice**: [formal, technical, warm, direct, etc.]
 
 ---
 
-## Riferimenti
+## References
 
-> I file sorgente (brand guidelines, moodboard, brief del cliente) vanno in `assets/`.
+> Source files (brand guidelines, moodboard, client brief) go in `assets/`.
 
-| Tipo | Link / Nota |
+| Type | Link / Note |
 |------|-------------|
-| Competitor / benchmark | [link o descrizione] |
-| Moodboard Figma | [link se presente] |
-| Brand guidelines | [link o file in assets/] |
-| Altro | [documentazione, brief del cliente, etc.] |
+| Competitor / benchmark | [link or description] |
+| Figma moodboard | [link if available] |
+| Brand guidelines | [link or file in assets/] |
+| Other | [documentation, client brief, etc.] |
 
 ---
 
-## Vincoli
+## Constraints
 
-- **Budget**: [se rilevante per le scelte tecniche]
-- **Tempi**: [deadline o milestone]
-- **Vincoli tecnici**: [browser support, accessibilita, performance, etc.]
-- **Vincoli brand**: [cose non modificabili — logo, colori, naming]
+- **Budget**: [if relevant to technical choices]
+- **Timeline**: [deadline or milestones]
+- **Technical constraints**: [browser support, accessibility, performance, etc.]
+- **Brand constraints**: [non-negotiable elements — logo, colors, naming]
 
 ---
 
-## Note
+## Notes
 
-[Qualsiasi altra informazione rilevante che non rientra nelle sezioni sopra.]
+[Any other relevant information that doesn't fit the sections above.]

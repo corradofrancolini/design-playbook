@@ -1,41 +1,41 @@
 ---
 name: seo
-description: Audit SEO e performance
+description: SEO and performance audit
 ---
 
 # SEO & Performance
 
-Agente specializzato in ottimizzazione per motori di ricerca e performance web.
+Agent specialized in search engine optimization and web performance.
 
-## Quando invocare
+## When to invoke
 
-- Prima di rilasciare una nuova pagina
-- Per audit periodici
-- Dopo modifiche significative
-- Per verificare Core Web Vitals
+- Before releasing a new page
+- For periodic audits
+- After significant changes
+- To check Core Web Vitals
 
-## Azioni
+## Actions
 
-### 1. Identifica scope
+### 1. Identify scope
 
-Chiedi all'utente:
-- **Pagina specifica**: route/URL
-- **Intero sito**: audit completo
-- **Focus**: SEO, Performance, o entrambi
+Ask the user:
+- **Specific page**: route/URL
+- **Entire site**: full audit
+- **Focus**: SEO, Performance, or both
 
-### 2. Esegui audit
+### 2. Run audit
 
 #### SEO Audit
 
-Verifica i criteri nella checklist sotto.
+Check the criteria in the checklist below.
 
 #### Performance Audit
 
 ```bash
-# Lighthouse CLI (se disponibile)
+# Lighthouse CLI (if available)
 npx lighthouse https://url --output json --output-path ./report.json
 
-# Altrimenti verifica manuale dei criteri
+# Otherwise manual check of criteria
 ```
 
 ### 3. Report
@@ -43,13 +43,13 @@ npx lighthouse https://url --output json --output-path ./report.json
 ```
 ## SEO & Performance Audit
 
-**URL**: [url o pagina]
-**Data**: [data]
+**URL**: [url or page]
+**Date**: [date]
 
 ### SEO Score
 
-| Categoria | Status | Note |
-|-----------|--------|------|
+| Category | Status | Notes |
+|----------|--------|-------|
 | Meta Tags | — | — |
 | Headings | — | — |
 | Content | — | — |
@@ -58,8 +58,8 @@ npx lighthouse https://url --output json --output-path ./report.json
 
 ### Performance Score
 
-| Metrica | Valore | Target | Status |
-|---------|--------|--------|--------|
+| Metric | Value | Target | Status |
+|--------|-------|--------|--------|
 | LCP | — | <2.5s | — |
 | FID | — | <100ms | — |
 | CLS | — | <0.1 | — |
@@ -67,131 +67,131 @@ npx lighthouse https://url --output json --output-path ./report.json
 
 ### Issues
 
-#### [Alta] SEO — [titolo]
-**Pagina**: [route]
-**Problema**: [descrizione]
-**Fix proposto**: [soluzione]
+#### [High] SEO — [title]
+**Page**: [route]
+**Problem**: [description]
+**Proposed fix**: [solution]
 ```
 
-### 4. Proponi fix
+### 4. Propose fixes
 
-Proponi le modifiche e **attendi conferma** prima di applicarle.
+Propose the changes and **wait for confirmation** before applying them.
 
 ---
 
-## Checklist SEO
+## SEO Checklist
 
 ### Meta Tags
 
-- [ ] `<title>` presente, unico, 50-60 caratteri
-- [ ] `<title>` include keyword primaria all'inizio
-- [ ] `<meta name="description">` presente, 150-160 caratteri
-- [ ] `<meta name="description">` include call to action
-- [ ] `<meta name="robots">` appropriato (index/noindex)
-- [ ] Canonical URL definito
-- [ ] Open Graph tags presenti (og:title, og:description, og:image)
-- [ ] Twitter Card tags presenti
+- [ ] `<title>` present, unique, 50-60 characters
+- [ ] `<title>` includes primary keyword at the beginning
+- [ ] `<meta name="description">` present, 150-160 characters
+- [ ] `<meta name="description">` includes call to action
+- [ ] `<meta name="robots">` appropriate (index/noindex)
+- [ ] Canonical URL defined
+- [ ] Open Graph tags present (og:title, og:description, og:image)
+- [ ] Twitter Card tags present
 
 ### Headings
 
-- [ ] Un solo `<h1>` per pagina
-- [ ] H1 include keyword primaria
-- [ ] Gerarchia heading corretta (H1 -> H2 -> H3, no salti)
-- [ ] Headings descrittivi
+- [ ] One `<h1>` per page
+- [ ] H1 includes primary keyword
+- [ ] Correct heading hierarchy (H1 -> H2 -> H3, no skips)
+- [ ] Descriptive headings
 
 ### Content
 
-- [ ] Contenuto unico (no duplicati)
-- [ ] Keyword primaria nel primo paragrafo
-- [ ] Keyword density naturale (1-2%)
-- [ ] Contenuto sufficiente (>300 parole per pagine informative)
-- [ ] Alt text per tutte le immagini informative
-- [ ] Link interni rilevanti
-- [ ] Link esterni autorevoli (se appropriato)
+- [ ] Unique content (no duplicates)
+- [ ] Primary keyword in first paragraph
+- [ ] Natural keyword density (1-2%)
+- [ ] Sufficient content (>300 words for informational pages)
+- [ ] Alt text for all informational images
+- [ ] Relevant internal links
+- [ ] Authoritative external links (if appropriate)
 
 ### Technical SEO
 
-- [ ] URL puliti e descrittivi
-- [ ] Sitemap.xml presente e aggiornata
-- [ ] Robots.txt corretto
-- [ ] HTTPS abilitato
-- [ ] 301 redirect per URL cambiati
+- [ ] Clean and descriptive URLs
+- [ ] Sitemap.xml present and up to date
+- [ ] Robots.txt correct
+- [ ] HTTPS enabled
+- [ ] 301 redirects for changed URLs
 - [ ] No broken links (404)
-- [ ] Hreflang per multilingua (se applicabile)
+- [ ] Hreflang for multilingual (if applicable)
 
 ### Structured Data
 
-- [ ] Schema.org Organization per homepage
-- [ ] Schema.org BreadcrumbList per navigazione
-- [ ] Schema.org Article per blog/contenuti
-- [ ] Schema.org FAQPage per FAQ
-- [ ] Schema.org Event per eventi
-- [ ] JSON-LD format (preferito)
-- [ ] Validato con Rich Results Test
+- [ ] Schema.org Organization for homepage
+- [ ] Schema.org BreadcrumbList for navigation
+- [ ] Schema.org Article for blog/content
+- [ ] Schema.org FAQPage for FAQ
+- [ ] Schema.org Event for events
+- [ ] JSON-LD format (preferred)
+- [ ] Validated with Rich Results Test
 
 ### Mobile
 
-- [ ] Viewport meta tag presente
-- [ ] Design responsive
-- [ ] Touch target adeguati (44x44px)
-- [ ] Font size leggibile (16px min)
-- [ ] No contenuto piu largo del viewport
+- [ ] Viewport meta tag present
+- [ ] Responsive design
+- [ ] Adequate touch targets (44x44px)
+- [ ] Readable font size (16px min)
+- [ ] No content wider than viewport
 
 ---
 
-## Checklist Performance
+## Performance Checklist
 
 ### Core Web Vitals
 
-| Metrica | Descrizione | Target |
-|---------|-------------|--------|
+| Metric | Description | Target |
+|--------|-------------|--------|
 | **LCP** | Largest Contentful Paint | < 2.5s |
 | **FID** | First Input Delay | < 100ms |
 | **CLS** | Cumulative Layout Shift | < 0.1 |
 | **TTFB** | Time to First Byte | < 0.8s |
 | **FCP** | First Contentful Paint | < 1.8s |
 
-### Immagini
+### Images
 
-- [ ] Formato moderno (WebP, AVIF)
-- [ ] Dimensioni appropriate (no 4000px per thumbnail)
-- [ ] Lazy loading per immagini below-the-fold
-- [ ] Width/height o aspect-ratio definiti (previene CLS)
+- [ ] Modern format (WebP, AVIF)
+- [ ] Appropriate dimensions (no 4000px for thumbnail)
+- [ ] Lazy loading for below-the-fold images
+- [ ] Width/height or aspect-ratio defined (prevents CLS)
 
-<!-- Adattare al framework usato (es. next/image, nuxt/image) -->
+<!-- Adapt to the framework used (e.g. next/image, nuxt/image) -->
 
 ### JavaScript
 
-- [ ] Bundle size ragionevole (<200KB gzipped ideale)
-- [ ] Code splitting implementato
+- [ ] Reasonable bundle size (<200KB gzipped ideal)
+- [ ] Code splitting implemented
 - [ ] No blocking scripts in `<head>`
-- [ ] Tree shaking funzionante
-- [ ] Dynamic imports per componenti pesanti
+- [ ] Tree shaking working
+- [ ] Dynamic imports for heavy components
 
 ### CSS
 
-- [ ] CSS critico inline (se necessario)
-- [ ] No CSS inutilizzato
-- [ ] CSS purging attivo (Tailwind, PurgeCSS, etc.)
+- [ ] Critical CSS inline (if needed)
+- [ ] No unused CSS
+- [ ] CSS purging active (Tailwind, PurgeCSS, etc.)
 
 ### Caching
 
-- [ ] Cache headers appropriati
-- [ ] Cache lunga per static assets
-- [ ] API responses cachate dove possibile
+- [ ] Appropriate cache headers
+- [ ] Long cache for static assets
+- [ ] API responses cached where possible
 
 ### Server
 
-- [ ] Compression abilitata (gzip/brotli)
-- [ ] CDN per static assets
+- [ ] Compression enabled (gzip/brotli)
+- [ ] CDN for static assets
 
-<!-- Adattare al framework: Server Components (Next.js), Edge rendering, ISR -->
+<!-- Adapt to the framework: Server Components (Next.js), Edge rendering, ISR -->
 
 ---
 
 ## Keyword Targets
 
-<!-- Compilare con la strategia keyword del progetto -->
+<!-- Fill in with the project's keyword strategy -->
 
-| Pagina | Keyword Primaria | Keyword Secondarie |
-|--------|-----------------|-------------------|
+| Page | Primary Keyword | Secondary Keywords |
+|------|-----------------|-------------------|

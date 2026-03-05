@@ -1,40 +1,40 @@
 # {{PROJECT_NAME}} — Backlog
 
-**Ultimo aggiornamento:** [DATA]
+**Last updated:** [DATE]
 
 ---
 
-## Completati
+## Completed
 
-| ID | Cosa | Commit | Sessione |
-|----|------|--------|----------|
-
----
-
-## In attesa di decisione AD
-
-| ID | Cosa | Stato | Note |
-|----|------|-------|------|
+| ID | What | Commit | Session |
+|----|------|--------|---------|
 
 ---
 
-## Backlog attivo
+## Awaiting Art Director decision
 
-Item lavorabili indipendentemente dalle decisioni in sospeso.
-
-| ID | Cosa | Complessita | Dipendenze |
-|----|------|-------------|------------|
+| ID | What | Status | Notes |
+|----|------|--------|-------|
 
 ---
 
-## Decisioni chiuse
+## Active backlog
 
-| # | Decisione | Scelta | Chi | Quando |
-|---|-----------|--------|-----|--------|
+Items that can be worked on independently of pending decisions.
+
+| ID | What | Complexity | Dependencies |
+|----|------|------------|--------------|
 
 ---
 
-## Decisioni aperte
+## Closed decisions
 
-| # | Decisione | Opzioni | Orientamento attuale | Chi decide |
-|---|-----------|---------|---------------------|------------|
+| # | Decision | Choice | Who | When |
+|---|----------|--------|-----|------|
+
+---
+
+## Open decisions
+
+| # | Decision | Options | Current leaning | Who decides |
+|---|----------|---------|-----------------|-------------|

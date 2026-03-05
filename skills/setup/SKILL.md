@@ -1,139 +1,139 @@
 ---
 name: setup
-description: Setup guidato del progetto — compila brief, creative direction e configurazione
+description: Guided project setup — fills brief, creative direction, and configuration
 ---
 
-# Setup — Configurazione guidata
+# Setup — Guided Configuration
 
-Guida interattiva per configurare un nuovo progetto. Compila BRIEF.md, CREATIVE_DIRECTION.md e adatta CLAUDE.md attraverso una conversazione.
+Interactive guide for configuring a new project. Fills BRIEF.md, CREATIVE_DIRECTION.md, and adapts CLAUDE.md through a conversation.
 
-## Quando invocare
+## When to invoke
 
-- Prima sessione operativa su un nuovo progetto
-- Quando BRIEF.md e CREATIVE_DIRECTION.md contengono ancora i placeholder
+- First working session on a new project
+- When BRIEF.md and CREATIVE_DIRECTION.md still contain placeholders
 
-## Azioni
+## Actions
 
 ### 0. Repository
 
-Controlla se il progetto e un repository git (cerca `.git/`).
+Check if the project is a git repository (look for `.git/`).
 
-**Se NO:**
-- "Vuoi che questo progetto sia tracciato e condivisibile? (consigliato)"
-- Se SI: `git init`, primo commit con i file scaffold
-- Se NO: skip — tutto funziona comunque, ma senza sincronizzazione
+**If NO:**
+- "Do you want this project to be tracked and shareable? (recommended)"
+- If YES: `git init`, first commit with the scaffold files
+- If NO: skip — everything works anyway, just without syncing
 
-**Se SI:**
-- "Il progetto e gia un repository git. Perfetto."
-- Controlla se c'e un remote configurato
-- Se NO: "Se vuoi condividere con il team, ti servira un repository su GitHub/GitLab. Vuoi che ne crei uno?" (usa `gh` se disponibile)
+**If YES:**
+- "The project is already a git repository. Perfect."
+- Check if a remote is configured
+- If NO: "If you want to share with the team, you'll need a repository on GitHub/GitLab. Want me to create one?" (use `gh` if available)
 
-### 1. Controlla stato attuale
+### 1. Check current state
 
-Leggi BRIEF.md e CREATIVE_DIRECTION.md. Se sono gia compilati (non contengono placeholder come `[descrizione in una riga]` o `[Da definire dopo benchmark]`), comunica all'utente che il setup e gia stato fatto e chiedi se vuole aggiornare qualcosa di specifico.
+Read BRIEF.md and CREATIVE_DIRECTION.md. If they are already filled in (don't contain placeholders like `[one-line description]` or `[To be defined after benchmark]`), tell the user that setup is already done and ask if they want to update something specific.
 
-Se contengono ancora placeholder, procedi con il setup.
+If they still contain placeholders, proceed with the setup.
 
-### 2. Brief del progetto (BRIEF.md)
+### 2. Project brief (BRIEF.md)
 
-Guida l'utente attraverso ogni sezione, una alla volta. Per ogni domanda, accetta la risposta o "skip" per lasciare il placeholder.
+Guide the user through each section, one at a time. For each question, accept the answer or "skip" to leave the placeholder.
 
-**Sequenza:**
+**Sequence:**
 
-1. **Progetto**
-   - "Descrivi il progetto in una riga — cos'e?"
-   - "Per chi e? (cliente, stakeholder, organizzazione)"
-   - "Qual e l'obiettivo principale?"
+1. **Project**
+   - "Describe the project in one line — what is it?"
+   - "Who is it for? (client, stakeholder, organization)"
+   - "What is the main goal?"
 
 2. **Target**
-   - "Chi sono gli utenti primari? Profilo, bisogni, contesto d'uso."
-   - "Ci sono utenti secondari?"
-   - "Contesto d'uso prevalente? (desktop, mobile, in movimento, etc.)"
+   - "Who are the primary users? Profile, needs, usage context."
+   - "Are there secondary users?"
+   - "Primary usage context? (desktop, mobile, on-the-go, etc.)"
 
 3. **Scope**
-   - "Cosa e incluso nel progetto? (funzionalita, pagine)"
-   - "Cosa e esplicitamente escluso?"
+   - "What's included in the project? (features, pages)"
+   - "What's explicitly excluded?"
 
-4. **Stack tecnico**
+4. **Tech stack**
    - "Framework? (Next.js, Nuxt, Astro, etc.)"
-   - "CMS? (Payload, Sanity, nessuno, etc.)"
+   - "CMS? (Payload, Sanity, none, etc.)"
    - "Hosting? (Vercel, Netlify, etc.)"
-   - "Database? (PostgreSQL, MongoDB, nessuno, etc.)"
-   - "Integrazioni o API esterne?"
+   - "Database? (PostgreSQL, MongoDB, none, etc.)"
+   - "External integrations or APIs?"
 
-5. **Contenuti**
-   - "Monolingua o multilingua? Quali lingue?"
-   - "Struttura pagine prevista? (homepage, chi siamo, blog, etc.)"
-   - "Ci sono contenuti esistenti o va creato tutto?"
-   - "Tono di voce? (formale, tecnico, caldo, diretto, etc.)"
+5. **Content**
+   - "Single language or multilingual? Which languages?"
+   - "Planned page structure? (homepage, about, blog, etc.)"
+   - "Is there existing content or does everything need to be created?"
+   - "Tone of voice? (formal, technical, warm, direct, etc.)"
 
-6. **Riferimenti**
-   - "Competitor o benchmark di riferimento? (link o descrizioni)"
-   - "C'e un moodboard Figma? (link)"
-   - "Brand guidelines esistenti? (link o file)"
+6. **References**
+   - "Competitor or reference benchmarks? (links or descriptions)"
+   - "Is there a Figma moodboard? (link)"
+   - "Existing brand guidelines? (link or file)"
 
-7. **Vincoli**
-   - "Deadline o milestone?"
-   - "Vincoli tecnici? (browser support, accessibilita, performance)"
-   - "Vincoli brand? (elementi non modificabili)"
+7. **Constraints**
+   - "Deadline or milestones?"
+   - "Technical constraints? (browser support, accessibility, performance)"
+   - "Brand constraints? (non-negotiable elements)"
 
-Dopo ogni risposta, aggiorna la sezione corrispondente in BRIEF.md. Aggiorna anche la data "Ultimo aggiornamento".
+After each answer, update the corresponding section in BRIEF.md. Also update the "Last updated" date.
 
-### 3. Direzione creativa (CREATIVE_DIRECTION.md)
+### 3. Creative direction (CREATIVE_DIRECTION.md)
 
-Prosegui con le domande sulla direzione creativa:
+Continue with creative direction questions:
 
-1. **Vincoli di partenza**
-   - "Il logo esiste gia o va creato?"
-   - "Ci sono colori brand definiti? Quali?"
-   - "Come vuoi essere percepito? (posizionamento)"
+1. **Starting constraints**
+   - "Does the logo already exist or does it need to be created?"
+   - "Are there defined brand colors? Which ones?"
+   - "How do you want to be perceived? (positioning)"
 
-2. **Tipografia**
-   - "Ci sono font gia scelti o vanno definiti?"
-   - Se vanno definiti: "Che sensazione vuoi trasmettere? (moderna, classica, tecnica, calda, etc.)"
+2. **Typography**
+   - "Are fonts already chosen or do they need to be defined?"
+   - If they need to be defined: "What feeling do you want to convey? (modern, classic, technical, warm, etc.)"
 
-3. **Mood visivo**
-   - "Hai riferimenti visivi? (siti, immagini, mood)"
-   - "3 aggettivi che descrivono il look che cerchi?"
+3. **Visual mood**
+   - "Do you have visual references? (sites, images, mood)"
+   - "3 adjectives that describe the look you're going for?"
 
-Dopo ogni risposta, aggiorna la sezione corrispondente in CREATIVE_DIRECTION.md.
+After each answer, update the corresponding section in CREATIVE_DIRECTION.md.
 
-### 4. Configurazione CLAUDE.md
+### 4. CLAUDE.md configuration
 
-Leggi CLAUDE.md e verifica se la sezione "Struttura progetto" riflette lo stack dichiarato nel BRIEF.
+Read CLAUDE.md and check if the "Project structure" section reflects the stack declared in the BRIEF.
 
-- Se lo stack e stato definito, proponi una struttura progetto coerente (es. per Next.js: `app/`, `components/`, `lib/`, etc.)
-- Mostra la proposta e chiedi conferma prima di modificare
-- Se l'utente dice "skip", lascia la struttura attuale
+- If the stack was defined, propose a consistent project structure (e.g. for Next.js: `app/`, `components/`, `lib/`, etc.)
+- Show the proposal and ask for confirmation before modifying
+- If the user says "skip", leave the current structure
 
 ### 5. Team
 
-Chiedi: "Quante persone lavorano su questo progetto?"
+Ask: "How many people are working on this project?"
 
-- Se piu di 1: chiedi i nomi (account GitHub) e aggiungili alla lista Team in CLAUDE.md
-- Se 1: la lista Team ha gia una riga, skip
+- If more than 1: ask for names (GitHub accounts) and add them to the Team list in CLAUDE.md
+- If 1: the Team list already has one line, skip
 
-### 6. Riepilogo
+### 6. Summary
 
-Alla fine, mostra un riepilogo:
+At the end, show a summary:
 
 ```
-## Setup completato
+## Setup complete
 
-### Compilato
-- [elenco sezioni compilate]
+### Filled in
+- [list of completed sections]
 
-### Da completare
-- [elenco sezioni saltate, se presenti]
+### To complete
+- [list of skipped sections, if any]
 
-### Prossimi passi
-- Usa `/creative` per esplorare direzioni di design
-- Usa `/playbook` in qualsiasi momento per una guida rapida
-- Chiudi ogni sessione con `/session-end`
+### Next steps
+- Use `/creative` to explore design directions
+- Use `/playbook` anytime for a quick reference
+- Close every session with `/session-end`
 ```
 
-## Note
+## Notes
 
-- Non forzare risposte: se l'utente non ha ancora deciso qualcosa, "skip" e perfettamente valido
-- Raggruppa le domande dove possibile per non essere troppo verboso (es. tutto il blocco "Stack tecnico" puo essere una domanda sola se l'utente e sintetico)
-- Adatta il livello di dettaglio all'utente: se risponde in modo conciso, sii conciso. Se elabora, approfondisci.
+- Don't force answers: if the user hasn't decided something yet, "skip" is perfectly valid
+- Group questions where possible to avoid being too verbose (e.g. the entire "Tech stack" block can be one question if the user is concise)
+- Adapt the level of detail to the user: if they answer concisely, be concise. If they elaborate, go deeper.

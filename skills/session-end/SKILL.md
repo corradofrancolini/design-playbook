@@ -1,117 +1,117 @@
 ---
 name: session-end
-description: Chiude la sessione creando handoff, session log, e proponendo salvataggio
+description: Closes the session by creating handoff, session log, and proposing to save
 ---
 
 # Session End
 
-L'utente sta per chiudere la sessione. Devi creare l'handoff, il session log e proporre di salvare.
+The user is about to close the session. You must create the handoff, the session log, and propose to save.
 
-## Fase 0 — Identificazione
+## Phase 0 — Identification
 
-Se non conosci il nome dell'utente dalla conversazione:
-1. Controlla la lista Team in CLAUDE.md
-2. Chiedi: "Con che nome salvo questa sessione?"
-3. Fallback: usa `git config user.name` se disponibile
+If you don't know the user's name from the conversation:
+1. Check the Team list in CLAUDE.md
+2. Ask: "What name should I use for this session?"
+3. Fallback: use `git config user.name` if available
 
-Usa il nome per i filename e il campo Autore.
+Use the name for filenames and the Author field.
 
-## Fase 1 — Leggi lo stato
+## Phase 1 — Read current state
 
-Prima di creare l'handoff, leggi il file piu recente in `docs/handoffs/` per capire da dove si era partiti (potrebbe essere di un'altra persona).
+Before creating the handoff, read the most recent file in `docs/handoffs/` to understand where things left off (it may be from a different person).
 
-## Fase 2 — Crea handoff
+## Phase 2 — Create handoff
 
-Crea un nuovo file in `docs/handoffs/` con naming: `YYYY-MM-DD_HH-MM_nome.md`
+Create a new file in `docs/handoffs/` with naming: `YYYY-MM-DD_HH-MM_name.md`
 
-Contenuto del file:
+File contents:
 
 ```markdown
-# Handoff — [DATA] [ORA]
+# Handoff — [DATE] [TIME]
 
-**Autore:** [nome]
-
----
-
-## Stato Attuale
-
-- [cosa funziona]
-- [cosa e in progress]
-- [cosa e bloccato]
+**Author:** [name]
 
 ---
 
-## Lavoro Completato
+## Current State
+
+- [what works]
+- [what's in progress]
+- [what's blocked]
+
+---
+
+## Completed Work
 
 1. [Task 1]
 2. [Task 2]
 
 ---
 
-## Prossimo Step Immediato
+## Immediate Next Step
 
-- [1 azione concreta]
-
----
-
-## Problemi Aperti
-
-[lista o "Nessuno"]
+- [1 concrete action]
 
 ---
 
-## File Modificati
+## Open Issues
 
-| File | Tipo modifica | Note |
-|------|---------------|------|
-| `path/to/file` | Creato/Modificato | [breve descrizione] |
+[list or "None"]
+
+---
+
+## Modified Files
+
+| File | Change type | Notes |
+|------|-------------|-------|
+| `path/to/file` | Created/Modified | [brief description] |
 ```
 
-## Fase 3 — Crea/Aggiorna Session Log
+## Phase 3 — Create/Update Session Log
 
-Crea `docs/sessions/YYYY-MM-DD_nome.md` usando il template in `docs/sessions/TEMPLATE.md`.
+Create `docs/sessions/YYYY-MM-DD_name.md` using the template in `docs/sessions/TEMPLATE.md`.
 
-Se esiste gia un session log per lo stesso giorno e la stessa persona, aggiungi il lavoro fatto.
+If a session log for the same day and person already exists, append the completed work.
 
-Compila il campo **Autore** con il nome dell'utente.
+Fill in the **Author** field with the user's name.
 
-## Fase 4 — Aggiorna lab/notes.md (se applicabile)
+## Phase 4 — Update lab/notes.md (if applicable)
 
-Se ci sono appunti dalla sessione non ancora annotati, aggiungili.
-Usa la convenzione: `## [DATA] — [nome]` come intestazione del blocco.
+If there are session notes not yet recorded, add them.
+Use the convention: `## [DATE] — [name]` as the block heading.
 
-## Fase 5 — Aggiorna CREATIVE_DIRECTION.md (se applicabile)
+## Phase 5 — Update CREATIVE_DIRECTION.md (if applicable)
 
-Se in questa sessione sono state prese decisioni di design mature, trasferiscile da `lab/notes.md` a `CREATIVE_DIRECTION.md`.
+If mature design decisions were made in this session, transfer them from `lab/notes.md` to `CREATIVE_DIRECTION.md`.
 
-Compila la colonna **Chi** con il nome dell'utente.
+Fill in the **Who** column with the user's name.
 
-## Fase 6 — Salvataggio e sincronizzazione
+## Phase 6 — Save and sync
 
-Se il progetto e un repository git:
+If the project is a git repository:
 
-1. **Mostra** i file modificati in questa sessione (`git status`)
-2. **Chiedi**: "Vuoi salvare i cambiamenti?"
-   - Se SI: proponi un messaggio di salvataggio basato sul lavoro fatto
-     (es. "Aggiornata palette colori e tipografia heading")
-   - Se NO: skip (i file restano modificati localmente)
-3. Se esiste un remote e l'utente ha salvato:
-   - **Chiedi**: "Vuoi sincronizzare con il team?"
-   - Se SI: pull prima (per integrare cambiamenti altrui), poi push
-   - Se ci sono conflitti: spiega in linguaggio semplice cosa e successo
-     e proponi la risoluzione
-   - Se NO: skip (il salvataggio resta locale)
+1. **Show** the files modified in this session (`git status`)
+2. **Ask**: "Do you want to save your changes?"
+   - If YES: propose a save message based on the completed work
+     (e.g. "Updated color palette and heading typography")
+   - If NO: skip (files remain modified locally)
+3. If a remote exists and the user saved:
+   - **Ask**: "Do you want to sync with the team?"
+   - If YES: pull first (to integrate others' changes), then push
+   - If there are conflicts: explain in plain language what happened
+     and propose a resolution
+   - If NO: skip (the save stays local)
 
-**Linguaggio da usare con il team:**
-- "salvare" → git add + commit
-- "sincronizzare" → git pull + push
-- "i cambiamenti di [nome]" → commit altrui
-- "sovrapposizione" → merge conflict
+**Language to use with the team:**
+- "save" → git add + commit
+- "sync" → git pull + push
+- "[name]'s changes" → someone else's commits
+- "overlap" → merge conflict
 
-## Fase 7 — Conferma
+## Phase 7 — Confirmation
 
-Dopo aver completato tutto, conferma all'utente:
-- Quali file sono stati aggiornati
-- Se il lavoro e stato salvato e sincronizzato
-- Riepilogo brevissimo dello stato
-- "Puoi chiudere la sessione."
+After completing everything, confirm to the user:
+- Which files were updated
+- Whether the work was saved and synced
+- Very brief status summary
+- "You can close the session."

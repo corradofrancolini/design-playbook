@@ -1,35 +1,35 @@
 ---
 name: review
-description: Code review qualita, pattern e best practice
+description: Code review for quality, patterns, and best practices
 ---
 
 # Code Review
 
-Agente specializzato in revisione codice.
+Agent specialized in code review.
 
-## Contesto
+## Context
 
-Lo stack tecnologico del progetto va definito nella prima sessione operativa. Questa skill si adatta allo stack scelto.
+The project's tech stack should be defined in the first working session. This skill adapts to the chosen stack.
 
-## Quando invocare
+## When to invoke
 
-- Prima di committare modifiche significative
-- Dopo aver scritto un nuovo componente o modulo
-- Per verificare pattern e best practice
-- Per identificare problemi di performance/sicurezza
+- Before committing significant changes
+- After writing a new component or module
+- To verify patterns and best practices
+- To identify performance/security issues
 
-## Azioni
+## Actions
 
-### 1. Identifica scope
+### 1. Identify scope
 
-Chiedi all'utente:
-- **File specifici**: path o glob pattern
-- **Ultimo commit**: review delle modifiche recenti
-- **Area**: componenti, API, styling, etc.
+Ask the user:
+- **Specific files**: path or glob pattern
+- **Latest commit**: review recent changes
+- **Area**: components, API, styling, etc.
 
-### 2. Esegui review
+### 2. Run review
 
-Leggi i file e verifica le categorie sotto.
+Read the files and check the categories below.
 
 ### 3. Report
 
@@ -37,125 +37,125 @@ Leggi i file e verifica le categorie sotto.
 ## Code Review
 
 **Scope**: [file/area]
-**Data**: [data]
+**Date**: [date]
 
 ### Summary
 
-| Categoria | Issues |
-|-----------|--------|
-| Correttezza | 0 |
+| Category | Issues |
+|----------|--------|
+| Correctness | 0 |
 | Performance | 0 |
-| Sicurezza | 0 |
-| Manutenibilita | 0 |
-| Accessibilita | 0 |
+| Security | 0 |
+| Maintainability | 0 |
+| Accessibility | 0 |
 
 ### Issues
 
-#### [Alta] Correttezza — [titolo]
-**File**: `path/to/file:linea`
-**Problema**: [descrizione]
-**Fix proposto**: [codice]
+#### [High] Correctness — [title]
+**File**: `path/to/file:line`
+**Problem**: [description]
+**Proposed fix**: [code]
 
-### Suggerimenti (non bloccanti)
+### Suggestions (non-blocking)
 - ...
 ```
 
-### 4. Proponi fix
+### 4. Propose fixes
 
-Per ogni issue, proponi la modifica e **attendi conferma** prima di applicarla.
+For each issue, propose the change and **wait for confirmation** before applying it.
 
 ---
 
-## Checklist Review
+## Review Checklist
 
-### Correttezza
+### Correctness
 
-- [ ] Logica corretta, edge case gestiti
-- [ ] Error handling presente e appropriato
-- [ ] Types corretti, no `any` non necessari
-- [ ] Null/undefined checks dove necessario
-- [ ] Async/await usato correttamente
+- [ ] Logic correct, edge cases handled
+- [ ] Error handling present and appropriate
+- [ ] Types correct, no unnecessary `any`
+- [ ] Null/undefined checks where needed
+- [ ] Async/await used correctly
 
 ### Performance
 
-- [ ] No re-render non necessari (inline objects, inline functions)
-- [ ] Memo/useMemo/useCallback dove appropriato
-- [ ] No blocking operations nel render path
-- [ ] Immagini ottimizzate
-- [ ] Bundle size considerato (specific imports vs barrel)
+- [ ] No unnecessary re-renders (inline objects, inline functions)
+- [ ] Memo/useMemo/useCallback where appropriate
+- [ ] No blocking operations in render path
+- [ ] Images optimized
+- [ ] Bundle size considered (specific imports vs barrel)
 
-### Sicurezza
+### Security
 
-- [ ] No secrets hardcoded
-- [ ] Input validation presente
-- [ ] SQL injection prevenuta (parameterized queries)
-- [ ] XSS prevenuto (escaped output, no dangerouslySetInnerHTML)
-- [ ] CSRF considerato per mutations
-- [ ] Auth checks su route protette
+- [ ] No hardcoded secrets
+- [ ] Input validation present
+- [ ] SQL injection prevented (parameterized queries)
+- [ ] XSS prevented (escaped output, no dangerouslySetInnerHTML)
+- [ ] CSRF considered for mutations
+- [ ] Auth checks on protected routes
 
-### Manutenibilita
+### Maintainability
 
-- [ ] Naming chiaro e consistente
-- [ ] Funzioni/componenti non troppo lunghi (<100 righe ideale)
+- [ ] Clear and consistent naming
+- [ ] Functions/components not too long (<100 lines ideal)
 - [ ] Single responsibility principle
-- [ ] DRY senza over-engineering
-- [ ] Comments solo dove necessari (self-documenting code)
-- [ ] No magic numbers/strings (usare costanti)
+- [ ] DRY without over-engineering
+- [ ] Comments only where necessary (self-documenting code)
+- [ ] No magic numbers/strings (use constants)
 
-### Accessibilita
+### Accessibility
 
 - [ ] Semantic HTML
-- [ ] ARIA attributes corretti
-- [ ] Keyboard navigation funzionante
-- [ ] Focus management appropriato
-- [ ] Alt text per immagini
+- [ ] Correct ARIA attributes
+- [ ] Keyboard navigation working
+- [ ] Appropriate focus management
+- [ ] Alt text for images
 
-<!-- Sezioni stack-specifiche: decommentare quelle rilevanti per il progetto. -->
+<!-- Stack-specific sections: uncomment those relevant to the project. -->
 
 <!--
 ### React / Next.js
 
-- [ ] Server vs Client Components scelti appropriatamente
-- [ ] `'use client'` solo dove necessario
-- [ ] Metadata esportata per SEO
-- [ ] Loading/error states gestiti
-- [ ] Suspense boundaries dove appropriato
+- [ ] Server vs Client Components chosen appropriately
+- [ ] `'use client'` only where needed
+- [ ] Metadata exported for SEO
+- [ ] Loading/error states handled
+- [ ] Suspense boundaries where appropriate
 -->
 
 <!--
 ### Vue / Nuxt
 
-- [ ] Composition API usata consistentemente
-- [ ] Uso corretto di computed vs methods
-- [ ] Stato reattivo gestito correttamente
-- [ ] SEO meta gestito via useHead/useSeoMeta
-- [ ] Lazy loading per route e componenti
+- [ ] Composition API used consistently
+- [ ] Correct use of computed vs methods
+- [ ] Reactive state managed correctly
+- [ ] SEO meta handled via useHead/useSeoMeta
+- [ ] Lazy loading for routes and components
 -->
 
 <!--
 ### Tailwind
 
-- [ ] Classi ordinate (layout > spacing > typography > colors > effects)
-- [ ] Design tokens usati al posto di valori arbitrari
-- [ ] Classi responsive consistenti
-- [ ] Dark mode considerato (se applicabile)
+- [ ] Classes ordered (layout > spacing > typography > colors > effects)
+- [ ] Design tokens used instead of arbitrary values
+- [ ] Responsive classes consistent
+- [ ] Dark mode considered (if applicable)
 -->
 
 <!--
 ### TypeScript
 
-- [ ] Types espliciti per props e return values
-- [ ] No `as` cast non necessari
-- [ ] Discriminated unions per stati
-- [ ] Generics usati appropriatamente
+- [ ] Explicit types for props and return values
+- [ ] No unnecessary `as` casts
+- [ ] Discriminated unions for states
+- [ ] Generics used appropriately
 -->
 
 <!--
 ### Python
 
-- [ ] Type hints presenti
-- [ ] Docstrings per funzioni pubbliche
+- [ ] Type hints present
+- [ ] Docstrings for public functions
 - [ ] No bare `except` clauses
-- [ ] Context managers per risorse
-- [ ] Async/sync boundaries chiare
+- [ ] Context managers for resources
+- [ ] Async/sync boundaries clear
 -->

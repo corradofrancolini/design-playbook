@@ -1,299 +1,299 @@
 ---
 name: accessibility
-description: Audit accessibilita WCAG 2.1/2.2 AA
+description: WCAG 2.1/2.2 AA accessibility audit
 ---
 
 # Accessibility Audit
 
-Agente specializzato in accessibilita web. Verifica conformita WCAG 2.1/2.2 livello AA.
+Agent specialized in web accessibility. Checks conformance with WCAG 2.1/2.2 Level AA.
 
-## Quando invocare
+## When to invoke
 
-- Prima di rilasciare una pagina/componente
-- Dopo modifiche significative all'UI
-- Per audit periodici
-- Quando aggiungi contenuti multimediali
+- Before releasing a page/component
+- After significant UI changes
+- For periodic audits
+- When adding multimedia content
 
-## Azioni
+## Actions
 
-### 1. Identifica scope
+### 1. Identify scope
 
-Chiedi all'utente cosa verificare:
-- **Componente**: nome file
-- **Pagina**: route
-- **Intero sito**: audit completo
+Ask the user what to check:
+- **Component**: file name
+- **Page**: route
+- **Entire site**: full audit
 
-### 2. Esegui audit
+### 2. Run audit
 
-Usa la checklist sotto. Per ogni sezione, verifica i criteri applicabili.
+Use the checklist below. For each section, check the applicable criteria.
 
 ### 3. Report
 
 ```
 ## Accessibility Audit
 
-**Scope**: [componente/pagina]
-**Data**: [data]
-**Livello target**: WCAG 2.1 AA
+**Scope**: [component/page]
+**Date**: [date]
+**Target level**: WCAG 2.1 AA
 
-### Risultati
+### Results
 
-| Categoria | Pass | Fail | N/A |
-|-----------|------|------|-----|
+| Category | Pass | Fail | N/A |
+|----------|------|------|-----|
 | Visual Design | 0 | 0 | 0 |
 | Interactions | 0 | 0 | 0 |
 | Focus & Keyboard | 0 | 0 | 0 |
 | Navigation | 0 | 0 | 0 |
 | Content | 0 | 0 | 0 |
 
-### Issues trovati
+### Issues found
 
-#### [Critico] X.X.X - [titolo criterio]
-- **Dove**: [componente/sezione]
-- **Problema**: [descrizione]
-- **Fix proposto**: [soluzione]
+#### [Critical] X.X.X - [criterion title]
+- **Where**: [component/section]
+- **Problem**: [description]
+- **Proposed fix**: [solution]
 ```
 
 ### 4. Visual Fix Picker
 
-Genera una pagina HTML standalone per visualizzare ogni issue con le opzioni di fix affiancate, permettendo di scegliere visivamente la soluzione preferita.
+Generate a standalone HTML page to visualize each issue with side-by-side fix options, allowing you to visually choose the preferred solution.
 
 **Output**: `lab/audits/accessibility-fixes-visual.html`
 
-**Struttura pagina**:
-- Header con titolo e legenda
-- Card per ogni issue identificato
-- Ogni card contiene:
-  - Titolo issue + criterio WCAG
-  - Descrizione problema
-  - Grid con opzioni: **Attuale** | **Fix A** | **Fix B**
-  - Componente renderizzato in ogni cella con gli stili del progetto
-  - Label descrittiva sotto ogni opzione
+**Page structure**:
+- Header with title and legend
+- Card for each identified issue
+- Each card contains:
+  - Issue title + WCAG criterion
+  - Problem description
+  - Grid with options: **Current** | **Fix A** | **Fix B**
+  - Component rendered in each cell with the project's styles
+  - Descriptive label under each option
 
-**Tecnologie**:
+**Technologies**:
 - Standalone HTML (no build step)
-- CSS framework CDN (adattare al progetto)
-- Font del progetto via CDN o riferimento locale
-- CSS custom con palette del progetto
-- Vanilla JavaScript per selezione interattiva (opzionale)
+- CSS framework CDN (adapt to project)
+- Project fonts via CDN or local reference
+- Custom CSS with project palette
+- Vanilla JavaScript for interactive selection (optional)
 
-**Esempio struttura card**:
+**Example card structure**:
 ```html
 <div class="issue-card">
-  <h3>[Critico] 1.4.1 -- Link non distinguibili senza colore</h3>
-  <p>I link si distinguono dal testo circostante solo per il colore.</p>
+  <h3>[Critical] 1.4.1 -- Links not distinguishable without color</h3>
+  <p>Links are only distinguishable from surrounding text by color.</p>
 
   <div class="options-grid">
     <div class="option current">
-      <div class="preview">Esplora &rarr;</div>
-      <span class="label">Attuale (solo colore)</span>
+      <div class="preview">Explore &rarr;</div>
+      <span class="label">Current (color only)</span>
     </div>
     <div class="option fix-a">
-      <div class="preview"><u>Esplora &rarr;</u></div>
-      <span class="label">Fix A: sempre underline</span>
+      <div class="preview"><u>Explore &rarr;</u></div>
+      <span class="label">Fix A: always underline</span>
     </div>
     <div class="option fix-b">
-      <div class="preview"><b>Esplora &rarr;</b></div>
-      <span class="label">Fix B: bold + freccia</span>
+      <div class="preview"><b>Explore &rarr;</b></div>
+      <span class="label">Fix B: bold + arrow</span>
     </div>
   </div>
 </div>
 ```
 
-**Dopo la generazione**: aprire il file nel browser per review visiva.
+**After generation**: open the file in the browser for visual review.
 
-### 5. Proponi fix
+### 5. Propose fixes
 
-Proponi le modifiche specifiche e **attendi conferma** prima di applicarle.
+Propose the specific changes and **wait for confirmation** before applying them.
 
 ---
 
-## Checklist Accessibilita
+## Accessibility Checklist
 
-### Visual Design — Colore
+### Visual Design — Color
 
-- [ ] **1.4.1** Il colore NON e l'unico modo per comunicare informazioni (errori, stati, grafici)
-- [ ] **1.4.3** Contrasto testo:
-  - 4.5:1 per testo < 24px (o < 19px bold)
-  - 3:1 per testo >= 24px (o >= 19px bold)
-- [ ] **1.4.11** Componenti UI non-testo: almeno 3:1 contro bordi e colori adiacenti
-- [ ] **1.4.11** Stato focus visibile: almeno 3:1 contro sfondo
-- [ ] Combinazioni colore documentate per ogni stato (success, error, warning, info)
+- [ ] **1.4.1** Color is NOT the only way to convey information (errors, states, charts)
+- [ ] **1.4.3** Text contrast:
+  - 4.5:1 for text < 24px (or < 19px bold)
+  - 3:1 for text >= 24px (or >= 19px bold)
+- [ ] **1.4.11** Non-text UI components: at least 3:1 against borders and adjacent colors
+- [ ] **1.4.11** Visible focus state: at least 3:1 against background
+- [ ] Color combinations documented for each state (success, error, warning, info)
 
-### Visual Design — Tipografia
+### Visual Design — Typography
 
-- [ ] **1.4.4** Testo ingrandibile al 200% senza perdita di contenuto/funzionalita
-  - No altezze fisse su bottoni
-  - No overflow: hidden su box di testo
-  - Layout si adatta a font grandi
-  - Gerarchia mantenuta (H1 > H2 > H3...)
-  - No troncamento quando il testo cresce
-- [ ] **1.4.12** Supporto text spacing personalizzato:
-  - Line height almeno 1.5x font size
-  - Paragraph spacing almeno 2x font size
-  - Letter spacing almeno 0.12x font size
-  - Word spacing almeno 0.16x font size
+- [ ] **1.4.4** Text resizable to 200% without loss of content/functionality
+  - No fixed heights on buttons
+  - No overflow: hidden on text boxes
+  - Layout adapts to large fonts
+  - Hierarchy maintained (H1 > H2 > H3...)
+  - No truncation when text grows
+- [ ] **1.4.12** Custom text spacing support:
+  - Line height at least 1.5x font size
+  - Paragraph spacing at least 2x font size
+  - Letter spacing at least 0.12x font size
+  - Word spacing at least 0.16x font size
 
-### Tipografia — Best Practice
+### Typography — Best Practices
 
-- [ ] Testo selezionabile (per traduzioni, copia)
-- [ ] Evitare font ultra-light e light
-- [ ] Evitare testo giustificato, preferire allineamento a sinistra
-- [ ] Larghezza contenuto limitata (~80 caratteri per script latini)
-- [ ] Evitare italic e ALL CAPS per passaggi lunghi
-- [ ] Underline solo per link
-- [ ] Font leggibile: caratteri distinguibili (iIlL10oO)
+- [ ] Text selectable (for translations, copy)
+- [ ] Avoid ultra-light and light fonts
+- [ ] Avoid justified text, prefer left-aligned
+- [ ] Content width limited (~80 characters for Latin scripts)
+- [ ] Avoid italic and ALL CAPS for long passages
+- [ ] Underline only for links
+- [ ] Readable font: distinguishable characters (iIlL10oO)
 
-### Interazioni — Bottoni e Link
+### Interactions — Buttons and Links
 
-- [ ] **1.4.1** Link in blocchi di testo distinguibili non solo per colore (underline)
-- [ ] **2.4.4** Label chiare e descrittive — l'utente capisce cosa succede al click
-- [ ] **3.2.4** Stessa destinazione = stessa label consistente
-- [ ] **1.3.3** Evitare istruzioni basate su forma/colore ("clicca il bottone rosso")
-- [ ] Link a file: indicare formato e dimensione
-- [ ] **3.2.5** Evitare apertura in nuova tab; se necessario, avvisare l'utente
-- [ ] Stati link documentati: default, hover, focus, active, visited
-- [ ] Stati bottone documentati: default, hover, focus, active, disabled, selected, loading
-- [ ] **2.5.8** Target size almeno 24x24 CSS pixels
-- [ ] **2.5.5** Touch target mobile almeno 44x44 CSS pixels (AAA)
-- [ ] Spacing tra target touch almeno 8px
+- [ ] **1.4.1** Links in text blocks distinguishable not only by color (underline)
+- [ ] **2.4.4** Clear and descriptive labels — the user understands what happens on click
+- [ ] **3.2.4** Same destination = same consistent label
+- [ ] **1.3.3** Avoid instructions based on shape/color ("click the red button")
+- [ ] Links to files: indicate format and size
+- [ ] **3.2.5** Avoid opening in new tab; if necessary, warn the user
+- [ ] Link states documented: default, hover, focus, active, visited
+- [ ] Button states documented: default, hover, focus, active, disabled, selected, loading
+- [ ] **2.5.8** Target size at least 24x24 CSS pixels
+- [ ] **2.5.5** Mobile touch target at least 44x44 CSS pixels (AAA)
+- [ ] Spacing between touch targets at least 8px
 
-### Interazioni — Form (3.3)
+### Interactions — Forms (3.3)
 
-- [ ] Stati form documentati: default vuoto, default compilato, focused, disabled, checked, unchecked
-- [ ] Stati status documentati: default, error, success, warning, info
-- [ ] **1.3.1** Tutti i campi hanno label visibile (o programmatica)
-- [ ] Label collegata al campo (for + id)
-- [ ] Label NON e un placeholder
-- [ ] **3.3.2** Label chiara su come compilare il campo
-- [ ] Label vicina al campo
-- [ ] **3.2.4** Label consistenti nell'interfaccia
-- [ ] **3.3.2** Campi obbligatori indicati
-- [ ] **3.3.2** Formato atteso chiaro (con esempi)
-- [ ] **3.3.4** Per dati legali/finanziari: possibilita di annullare, rivedere, confermare
-- [ ] **1.4.1** Errori NON mostrati solo con colore
-- [ ] **3.3.1** Messaggi errore chiari e comprensibili
-- [ ] **3.3.3** Suggerimenti di correzione
-- [ ] **3.3.7** Non richiedere lo stesso input due volte nella stessa sessione
-- [ ] **3.3.8** Autenticazione: permettere copia/incolla password, 2FA, biometrico
-- [ ] **1.3.1** Campi correlati raggruppati visivamente e programmaticamente
+- [ ] Form states documented: default empty, default filled, focused, disabled, checked, unchecked
+- [ ] Status states documented: default, error, success, warning, info
+- [ ] **1.3.1** All fields have visible (or programmatic) label
+- [ ] Label linked to field (for + id)
+- [ ] Label is NOT a placeholder
+- [ ] **3.3.2** Clear label on how to fill in the field
+- [ ] Label close to field
+- [ ] **3.2.4** Consistent labels across the interface
+- [ ] **3.3.2** Required fields indicated
+- [ ] **3.3.2** Expected format clear (with examples)
+- [ ] **3.3.4** For legal/financial data: ability to cancel, review, confirm
+- [ ] **1.4.1** Errors NOT shown only with color
+- [ ] **3.3.1** Error messages clear and understandable
+- [ ] **3.3.3** Correction suggestions
+- [ ] **3.3.7** Don't require the same input twice in the same session
+- [ ] **3.3.8** Authentication: allow copy/paste password, 2FA, biometric
+- [ ] **1.3.1** Related fields grouped visually and programmatically
 
-### Focus e Tastiera
+### Focus and Keyboard
 
 #### Skip Link
 
-- [ ] **2.4.1** Skip link presente per bypassare contenuto ripetuto (nav)
-- [ ] Skip link e il primo elemento focusable della pagina
+- [ ] **2.4.1** Skip link present to bypass repeated content (nav)
+- [ ] Skip link is the first focusable element on the page
 
-#### Ordine Focus
+#### Focus Order
 
-- [ ] Stato focus documentato per elementi interattivi
-- [ ] **2.4.3** Ordine focus logico a livello di pagina
-- [ ] **2.4.3** Ordine focus logico a livello di componente
-- [ ] **2.1.2** Nessun focus trap (l'utente puo sempre uscire)
-- [ ] **2.4.11** Elemento con focus mai completamente coperto da altro contenuto
+- [ ] Focus state documented for interactive elements
+- [ ] **2.4.3** Logical focus order at page level
+- [ ] **2.4.3** Logical focus order at component level
+- [ ] **2.1.2** No focus trap (user can always exit)
+- [ ] **2.4.11** Focused element never completely covered by other content
 
-#### Interazioni Componenti
+#### Component Interactions
 
-- [ ] **2.1.1** Tutti gli elementi interattivi raggiungibili e attivabili via tastiera
-- [ ] **3.2.1** Nessun cambio contesto al focus (solo all'attivazione)
-- [ ] **2.4.3** Ordine focus significativo nel componente
-- [ ] **1.4.13** Componente dismissibile senza spostare il focus (es. Escape)
-- [ ] **2.1.2** Nessun keyboard trap
-- [ ] **1.4.13** Contenuto su hover/focus: dismissibile, persistente, non scompare
+- [ ] **2.1.1** All interactive elements reachable and activatable via keyboard
+- [ ] **3.2.1** No context change on focus (only on activation)
+- [ ] **2.4.3** Meaningful focus order within component
+- [ ] **1.4.13** Component dismissible without moving focus (e.g. Escape)
+- [ ] **2.1.2** No keyboard trap
+- [ ] **1.4.13** Content on hover/focus: dismissible, persistent, doesn't disappear
 
-#### Gesti e Trascinamento
+#### Gestures and Dragging
 
-- [ ] **2.5.1** Alternative a gesti complessi (multi-finger, path-based)
-- [ ] **2.5.1** Alternativa single-pointer per trascinamento
-- [ ] **2.5.4** Alternativa UI per motion actuation (shake dispositivo, etc.)
-- [ ] Indicazione visiva per scroll orizzontale
+- [ ] **2.5.1** Alternatives to complex gestures (multi-finger, path-based)
+- [ ] **2.5.1** Single-pointer alternative for dragging
+- [ ] **2.5.4** UI alternative for motion actuation (device shake, etc.)
+- [ ] Visual indication for horizontal scroll
 
-### Navigazione
+### Navigation
 
-#### Ordine Lettura Screen Reader
+#### Screen Reader Reading Order
 
-- [ ] **1.3.2** Ordine lettura documentato se diverso dal visivo (caso raro)
+- [ ] **1.3.2** Reading order documented if different from visual (rare case)
 
-#### Navigazione Cross-Page
+#### Cross-Page Navigation
 
-- [ ] **3.2.3** Navigazione consistente nel sito
-- [ ] **2.4.5** Piu modi per trovare contenuto (nav + ricerca, nav + sitemap)
-- [ ] **3.2.6** Funzione aiuto in posizione consistente
+- [ ] **3.2.3** Consistent navigation across the site
+- [ ] **2.4.5** Multiple ways to find content (nav + search, nav + sitemap)
+- [ ] **3.2.6** Help function in consistent position
 
 #### Headings
 
-- [ ] **2.4.6** Heading consistenti e descrittivi
-- [ ] **1.3.1** Ordine heading logico (no h2 dopo h3)
-- [ ] **1.3.1** Usare tag Hn, non paragrafi stilizzati come heading
-- [ ] **1.3.1** Non usare heading per styling
-- [ ] Un solo H1 per pagina
-- [ ] No salti di livello (h1 -> h4)
+- [ ] **2.4.6** Consistent and descriptive headings
+- [ ] **1.3.1** Logical heading order (no h2 after h3)
+- [ ] **1.3.1** Use Hn tags, not paragraphs styled as headings
+- [ ] **1.3.1** Don't use headings for styling
+- [ ] One H1 per page
+- [ ] No level skips (h1 -> h4)
 
-#### Titoli e Landmark
+#### Titles and Landmarks
 
-- [ ] **2.4.2** Title HTML informativo e unico per pagina
-- [ ] **1.3.1** Landmark regions identificate (header, nav, main, footer)
+- [ ] **2.4.2** Informative and unique HTML title per page
+- [ ] **1.3.1** Landmark regions identified (header, nav, main, footer)
 
-### Contenuto
+### Content
 
-#### Accesso Screen Reader
+#### Screen Reader Access
 
-- [ ] **1.1.1** Screen reader puo navigare tutto il contenuto
-- [ ] **1.4.5** Testo usato invece di immagini di testo
-- [ ] **1.1.1** Alternative per contenuto non-testo
+- [ ] **1.1.1** Screen reader can navigate all content
+- [ ] **1.4.5** Text used instead of images of text
+- [ ] **1.1.1** Alternatives for non-text content
 
-#### Immagini
+#### Images
 
-- [ ] **1.1.1** Alt text per immagini non decorative
-- [ ] **1.1.1** Alt text per icone senza label visibile
-- [ ] Descrizione dettagliata per immagini complesse (infografiche, data viz)
+- [ ] **1.1.1** Alt text for non-decorative images
+- [ ] **1.1.1** Alt text for icons without visible label
+- [ ] Detailed description for complex images (infographics, data viz)
 
 #### Multimedia
 
-- [ ] Evitare autoplay dei media
-- [ ] **1.2.1** Trascrizione per solo audio
-- [ ] **1.2.1** Descrizione/traccia audio per solo video
-- [ ] **1.2.2** Sottotitoli per video con audio
-- [ ] **1.2.3** Alternativa testuale descrittiva per video
-- [ ] **1.2.5** Audio descrizione per video (AA)
-- [ ] **1.2.4** Sottotitoli per audio live
-- [ ] **1.4.2** Controllo per audio che parte automaticamente (>3s)
-- [ ] **1.3.3** Alternativa visiva per informazioni audio
+- [ ] Avoid media autoplay
+- [ ] **1.2.1** Transcript for audio-only
+- [ ] **1.2.1** Description/audio track for video-only
+- [ ] **1.2.2** Captions for video with audio
+- [ ] **1.2.3** Descriptive text alternative for video
+- [ ] **1.2.5** Audio description for video (AA)
+- [ ] **1.2.4** Captions for live audio
+- [ ] **1.4.2** Control for auto-playing audio (>3s)
+- [ ] **1.3.3** Visual alternative for audio information
 
-#### Grafici e Diagrammi
+#### Charts and Diagrams
 
-- [ ] **1.4.1** Informazioni non trasmesse solo tramite colore
-- [ ] **1.4.3** Testo nei grafici con contrasto sufficiente
-- [ ] **1.4.11** Elementi grafici con 3:1 contro adiacenti
-- [ ] **1.1.1** Alternativa testuale per grafici
-- [ ] Navigazione tastiera per grafici interattivi
+- [ ] **1.4.1** Information not conveyed only through color
+- [ ] **1.4.3** Text in charts with sufficient contrast
+- [ ] **1.4.11** Graphic elements with 3:1 against adjacent
+- [ ] **1.1.1** Text alternative for charts
+- [ ] Keyboard navigation for interactive charts
 
-#### Tabelle
+#### Tables
 
-- [ ] **1.3.1** Tabelle semplici: caption + heading riga/colonna
-- [ ] **1.3.1** Tabelle complesse: caption + heading + sommario
-- [ ] Navigazione riga/colonna con tecnologia assistiva
-- [ ] NO tabelle per layout
+- [ ] **1.3.1** Simple tables: caption + row/column headings
+- [ ] **1.3.1** Complex tables: caption + headings + summary
+- [ ] Row/column navigation with assistive technology
+- [ ] NO tables for layout
 
-#### Orientamento Schermo
+#### Screen Orientation
 
-- [ ] **1.3.4** Non bloccare cambio orientamento
-- [ ] Supporto portrait e landscape
-- [ ] Contenuto visibile in entrambi gli orientamenti
+- [ ] **1.3.4** Don't lock orientation change
+- [ ] Support portrait and landscape
+- [ ] Content visible in both orientations
 
-#### Movimento e Flash
+#### Motion and Flash
 
-- [ ] **2.2.2** Controllo per contenuto in movimento (>5s): play/stop/nascondi
-- [ ] **2.3.3** Alternativa reduced-motion per animazioni
-- [ ] **2.3.1** Nessun flash >3 volte/secondo
+- [ ] **2.2.2** Control for moving content (>5s): play/stop/hide
+- [ ] **2.3.3** Reduced-motion alternative for animations
+- [ ] **2.3.1** No flash >3 times/second
 
-#### Limiti di Tempo
+#### Time Limits
 
-- [ ] **2.2.1** Controllo limiti di tempo: sopprimibile, estendibile, o avviso 20s
+- [ ] **2.2.1** Time limit control: suppressible, extendable, or 20s warning
 
-#### Notifiche e Stato
+#### Notifications and State
 
-- [ ] Scelta modalita notifica (visiva, sonora, vibrazione)
-- [ ] **4.1.3** Screen reader informato di cambiamenti contenuto/layout
-- [ ] Transizioni pagina/popup identificate per screen reader
+- [ ] Choice of notification mode (visual, audio, vibration)
+- [ ] **4.1.3** Screen reader informed of content/layout changes
+- [ ] Page/popup transitions identified for screen reader

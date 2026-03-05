@@ -1,9 +1,9 @@
-# Note di lavoro
+# Working notes
 
-> Convenzione: ogni blocco di note inizia con ## [DATA] — [nome]
+> Convention: each block of notes starts with ## [DATE] — [name]
 
-Appunti grezzi, benchmark, decisioni tipografiche, riferimenti.
+Raw notes, benchmarks, typographic decisions, references.
 
 ---
 
-[Le note si accumulano qui durante le sessioni]
+[Notes accumulate here during sessions]

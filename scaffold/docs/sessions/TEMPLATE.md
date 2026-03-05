@@ -1,14 +1,14 @@
-# Session Log - [DATA]
+# Session Log - [DATE]
 
-**Autore:** [nome]
+**Author:** [name]
 
-## Contesto Iniziale
-- **Richiesta utente:** [cosa ha chiesto di fare]
-- **Stato progetto:** [da ultimo handoff in docs/handoffs/]
+## Initial Context
+- **User request:** [what was asked]
+- **Project state:** [from latest handoff in docs/handoffs/]
 
 ---
 
-## Lavoro Completato
+## Completed Work
 
 1. [Task 1]
 2. [Task 2]
@@ -16,42 +16,42 @@
 
 ---
 
-## File Modificati
+## Modified Files
 
-| File | Tipo modifica | Note |
-|------|---------------|------|
-| `path/to/file` | Creato/Modificato/Eliminato | [breve descrizione] |
-
----
-
-## Decisioni Prese
-
-| Decisione | Rationale |
-|-----------|-----------|
-| [cosa e stato deciso] | [perche] |
+| File | Change type | Notes |
+|------|-------------|-------|
+| `path/to/file` | Created/Modified/Deleted | [brief description] |
 
 ---
 
-## Problemi Riscontrati
+## Decisions Made
 
-| Problema | Risolto? | Note |
-|----------|----------|------|
-| [descrizione] | Si/No/Parziale | [come risolto o status] |
+| Decision | Rationale |
+|----------|-----------|
+| [what was decided] | [why] |
 
 ---
 
-## Handoff per Prossima Sessione
+## Issues Encountered
 
-**Salvato anche in docs/handoffs/**
+| Issue | Resolved? | Notes |
+|-------|-----------|-------|
+| [description] | Yes/No/Partial | [how resolved or status] |
 
-### Stato Attuale
-- [cosa funziona]
-- [cosa e in progress]
-- [cosa e bloccato]
+---
 
-### Prossimo Step Immediato
-- [1 azione concreta]
+## Handoff for Next Session
 
-### File Modificati
-| File | Data | Cosa e cambiato |
-|------|------|-----------------|
+**Also saved in docs/handoffs/**
+
+### Current State
+- [what works]
+- [what's in progress]
+- [what's blocked]
+
+### Immediate Next Step
+- [1 concrete action]
+
+### Modified Files
+| File | Date | What changed |
+|------|------|--------------|

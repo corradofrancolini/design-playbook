@@ -1,5 +1,26 @@
 # Changelog
 
+## [2.0.0] — 2026-03-05
+
+### Added
+- **Multi-user collaboration**: multiple people can work on the same project without conflicts
+- **Handoff directory**: `docs/handoffs/` — one file per session (date, time, author), no overwrites
+- **Identity tracking**: Claude asks name at session start; Team list in CLAUDE.md; `git config` fallback
+- **Git workflow for non-developers**: `/session-end` proposes "save" (commit) and "sync" (push); `/setup` handles `git init`
+- **`assets/` directory**: source materials (brand guidelines, moodboard, client brief), committed and shared
+- **`.playbook-version` file**: version tracking for automatic migration
+- **Automatic migration**: installer detects v1 projects, migrates SESSION_HANDOFF.md content, cleans gitignore
+
+### Changed
+- `SESSION_HANDOFF.md` is now a pointer to `docs/handoffs/` (was the handoff itself)
+- `lab/` is now committed and shared (was gitignored)
+- `.gitignore` only ignores `docs/sessions/` (was `docs/` and `lab/`)
+- `session-end` skill rewritten: 7 phases with identity, handoff directory, git save/sync
+- `setup` skill: added git init step and team size question
+- `playbook` skill: updated for new structure
+- `BACKLOG.md` and `CREATIVE_DIRECTION.md`: added "Chi" column for attribution
+- `docs/sessions/TEMPLATE.md`: added "Autore" field
+
 ## [1.3.0] — 2026-03-04
 
 ### Added

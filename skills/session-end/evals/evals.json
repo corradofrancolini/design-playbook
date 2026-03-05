@@ -1,0 +1,43 @@
+{
+  "skill_name": "session-end",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We're done for today, let's close the session.",
+      "expected_output": "Should create a handoff file in docs/handoffs/ with the correct naming format, summarize completed work, and propose to save",
+      "assertions": [
+        { "text": "Creates a file in docs/handoffs/ with YYYY-MM-DD_HH-MM_name.md format", "type": "contains" },
+        { "text": "Includes Current State, Completed Work, and Immediate Next Step sections", "type": "contains" },
+        { "text": "Asks whether the user wants to save changes", "type": "contains" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "End session. I haven't told you my name yet.",
+      "expected_output": "Should try to identify the user: check Team list in CLAUDE.md, then ask for name, fallback to git config",
+      "assertions": [
+        { "text": "Asks for the user's name or checks CLAUDE.md Team list", "type": "contains" },
+        { "text": "Does NOT use a placeholder like 'unknown' without asking", "type": "contains" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Close the session. The project has a remote repository configured.",
+      "expected_output": "Should ask about saving, then also ask about syncing with the team using designer-friendly language",
+      "assertions": [
+        { "text": "Uses 'save' instead of 'commit'", "type": "contains" },
+        { "text": "Uses 'sync' instead of 'push'", "type": "contains" },
+        { "text": "Asks about syncing with the team after saving", "type": "contains" }
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "End session. Creative decisions about typography were made today.",
+      "expected_output": "Should update CREATIVE_DIRECTION.md with the typography decisions and fill in the Who column",
+      "assertions": [
+        { "text": "Proposes updating CREATIVE_DIRECTION.md", "type": "contains" },
+        { "text": "Fills the Who column with the user's name", "type": "contains" }
+      ]
+    }
+  ]
+}

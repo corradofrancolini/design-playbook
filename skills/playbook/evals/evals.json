@@ -1,0 +1,42 @@
+{
+  "skill_name": "playbook",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "How does this project work?",
+      "expected_output": "Should show the quick reference guide: project state, method summary, available skills, and process files",
+      "assertions": [
+        { "text": "Shows the current state of BRIEF.md and CREATIVE_DIRECTION.md", "type": "contains" },
+        { "text": "Lists available skills with their use cases", "type": "contains" },
+        { "text": "Mentions the Adjacent Possible method", "type": "contains" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Show me the playbook. BRIEF.md still has placeholders.",
+      "expected_output": "Should show the guide and suggest running /setup since the brief is not filled in",
+      "assertions": [
+        { "text": "Identifies that BRIEF.md is not filled in", "type": "contains" },
+        { "text": "Suggests /setup for guided configuration", "type": "contains" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "What does the /creative skill do?",
+      "expected_output": "Should read the creative SKILL.md and provide a summary of what it does and when to use it",
+      "assertions": [
+        { "text": "Explains the creative skill's purpose (divergent exploration)", "type": "contains" },
+        { "text": "Mentions when to invoke it", "type": "contains" }
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Playbook. Both BRIEF.md and CREATIVE_DIRECTION.md are filled in.",
+      "expected_output": "Should confirm the project is configured and suggest starting work or using /creative",
+      "assertions": [
+        { "text": "Confirms project is configured", "type": "contains" },
+        { "text": "Suggests next steps like /creative or starting work", "type": "contains" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "skill_name": "creative",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I need alternative directions for the homepage layout.",
+      "expected_output": "Should ask what we're deciding and the current direction, then produce at least 3 directions: Expected, Divergent, and Radical",
+      "assertions": [
+        { "text": "Asks about the current direction or 'safe' solution", "type": "contains" },
+        { "text": "Produces at least 3 directions including a radical one", "type": "contains" },
+        { "text": "Includes trade-offs and closing doors for each direction", "type": "contains" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "The client rejected the minimalist approach. Explore alternatives.",
+      "expected_output": "Should perform post-rejection analysis: what was rejected, why (hypothesis), what space remains open, then generate new directions",
+      "assertions": [
+        { "text": "Analyzes what was rejected and hypothesizes why", "type": "contains" },
+        { "text": "Identifies what was NOT rejected (remaining open space)", "type": "contains" },
+        { "text": "Generates new directions informed by the rejection", "type": "contains" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Give me your best recommendation for the color palette.",
+      "expected_output": "Should NOT give a single recommendation. Should present multiple directions with trade-offs and wait for the Art Director's decision",
+      "assertions": [
+        { "text": "Does NOT say 'I recommend' or 'the best option is'", "type": "contains" },
+        { "text": "Presents multiple directions with trade-offs", "type": "contains" },
+        { "text": "Separates real constraints from assumed constraints", "type": "contains" },
+        { "text": "Does NOT converge without an explicit trigger", "type": "contains" }
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Explore typography options. We must use the brand font for headings (non-negotiable).",
+      "expected_output": "Should identify the brand font as a real constraint and explore the space around it (body font, scale, pairing) without challenging the non-negotiable",
+      "assertions": [
+        { "text": "Identifies the brand font as a real constraint", "type": "contains" },
+        { "text": "Explores adjacent possibilities (body font, pairing, scale)", "type": "contains" },
+        { "text": "Includes uncomfortable questions about assumed constraints", "type": "contains" }
+      ]
+    }
+  ]
+}

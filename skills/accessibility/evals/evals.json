@@ -1,0 +1,45 @@
+{
+  "skill_name": "accessibility",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Run an accessibility audit on the hero section.",
+      "expected_output": "Should run the WCAG 2.1 AA checklist against the hero section, categorize findings by severity, and produce a structured report",
+      "assertions": [
+        { "text": "Identifies the scope as the hero section", "type": "contains" },
+        { "text": "Checks criteria from the WCAG checklist (color contrast, headings, keyboard, etc.)", "type": "contains" },
+        { "text": "Categorizes issues by severity (Critical, High, Medium)", "type": "contains" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Check accessibility of the contact form.",
+      "expected_output": "Should focus on form-specific WCAG criteria: labels, error messages, required fields, grouping",
+      "assertions": [
+        { "text": "Checks form labels are linked to fields (for + id)", "type": "contains" },
+        { "text": "Checks that errors are not shown only with color (1.4.1)", "type": "contains" },
+        { "text": "Checks required fields indication (3.3.2)", "type": "contains" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Accessibility audit found 3 issues. Generate the visual fix picker.",
+      "expected_output": "Should generate a standalone HTML page at lab/audits/accessibility-fixes-visual.html with side-by-side fix options for each issue",
+      "assertions": [
+        { "text": "Generates an HTML file for visual comparison", "type": "contains" },
+        { "text": "Each issue shows Current, Fix A, and Fix B options", "type": "contains" },
+        { "text": "Uses the project's styles and fonts", "type": "contains" }
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Fix all the accessibility issues you found.",
+      "expected_output": "Should propose specific fixes but wait for confirmation before applying them",
+      "assertions": [
+        { "text": "Proposes specific code changes for each issue", "type": "contains" },
+        { "text": "Waits for confirmation before applying", "type": "contains" },
+        { "text": "Does NOT apply fixes automatically", "type": "contains" }
+      ]
+    }
+  ]
+}

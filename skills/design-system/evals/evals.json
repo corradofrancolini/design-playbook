@@ -1,0 +1,35 @@
+{
+  "skill_name": "design-system",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Check if the Card component is consistent with the design system.",
+      "expected_output": "Should read the component file, check token usage (colors, spacing, typography), component patterns (states, naming, props), and produce a structured report",
+      "assertions": [
+        { "text": "Reads the component file before checking", "type": "contains" },
+        { "text": "Checks token consistency (colors use CSS variables, spacing uses scale)", "type": "contains" },
+        { "text": "Reports findings in a structured format", "type": "contains" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I want to create a new Tooltip component.",
+      "expected_output": "Should check existing components for patterns to follow (naming, props structure, states), then propose a consistent component structure",
+      "assertions": [
+        { "text": "References existing component patterns for consistency", "type": "contains" },
+        { "text": "Proposes states: default, hover, focus, active, disabled", "type": "contains" },
+        { "text": "Uses consistent naming conventions (PascalCase for components)", "type": "contains" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Check the entire homepage for design system consistency.",
+      "expected_output": "Should check token usage, responsive breakpoints, and accessibility across the page",
+      "assertions": [
+        { "text": "Checks responsive breakpoints for consistency", "type": "contains" },
+        { "text": "Identifies any hardcoded values that should be tokens", "type": "contains" },
+        { "text": "Waits for confirmation before proposing fixes", "type": "contains" }
+      ]
+    }
+  ]
+}

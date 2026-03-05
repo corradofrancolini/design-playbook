@@ -1,0 +1,44 @@
+{
+  "skill_name": "content",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Write the label for the main CTA button on the homepage.",
+      "expected_output": "Should ask about context and constraints, then propose microcopy with direct action verb, an alternative, and notes on tone",
+      "assertions": [
+        { "text": "Asks about context (where it appears, what it communicates)", "type": "contains" },
+        { "text": "Proposes a label with a direct action verb", "type": "contains" },
+        { "text": "Provides at least one alternative", "type": "contains" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Write an error message for when email validation fails.",
+      "expected_output": "Should produce an error message that explains what went wrong and how to fix it, in a non-blaming tone, without technical codes",
+      "assertions": [
+        { "text": "Explains what went wrong", "type": "contains" },
+        { "text": "Explains how to fix it (includes example format)", "type": "contains" },
+        { "text": "Does NOT use technical error codes", "type": "contains" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Write alt text for the team photo on the about page.",
+      "expected_output": "Should produce descriptive alt text with context, not just 'photo of people', under 125 characters",
+      "assertions": [
+        { "text": "Describes the content with context, not just what's visible", "type": "contains" },
+        { "text": "Alt text is under 125 characters", "type": "contains" }
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Write the empty state message for the saved events page.",
+      "expected_output": "Should explain why it's empty, suggest an action, and avoid making the user feel lost",
+      "assertions": [
+        { "text": "Explains why the page is empty", "type": "contains" },
+        { "text": "Suggests a concrete action to fill it", "type": "contains" },
+        { "text": "Tone is helpful, not just 'No results'", "type": "contains" }
+      ]
+    }
+  ]
+}

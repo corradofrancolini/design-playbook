@@ -1,0 +1,46 @@
+{
+  "skill_name": "benchmark",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Let's analyze some competitor websites for our project.",
+      "expected_output": "Should check existing state (BRIEF.md references, lab/benchmarks/), then ask how the Art Director wants to share references (Figma, URL, Screenshot)",
+      "assertions": [
+        { "text": "Checks BRIEF.md for existing references", "type": "contains" },
+        { "text": "Presents the three input sources: Figma, URL, Screenshot", "type": "contains" },
+        { "text": "Assigns progressive IDs (R1, R2, R3) to references", "type": "contains" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Add these references to the benchmark: https://example1.com, https://example2.com, https://example3.com",
+      "expected_output": "Should accept batch input, assign IDs R1-R3, attempt to capture each via Puppeteer with cookie banner dismissal, and ask about annotation mode",
+      "assertions": [
+        { "text": "Accepts multiple URLs in batch", "type": "contains" },
+        { "text": "Assigns R1, R2, R3 labels", "type": "contains" },
+        { "text": "Asks about annotation mode (AD-led, Claude-led, or pre-annotated)", "type": "contains" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Start a benchmark. There's already a previous benchmark in lab/benchmarks/.",
+      "expected_output": "Should detect the existing benchmark and ask whether to update, add references, or start over",
+      "assertions": [
+        { "text": "Detects existing benchmark in lab/benchmarks/", "type": "contains" },
+        { "text": "Asks whether to update, add, or start over", "type": "contains" },
+        { "text": "Does NOT overwrite existing benchmark without asking", "type": "contains" }
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Generate the benchmark report. All references have been analyzed.",
+      "expected_output": "Should generate lab/benchmarks/benchmark-report.md with comparative analysis, pattern map (convergences, divergences, absences), and open doors for CREATIVE_DIRECTION.md",
+      "assertions": [
+        { "text": "Generates benchmark-report.md", "type": "contains" },
+        { "text": "Includes convergences, divergences, and absences sections", "type": "contains" },
+        { "text": "Presents Open Doors as exploration space, not recommendations", "type": "contains" },
+        { "text": "Does NOT write to CREATIVE_DIRECTION.md without an explicit trigger", "type": "contains" }
+      ]
+    }
+  ]
+}

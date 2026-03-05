@@ -1,0 +1,45 @@
+{
+  "skill_name": "seo",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Run an SEO audit on the homepage.",
+      "expected_output": "Should check meta tags, headings, content, technical SEO, and structured data, then produce a report with scores per category",
+      "assertions": [
+        { "text": "Checks meta tags (title, description, canonical, OG, Twitter Card)", "type": "contains" },
+        { "text": "Checks heading hierarchy (one H1, no level skips)", "type": "contains" },
+        { "text": "Produces a report with status per category", "type": "contains" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Check Core Web Vitals performance.",
+      "expected_output": "Should check LCP, FID, CLS, TTFB, FCP against target values and report the performance checklist",
+      "assertions": [
+        { "text": "Lists Core Web Vitals with target values (LCP <2.5s, FID <100ms, CLS <0.1)", "type": "contains" },
+        { "text": "Checks image optimization (format, lazy loading, dimensions)", "type": "contains" },
+        { "text": "Checks JavaScript bundle size and code splitting", "type": "contains" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "The SEO audit found issues. Fix them all.",
+      "expected_output": "Should propose specific fixes and wait for confirmation before applying",
+      "assertions": [
+        { "text": "Proposes specific changes for each issue", "type": "contains" },
+        { "text": "Waits for confirmation before applying", "type": "contains" },
+        { "text": "Prioritizes issues by severity (High first)", "type": "contains" }
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Run both SEO and performance audits on the blog page.",
+      "expected_output": "Should run both checklists and check for structured data (Article schema for blog)",
+      "assertions": [
+        { "text": "Runs SEO checklist", "type": "contains" },
+        { "text": "Runs performance checklist", "type": "contains" },
+        { "text": "Checks for Schema.org Article structured data", "type": "contains" }
+      ]
+    }
+  ]
+}

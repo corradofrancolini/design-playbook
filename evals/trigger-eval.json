@@ -1,0 +1,54 @@
+[
+  { "query": "let's set up the project", "should_trigger": "setup" },
+  { "query": "configure everything from scratch", "should_trigger": "setup" },
+  { "query": "fill in the brief", "should_trigger": "setup" },
+
+  { "query": "we're done for today", "should_trigger": "session-end" },
+  { "query": "close the session and save", "should_trigger": "session-end" },
+  { "query": "let's wrap up", "should_trigger": "session-end" },
+
+  { "query": "how does this project work?", "should_trigger": "playbook" },
+  { "query": "show me the available skills", "should_trigger": "playbook" },
+  { "query": "what's the current project state?", "should_trigger": "playbook" },
+
+  { "query": "I need three different approaches for the homepage", "should_trigger": "creative" },
+  { "query": "explore alternative directions for the layout", "should_trigger": "creative" },
+  { "query": "the client rejected the design, what else can we try?", "should_trigger": "creative" },
+
+  { "query": "review this component for quality", "should_trigger": "review" },
+  { "query": "check the code before I commit", "should_trigger": "review" },
+  { "query": "are there any security issues in this file?", "should_trigger": "review" },
+
+  { "query": "let's look at competitor websites", "should_trigger": "benchmark" },
+  { "query": "analyze these reference sites", "should_trigger": "benchmark" },
+  { "query": "add these URLs to the benchmark", "should_trigger": "benchmark" },
+
+  { "query": "check accessibility of the hero section", "should_trigger": "accessibility" },
+  { "query": "WCAG audit on the contact form", "should_trigger": "accessibility" },
+  { "query": "is this component accessible?", "should_trigger": "accessibility" },
+
+  { "query": "write the button label for the CTA", "should_trigger": "content" },
+  { "query": "what should the error message say?", "should_trigger": "content" },
+  { "query": "write alt text for the team photo", "should_trigger": "content" },
+
+  { "query": "check the color tokens are consistent", "should_trigger": "design-system" },
+  { "query": "is this component following the design system?", "should_trigger": "design-system" },
+  { "query": "I want to create a new Tooltip component, check consistency", "should_trigger": "design-system" },
+
+  { "query": "is the page SEO ready?", "should_trigger": "seo" },
+  { "query": "check Core Web Vitals", "should_trigger": "seo" },
+  { "query": "run a performance audit", "should_trigger": "seo" },
+
+  { "query": "set up the component library with Storybook", "should_trigger": "storybook" },
+  { "query": "create stories for the existing components", "should_trigger": "storybook" },
+  { "query": "configure Storybook with Vitest", "should_trigger": "storybook" },
+
+  { "query": "show me the project structure", "should_trigger": "project-index" },
+  { "query": "generate a visual map of the codebase", "should_trigger": "project-index" },
+
+  { "query": "what's the weather like?", "should_trigger": false },
+  { "query": "explain how React hooks work", "should_trigger": false },
+  { "query": "fix the TypeScript error on line 42", "should_trigger": false },
+  { "query": "deploy to production", "should_trigger": false },
+  { "query": "write a unit test for the utils module", "should_trigger": false }
+]

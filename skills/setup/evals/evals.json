@@ -1,0 +1,52 @@
+{
+  "skill_name": "setup",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Let's set up this new project",
+      "expected_output": "Should start the guided setup flow: ask about project name, target audience, tech stack, and offer to fill BRIEF.md",
+      "assertions": [
+        { "text": "Asks about the project description or name", "type": "contains" },
+        { "text": "References BRIEF.md as a target file to fill", "type": "contains" },
+        { "text": "Does NOT skip directly to creative direction without covering the brief first", "type": "contains" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Configure the project. BRIEF.md already has real content (no placeholders).",
+      "expected_output": "Should detect that BRIEF.md is already filled in and ask if the user wants to update specific sections instead of starting from scratch",
+      "assertions": [
+        { "text": "Acknowledges that BRIEF.md is already filled in", "type": "contains" },
+        { "text": "Asks whether the user wants to update specific sections", "type": "contains" },
+        { "text": "Does NOT overwrite existing content without asking", "type": "contains" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Set up the project. The project is not a git repository.",
+      "expected_output": "Should detect missing .git/ and ask if the user wants to initialize version control",
+      "assertions": [
+        { "text": "Mentions that the project is not a git repository", "type": "contains" },
+        { "text": "Asks whether the user wants to initialize git", "type": "contains" }
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "I want to configure everything. There are 3 people on the team.",
+      "expected_output": "Should ask for team member names/GitHub accounts and add them to the Team list in CLAUDE.md",
+      "assertions": [
+        { "text": "Asks for team member names or GitHub accounts", "type": "contains" },
+        { "text": "References the Team section in CLAUDE.md", "type": "contains" }
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Set up the project. I'll skip most questions for now.",
+      "expected_output": "Should accept 'skip' gracefully without forcing answers, and show a summary at the end listing skipped sections",
+      "assertions": [
+        { "text": "Accepts skip as a valid answer", "type": "contains" },
+        { "text": "Shows a summary with sections marked as skipped or to complete", "type": "contains" }
+      ]
+    }
+  ]
+}

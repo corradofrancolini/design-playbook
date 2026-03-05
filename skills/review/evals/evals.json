@@ -1,0 +1,33 @@
+{
+  "skill_name": "review",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Review the Button component in src/components/Button.tsx",
+      "expected_output": "Should read the file, run the review checklist (correctness, performance, security, maintainability, accessibility), and produce a structured report",
+      "assertions": [
+        { "text": "Reads the specified file before reviewing", "type": "contains" },
+        { "text": "Checks multiple categories from the review checklist", "type": "contains" },
+        { "text": "Produces a structured report with issues categorized by severity", "type": "contains" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Review my latest changes.",
+      "expected_output": "Should ask for scope clarification: specific files, latest commit, or area to review",
+      "assertions": [
+        { "text": "Asks about the scope (files, commit, or area)", "type": "contains" },
+        { "text": "Does NOT start reviewing without knowing what to review", "type": "contains" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Review this component. I found a security issue, please fix it immediately.",
+      "expected_output": "Should propose the fix but wait for confirmation before applying it",
+      "assertions": [
+        { "text": "Proposes a specific fix", "type": "contains" },
+        { "text": "Waits for confirmation before applying changes", "type": "contains" }
+      ]
+    }
+  ]
+}

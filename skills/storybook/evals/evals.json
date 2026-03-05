@@ -1,0 +1,44 @@
+{
+  "skill_name": "storybook",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Set up Storybook for this project.",
+      "expected_output": "Should detect the stack from package.json (framework, CSS, TypeScript, monorepo), report findings, and wait for confirmation before proceeding",
+      "assertions": [
+        { "text": "Reads package.json to detect the stack", "type": "contains" },
+        { "text": "Reports detected framework, CSS solution, and TypeScript usage", "type": "contains" },
+        { "text": "Waits for confirmation before installing", "type": "contains" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Set up Storybook. The project uses Next.js App Router with Tailwind 4.",
+      "expected_output": "Should apply known workarounds: separate PostCSS config, experimentalRSC, nextjs-vite framework",
+      "assertions": [
+        { "text": "Creates postcss.config.storybook.mjs for Tailwind 4", "type": "contains" },
+        { "text": "Enables experimentalRSC for App Router", "type": "contains" },
+        { "text": "Uses @storybook/nextjs-vite as framework", "type": "contains" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Create stories for the existing components.",
+      "expected_output": "Should follow the 3-tier approach: pure components first, then routing/layout, then CMS-dependent",
+      "assertions": [
+        { "text": "Identifies Tier 1 (pure) components as highest priority", "type": "contains" },
+        { "text": "Creates stories with at least Default variant and edge states", "type": "contains" },
+        { "text": "Uses the autodocs tag in meta", "type": "contains" }
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Set up Storybook. There are components that use Payload CMS.",
+      "expected_output": "Should identify CMS-dependent components as Tier 3 and set up mock aliases in viteFinal",
+      "assertions": [
+        { "text": "Identifies CMS components as Tier 3", "type": "contains" },
+        { "text": "Creates mock aliases in viteFinal for Payload modules", "type": "contains" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "skill_name": "project-index",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Show me the project structure.",
+      "expected_output": "Should check for .project-index.yaml first. If not found, scan the project and generate a text tree with box-drawing characters",
+      "assertions": [
+        { "text": "Checks for .project-index.yaml", "type": "contains" },
+        { "text": "Generates a text tree with box-drawing characters", "type": "contains" },
+        { "text": "Does NOT use emojis in the output", "type": "contains" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Generate project index. A .project-index.yaml file exists.",
+      "expected_output": "Should read the YAML and use it as a guide, respecting the order and groupings defined, only showing what the YAML lists",
+      "assertions": [
+        { "text": "Reads and follows .project-index.yaml structure", "type": "contains" },
+        { "text": "Respects the order and groupings from the YAML", "type": "contains" },
+        { "text": "Only shows what the YAML lists, not the entire filesystem", "type": "contains" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Map the project. It has over 500 files.",
+      "expected_output": "Should show only the first 2 levels and ask whether to go deeper",
+      "assertions": [
+        { "text": "Limits initial output to 2 levels of depth", "type": "contains" },
+        { "text": "Asks whether to go deeper", "type": "contains" }
+      ]
+    }
+  ]
+}

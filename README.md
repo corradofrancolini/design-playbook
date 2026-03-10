@@ -24,15 +24,18 @@ A complete methodology for Art Director + AI collaborative projects. Installs pr
 
 ## Quick start
 
+First time — clone the toolkit and install into your project in one go:
+
 ```bash
-git clone https://github.com/corradofrancolini/design-playbook.git
-./design-playbook/install.sh ~/Projects/my-project
+git clone https://github.com/corradofrancolini/design-playbook.git && ./design-playbook/install.sh ~/Projects/my-project
 ```
 
-Or non-interactively (useful from Claude Desktop):
+Replace `my-project` with the name of the project you'll work on (e.g. `brand-redesign`, `landing-page`). The folder is created if it doesn't exist.
+
+Already cloned? For additional projects, just run the installer:
 
 ```bash
-./design-playbook/install.sh --name "my-project" --force ~/Projects/my-project
+./design-playbook/install.sh ~/Projects/another-project
 ```
 
 The installer will:
@@ -227,19 +230,15 @@ The plugin configures the Figma MCP server and installs agent skills for impleme
 
 If you use Claude Code from Claude Desktop, you can install the playbook entirely from the chat — no need to open a separate terminal.
 
-**Step 1 — Clone the playbook (one time only)**
+**First time — clone and install in one step:**
 
-The playbook is a toolkit. Clone it once anywhere on your machine — you won't work inside this folder:
+> Clone https://github.com/corradofrancolini/design-playbook.git into ~/Projects, then run ~/Projects/design-playbook/install.sh --name "brand-redesign" --force ~/Projects/brand-redesign
 
-> Clone https://github.com/corradofrancolini/design-playbook.git into ~/Projects
+Replace `brand-redesign` with your project name. Use `--name` and `--force` to skip interactive prompts (Claude Code doesn't have an interactive terminal).
 
-**Step 2 — Install into your project**
+**Already cloned? Just install:**
 
-Run the installer pointing it at the folder where you'll actually work. The folder should be named after your project (e.g. `~/Projects/brand-redesign`, `~/Projects/landing-page`). If it doesn't exist yet, the installer creates it:
-
-> Run ~/Projects/design-playbook/install.sh --name "brand-redesign" --force ~/Projects/brand-redesign
-
-Use `--name` and `--force` to skip interactive prompts (Claude Code doesn't have an interactive terminal).
+> Run ~/Projects/design-playbook/install.sh --name "another-project" --force ~/Projects/another-project
 
 | Flag | What it does |
 |------|-------------|

@@ -232,13 +232,17 @@ If you use Claude Code from Claude Desktop, you can install the playbook entirel
 
 **First time — clone and install in one step:**
 
-> Clone https://github.com/corradofrancolini/design-playbook.git into ~/Projects, then run ~/Projects/design-playbook/install.sh --name "brand-redesign" --force ~/Projects/brand-redesign
+```bash
+git clone https://github.com/corradofrancolini/design-playbook.git ~/Projects/design-playbook && ~/Projects/design-playbook/install.sh --name "brand-redesign" --force ~/Projects/brand-redesign
+```
 
 Replace `brand-redesign` with your project name. Use `--name` and `--force` to skip interactive prompts (Claude Code doesn't have an interactive terminal).
 
 **Already cloned? Just install:**
 
-> Run ~/Projects/design-playbook/install.sh --name "another-project" --force ~/Projects/another-project
+```bash
+~/Projects/design-playbook/install.sh --name "another-project" --force ~/Projects/another-project
+```
 
 | Flag | What it does |
 |------|-------------|

@@ -53,7 +53,8 @@ The installer will:
 | File | Purpose |
 |------|---------|
 | `CLAUDE.md` | Project protocol — Adjacent Possible methodology, AD/AI workflow, team list |
-| `BRIEF.md` | Project brief — scope, target, stack, content, references, constraints |
+| `BRIEF.md` | Project brief — scope, target, content, references, constraints |
+| `STACK.md` | Tech stack, architecture decisions, dependencies, patterns |
 | `SESSION_HANDOFF.md` | Pointer to `docs/handoffs/` (latest handoff) |
 | `BACKLOG.md` | Active backlog, open decisions, closed decisions |
 | `CREATIVE_DIRECTION.md` | Creative direction — palette, typography, visual mood, design decisions |
@@ -86,13 +87,14 @@ The installer will:
 
 After installing, open Claude Code in the project directory. Claude will automatically introduce the playbook and its capabilities on the first session.
 
-**Quickest path:** run `/setup` — it walks you through filling BRIEF.md and CREATIVE_DIRECTION.md with guided questions.
+**Quickest path:** run `/setup` — it walks you through filling BRIEF.md, STACK.md, and CREATIVE_DIRECTION.md with guided questions.
 
 **Manual path:**
 
-1. **`BRIEF.md`** — fill in project scope, target, stack, content, references, constraints
-2. **`CREATIVE_DIRECTION.md`** — fill in palette, typography, visual mood
-3. **`CLAUDE.md`** — adjust the project structure section to match your stack
+1. **`BRIEF.md`** — fill in project scope, target, content, references, constraints
+2. **`STACK.md`** — fill in framework, dependencies, architecture decisions, patterns
+3. **`CREATIVE_DIRECTION.md`** — fill in palette, typography, visual mood
+4. **`CLAUDE.md`** — adjust the project structure section to match your stack
 4. **`review` skill** — uncomment the stack-specific sections relevant to your project (React/Next.js, Vue/Nuxt, Tailwind, TypeScript, Python)
 5. **`content` skill** — fill in the glossary table with project-specific terminology
 
@@ -187,6 +189,7 @@ lab/notes.md           ←  working notes preserved
 my-project/
 ├── CLAUDE.md
 ├── BRIEF.md
+├── STACK.md
 ├── SESSION_HANDOFF.md       ← pointer to docs/handoffs/
 ├── BACKLOG.md
 ├── CREATIVE_DIRECTION.md

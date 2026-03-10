@@ -40,13 +40,9 @@
 
 ---
 
-## Technical stack
+## Tech stack
 
-- **Framework**: Next.js 15 (App Router)
-- **CMS**: Payload CMS (self-hosted, same Next.js instance)
-- **Hosting**: Vercel
-- **Database**: PostgreSQL (Neon)
-- **Other**: Resend for contact form emails, Cloudinary for image optimization
+See `STACK.md` for the full technical stack and architecture decisions.
 
 ---
 

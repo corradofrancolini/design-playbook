@@ -54,12 +54,16 @@ Guide the user through each section, one at a time. For each question, accept th
    - "What's included in the project? (features, pages)"
    - "What's explicitly excluded?"
 
-4. **Tech stack**
+4. **Tech stack** → written to STACK.md (not BRIEF.md)
    - "Framework? (Next.js, Nuxt, Astro, etc.)"
+   - "Styling? (Tailwind, CSS Modules, vanilla, etc.)"
    - "CMS? (Payload, Sanity, none, etc.)"
    - "Hosting? (Vercel, Netlify, etc.)"
    - "Database? (PostgreSQL, MongoDB, none, etc.)"
+   - "Package manager? (npm, pnpm, yarn, bun)"
    - "External integrations or APIs?"
+   - "Any key dependencies already decided?"
+   - "Architecture patterns or conventions to follow?"
 
 5. **Content**
    - "Single language or multilingual? Which languages?"
@@ -77,7 +81,7 @@ Guide the user through each section, one at a time. For each question, accept th
    - "Technical constraints? (browser support, accessibility, performance)"
    - "Brand constraints? (non-negotiable elements)"
 
-After each answer, update the corresponding section in BRIEF.md. Also update the "Last updated" date.
+After each answer, update the corresponding section in BRIEF.md (or STACK.md for tech stack questions). Also update the "Last updated" date.
 
 ### 3. Creative direction (CREATIVE_DIRECTION.md)
 
@@ -100,7 +104,7 @@ After each answer, update the corresponding section in CREATIVE_DIRECTION.md.
 
 ### 4. CLAUDE.md configuration
 
-Read CLAUDE.md and check if the "Project structure" section reflects the stack declared in the BRIEF.
+Read CLAUDE.md and check if the "Project structure" section reflects the stack declared in STACK.md.
 
 - If the stack was defined, propose a consistent project structure (e.g. for Next.js: `app/`, `components/`, `lib/`, etc.)
 - Show the proposal and ask for confirmation before modifying

@@ -36,11 +36,7 @@
 
 ## Tech stack
 
-- **Framework**: [Next.js, Nuxt, Astro, etc.]
-- **CMS**: [Payload, Sanity, Strapi, none, etc.]
-- **Hosting**: [Vercel, Netlify, self-hosted, etc.]
-- **Database**: [PostgreSQL, MongoDB, none, etc.]
-- **Other**: [integrations, external APIs, services]
+See `STACK.md` for the full technical stack and architecture decisions.
 
 ---
 

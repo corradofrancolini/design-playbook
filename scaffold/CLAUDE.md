@@ -73,6 +73,7 @@ On request for an audit or review, analyze the decisions made:
 
 ## Reference files
 
+- `STACK.md` — Tech stack, architecture decisions, dependencies, patterns
 - `BACKLOG.md` — Backlog, open decisions, open issues
 - `lab/PROCESS.md` — Process notes on the Art Director + AI working method
 - `lab/notes.md` — Working notes, benchmarks, decisions

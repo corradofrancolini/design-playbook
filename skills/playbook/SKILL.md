@@ -62,7 +62,8 @@ Details: CLAUDE.md (protocol), lab/PROCESS.md (methodology)
 | File | Purpose |
 |------|---------|
 | CLAUDE.md | Project protocol (auto-loaded by Claude Code) |
-| BRIEF.md | Project brief — scope, target, stack, constraints |
+| BRIEF.md | Project brief — scope, target, content, constraints |
+| STACK.md | Tech stack, architecture decisions, dependencies, patterns |
 | CREATIVE_DIRECTION.md | Creative direction — palette, typography, mood |
 | SESSION_HANDOFF.md | Pointer to docs/handoffs/ |
 | docs/handoffs/ | Session handoffs (shared across the team) |

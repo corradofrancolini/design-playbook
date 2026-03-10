@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.1.0] — 2026-03-10
+
+### Added
+- **`STACK.md` scaffold file**: dedicated file for tech stack, architecture decisions, key dependencies, integration constraints, and coding patterns
+- **`extras/examples/STACK.md`**: filled-in example of STACK.md
+
+### Changed
+- `BRIEF.md` tech stack section replaced with a reference to `STACK.md`
+- `/setup` skill writes tech answers to `STACK.md` instead of `BRIEF.md`; added questions for styling, package manager, dependencies, and patterns
+- `/playbook` skill includes `STACK.md` in the process files table
+- `CLAUDE.md` scaffold lists `STACK.md` in reference files
+- Installer copies `STACK.md` and includes it in the summary
+- README updated: scaffold table, manual path, project structure
+
 ## [2.0.0] — 2026-03-05
 
 ### Added

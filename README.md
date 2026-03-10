@@ -227,13 +227,19 @@ The plugin configures the Figma MCP server and installs agent skills for impleme
 
 If you use Claude Code from Claude Desktop, you can install the playbook entirely from the chat — no need to open a separate terminal.
 
-**Setup (one time):** clone the repo anywhere on your machine. Ask Claude:
+**Step 1 — Clone the playbook (one time only)**
+
+The playbook is a toolkit. Clone it once anywhere on your machine — you won't work inside this folder:
 
 > Clone https://github.com/corradofrancolini/design-playbook.git into ~/Projects
 
-**Install into a project:** ask Claude to run the installer with `--name` and `--force` to skip interactive prompts (Claude Code doesn't have an interactive terminal):
+**Step 2 — Install into your project**
 
-> Run ~/Projects/design-playbook/install.sh --name "my-project" --force ~/Projects/my-project
+Run the installer pointing it at the folder where you'll actually work. The folder should be named after your project (e.g. `~/Projects/brand-redesign`, `~/Projects/landing-page`). If it doesn't exist yet, the installer creates it:
+
+> Run ~/Projects/design-playbook/install.sh --name "brand-redesign" --force ~/Projects/brand-redesign
+
+Use `--name` and `--force` to skip interactive prompts (Claude Code doesn't have an interactive terminal).
 
 | Flag | What it does |
 |------|-------------|
